@@ -25,4 +25,8 @@ class ForumThread < ActiveRecord::Base
 
   validates :subject, presence: true
   validates_associated :forum_posts
+
+  def to_param
+    "#{id}-#{subject}".parameterize
+  end
 end

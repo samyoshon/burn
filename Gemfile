@@ -63,3 +63,4 @@ gem 'gemoji'
 gem 'sanitize'
 
 gem 'paranoia'
+gem 'friendly_id', '~> 5.2', '>= 5.2.1'

@@ -26,4 +26,5 @@ class ForumPost < ActiveRecord::Base
       NotificationMailer.forum_post_notification(user, self).deliver_later
     end
   end
+
 end
