@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :forum_threads, :path => 'forums' do
-    resources :forum_posts, module: :forums
+    resources :forum_posts, module: :forum_threads
   end
 
   resources :users do
