@@ -30,13 +30,15 @@ class User < ActiveRecord::Base
   acts_as_paranoid
 
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable
+  # , :confirmable
 
   validates :email, presence: true
 
   has_many :forum_threads
   has_many :forum_posts
+  has_many :markets
 
   def self.assign_from_row(row)
     user = User.where(email: row[:email]).first_or_initialize
