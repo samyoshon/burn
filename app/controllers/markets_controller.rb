@@ -10,6 +10,7 @@ class MarketsController < ApplicationController
 
   def new
     @market = Market.new
+    @market.products.new
   end
 
   def create

@@ -1,5 +1,7 @@
 class Markets::ProductsController < ApplicationController
   # before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_market
+
   def index
     @q = Product.search(params[:q])
     @products = @q.result(distinct: true)
@@ -26,12 +28,12 @@ class Markets::ProductsController < ApplicationController
 
   private
 
-  def set_product
-    @product = Product.find(params[:id])
+  def set_market
+    @market = Market.find(params[:market_id])
   end
 
   def product_params
-    params.require(:product).permit(:user_id, :title, :description, :price)
+    params.require(:product).permit(:user_id, :title, :description, :price, :market_id)
   end
 
 end

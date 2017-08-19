@@ -1,3 +1,9 @@
 class Market < ActiveRecord::Base
-	has_and_belongs_to_many :users
+	# acts_as_paranoid
+
+	belongs_to :user
+	has_many :products
+
+	accepts_nested_attributes_for :products
+	validates_associated :products
 end

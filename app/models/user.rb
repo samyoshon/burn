@@ -39,6 +39,7 @@ class User < ActiveRecord::Base
   has_many :forum_threads
   has_many :forum_posts
   has_many :markets
+  has_many :products
 
   def self.assign_from_row(row)
     user = User.where(email: row[:email]).first_or_initialize
