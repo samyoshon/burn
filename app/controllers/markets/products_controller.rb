@@ -17,10 +17,11 @@ class Markets::ProductsController < ApplicationController
 
   def create
     @product = current_user.products.new product_params
+    @product.market_id = @market.id
     # @product.user_id = current_user.id
 
     if @product.save
-      redirect_to @product
+      redirect_to @market
     else
       render action: :new
     end
