@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   end
 
   resources :markets, :path => 'marketplace' do
-    resources :products, module: :markets
+    resources :products, module: :markets do
+      collection do
+        match 'search' => 'product#search', via: [:get, :post], as: :search
+      end
+    end
   end
 
   resources :users do

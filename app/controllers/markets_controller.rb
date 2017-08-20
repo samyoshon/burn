@@ -1,7 +1,9 @@
 class MarketsController < ApplicationController
+  # before_action :set_market, except: [:index, :new, :create]
+
   def index
     @q = Market.search(params[:q])
-    @market = @q.result(distinct: true)
+    @markets = @q.result(distinct: true)
   end
 
   def show
