@@ -5,13 +5,14 @@ Rails.application.routes.draw do
     resources :forum_posts, module: :forum_threads
   end
 
-  resources :markets, :path => 'marketplace' do
-    resources :products, module: :markets do
-      collection do
-        match 'search' => 'product#search', via: [:get, :post], as: :search
-      end
+  resources :markets, :path => 'marketplace'
+
+  # resources :products, module: :markets do
+  resources :products do
+    collection do
+      match 'search' => 'product#search', via: [:get, :post], as: :search
     end
-  end
+  end 
 
   resources :users do
     collection do

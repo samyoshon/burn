@@ -4,7 +4,7 @@ class Market < ActiveRecord::Base
 	belongs_to :user
 	has_many :products
 
-	accepts_nested_attributes_for :products
+	# accepts_nested_attributes_for :products
 	
 	validates :title, presence: true
 	validates_associated :products

@@ -1,4 +1,4 @@
-<%= form_for [@market, @product] do |f| %>
+<%= form_for @product do |f| %>
   <div class="form-group">
     <%= f.text_field :title, placeholder: "Title", class: "form-control" %>
   </div>
@@ -11,9 +11,11 @@
     <%= f.text_area :description, placeholder: "Description", class: "form-control" %>
   </div>
 
+  <div class="form-group">
+    <%= f.select(:category_id, categories_for_select, :prompt => 'Select') %>
+  </div>
 
   <div class="form-group">
     <%= f.submit class: "btn btn-primary" %>
   </div>
 <% end %>
-
