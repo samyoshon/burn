@@ -5,6 +5,12 @@
   <div class="pull-right" style="margin-right: 10px">
     <%= search_form_for @q, html: { class: "form-inline" } do |f| %>
       <%= f.search_field :title_cont, placeholder: "Search...", class: "form-control" %>
+
+      <% Category.all.each do |category| %>
+        <%= check_box_tag('q[category_id_eq_any][]', category.id) %>
+        <%= category.category_name %>
+      <% end %>
+      <%= f.submit "Search" %>
     <% end %>
   </div>
   <h1 class="page-header">Marketplace</h1>
