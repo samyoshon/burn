@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, :set_user
-
   # def index
   #   @users = User.all
   #   @import = User::Import.new
@@ -30,11 +29,12 @@ class UsersController < ApplicationController
     @products = current_user.products
   end
 
-  def expire_products
+  def update
+    set_product
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-        format.json { render :show, status: :ok, location: @product }
+        format.html { redirect_to :user_products, notice: 'Product was successfully deleted.' }
+        format.json { render :user_products, status: :ok, location: :user_products }
       else
         format.html { render :edit }
         format.json { render json: @product.errors, status: :unprocessable_entity }
@@ -60,10 +60,18 @@ class UsersController < ApplicationController
 
   private
     def set_user
-        @user = current_user.id
+      @user = current_user.id
     end 
-     
+    
+    def set_product
+      @product = Product.find(params[:product][:id])
+    end
+
     def user_import_params
       params.require(:user_import).permit(:file)
+    end
+
+    def product_params
+      params.require(:product).permit(:user_id, :title, :description, :price, :market_id, :category_id, :expire_date)
     end
 end

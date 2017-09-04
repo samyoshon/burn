@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get '/users/profile', to: 'users#profile', as: 'user_profile'
   put '/users/profile', to: 'users#update_profile', as: 'user_update_profile'
   get '/users/products', to: 'users#products', as: 'user_products'
-  put '/users/products', to: 'users#expire_products', as: 'user_expire_products'
+  put '/users/products', to: 'users#update_products', as: 'user_update_products'
   get '/users/forum_posts', to: 'users#forum_posts', as: 'user_forum_posts'
   
   resources :users do

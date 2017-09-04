@@ -13,10 +13,11 @@ class ProductsController < ApplicationController
     @products_all = Product.where(["created_at > ?", 360.days.ago])
   end
 
-  def search
-    index
-    render :index
-  end
+  # What is this supposed to do again?
+  # def search
+  #   index
+  #   render :index
+  # end
 
   def show
     @product = Product.find(params[:id])
