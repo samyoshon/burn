@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
   # before_action :set_market
   # , :set_product
   before_action :set_product, except: [:index, :new, :create]
+  before_filter :authenticate_user!, only: [:new, :create, :edit, :update]
 
   def index
     @q = Product.search(params[:q])
@@ -36,6 +37,19 @@ class ProductsController < ApplicationController
       render action: :new
     end
   end
+
+  def update
+    respond_to do |format|
+    if @product.update(product_params)
+      format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+      format.json { render :show, status: :ok, location: @product }
+    else
+      format.html { render :edit }
+      format.json { render json: @product.errors, status: :unprocessable_entity }
+    end
+  end
+  end
+
 
   private
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170822045609) do
+ActiveRecord::Schema.define(version: 20170903194352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20170822045609) do
     t.string   "category_name"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "market_id"
   end
 
   create_table "forum_posts", force: :cascade do |t|
@@ -36,6 +37,8 @@ ActiveRecord::Schema.define(version: 20170822045609) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
+    t.integer  "view_count"
+    t.integer  "post_count"
   end
 
   add_index "forum_threads", ["deleted_at"], name: "index_forum_threads_on_deleted_at", using: :btree
@@ -54,10 +57,13 @@ ActiveRecord::Schema.define(version: 20170822045609) do
     t.string   "title"
     t.text     "description"
     t.decimal  "price"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "market_id"
     t.integer  "category_id"
+    t.datetime "expire_date"
+    t.integer  "view_count"
+    t.integer  "contact_count"
   end
 
   create_table "users", force: :cascade do |t|
@@ -76,8 +82,12 @@ ActiveRecord::Schema.define(version: 20170822045609) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.datetime "deleted_at"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
   end
 
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree

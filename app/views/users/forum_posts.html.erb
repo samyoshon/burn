@@ -1,0 +1,7 @@
+<%= render partial: "users/sidenav" %>
+    <% @forum_posts.each do |forum_post| %>
+      <tr>
+        <td><%= forum_post.id %></td>
+        <td><%= forum_post.body %></td>
+      </tr>
+    <% end %>

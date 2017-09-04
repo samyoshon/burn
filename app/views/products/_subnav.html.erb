@@ -1,0 +1,12 @@
+<div class="container">
+	<%= search_form_for @q, html: { class: "form-inline category_id"} do |f| %>
+	    <%= f.search_field :title_cont, placeholder: "Search...", class: "form-control" %>
+			<% Category.all.each do |category| %>
+	        	<%= f.check_box :category_id_in, {multiple: true}, category.id, nil %><%= category.category_name %>
+	      	<% end %>
+	    <%= f.submit "Search", class: "btn btn-success" %>
+	<% end %>
+	<div class="pull-right">
+		<%= link_to "Post Product", new_product_path, class: "btn btn-success" %>
+	</div>
+</div>

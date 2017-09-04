@@ -1,0 +1,11 @@
+<%= render partial: "users/sidenav" %>
+
+<% @products.each do |product| %>
+	<%= link_to edit_product_path(product) do %>
+		<ul>
+	   		<li><%= product.id %></li>
+			<li><%= product.title %></li>
+		</ul>
+	<% end %>
+<% end %>
+
