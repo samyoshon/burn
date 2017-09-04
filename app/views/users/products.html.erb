@@ -15,10 +15,12 @@
 	    	</div>
 	 	<% end %>
 
+	<!-- view only none expired posts -->
+	<% if product.expire_date.nil? %>
 	<!-- link to update product -->
 	<%= link_to edit_product_path(product) do %>
 		<ul>
-	   		<li><%= product.id %></li>
+   			<li><%= product.id %></li>
 			<li><%= product.title %></li>
 		</ul>
 	<% end %>
@@ -33,6 +35,7 @@
 	  <div class="form-group">
 	    <%= f.submit "Delete", class: "btn btn-primary" %>
 	  </div>
+	<% end %>
 	<% end %>
 <% end %>
 

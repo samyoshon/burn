@@ -1,3 +1,5 @@
 <%= link_to product do %>
-  <h3><%= product.title %></h3>
+	<% if product.expire_date.nil? %>
+		<h3><%= product.title %></h3>
+	<% end %>
 <% end %>
