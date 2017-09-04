@@ -40,14 +40,14 @@ class ProductsController < ApplicationController
 
   def update
     respond_to do |format|
-    if @product.update(product_params)
-      format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-      format.json { render :show, status: :ok, location: @product }
-    else
-      format.html { render :edit }
-      format.json { render json: @product.errors, status: :unprocessable_entity }
+      if @product.update(product_params)
+        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.json { render :show, status: :ok, location: @product }
+      else
+        format.html { render :edit }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
     end
-  end
   end
 
 
@@ -62,7 +62,7 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:user_id, :title, :description, :price, :market_id, :category_id)
+    params.require(:product).permit(:user_id, :title, :description, :price, :market_id, :category_id, :expire_date)
   end
 
 end
