@@ -18,6 +18,7 @@
         <li><%= link_to "Community", forum_threads_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Post Product", new_product_path %></li>
         <% if user_signed_in? %>
           <li><%= link_to "Account", edit_user_registration_path %></li>
           <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
@@ -29,4 +30,3 @@
     </nav>
   </div>
 </header>
-
