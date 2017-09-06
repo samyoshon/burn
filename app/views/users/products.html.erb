@@ -17,6 +17,7 @@
 
 	<!-- view only none expired posts -->
 	<% if product.expire_date.nil? %>
+	
 	<!-- link to update product -->
 	<%= link_to edit_product_path(product) do %>
 		<ul>
