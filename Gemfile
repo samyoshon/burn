@@ -63,3 +63,4 @@ gem 'gemoji'
 gem 'sanitize'
 
 gem 'paranoia'
+gem 'rb-readline' 
