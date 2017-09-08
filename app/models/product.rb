@@ -1,4 +1,5 @@
 class Product < ActiveRecord::Base
+	include ImageUploader::Attachment.new(:image)
 	belongs_to :user
 	belongs_to :market
 	belongs_to :category

@@ -71,9 +71,11 @@ GEM
       railties (>= 4.1.0, < 5.1)
       responders
       warden (~> 1.2.3)
+    down (4.1.0)
     erubi (1.6.1)
     erubis (2.7.0)
     execjs (2.7.0)
+    fastimage (2.1.0)
     ffi (1.9.18)
     gemoji (2.1.0)
     github-markdown (0.6.7)
@@ -83,6 +85,7 @@ GEM
       activesupport (>= 2)
       nokogiri (~> 1.4)
     i18n (0.8.6)
+    image_processing (0.4.4)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -100,6 +103,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mini_magick (4.8.0)
     mini_portile2 (2.2.0)
     minitest (5.10.3)
     multi_json (1.12.1)
@@ -173,6 +177,8 @@ GEM
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    shrine (2.6.1)
+      down (>= 2.3.6)
     spring (2.0.2)
       activesupport (>= 4.2)
     sprockets (3.7.1)
@@ -213,12 +219,15 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   devise (~> 4.1.0)
+  fastimage
   gemoji
   github-markdown
   html-pipeline
+  image_processing
   jbuilder (~> 2.0)
   jquery-rails
   local_time
+  mini_magick
   paranoia
   pg (~> 0.20)
   rails (= 4.2.5)
@@ -227,6 +236,7 @@ DEPENDENCIES
   sanitize
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  shrine
   spring
   sucker_punch
   turbolinks

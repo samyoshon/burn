@@ -62,5 +62,11 @@ gem 'github-markdown'
 gem 'gemoji'
 gem 'sanitize'
 
+# for shrine
+gem 'fastimage'
+gem 'image_processing'
+gem 'mini_magick'
+gem 'shrine'
+
 gem 'paranoia'
 gem 'rb-readline' 

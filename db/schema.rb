@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170906055104) do
+ActiveRecord::Schema.define(version: 20170907051711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20170906055104) do
     t.text     "body"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.text     "image_data"
   end
 
   create_table "forum_threads", force: :cascade do |t|
@@ -51,6 +52,7 @@ ActiveRecord::Schema.define(version: 20170906055104) do
     t.datetime "deleted_at"
     t.integer  "view_count"
     t.integer  "post_count"
+    t.text     "image_data"
   end
 
   add_index "forum_threads", ["deleted_at"], name: "index_forum_threads_on_deleted_at", using: :btree
@@ -62,6 +64,7 @@ ActiveRecord::Schema.define(version: 20170906055104) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.text     "image_data"
   end
 
   create_table "products", force: :cascade do |t|
@@ -76,10 +79,8 @@ ActiveRecord::Schema.define(version: 20170906055104) do
     t.datetime "expire_date"
     t.integer  "view_count"
     t.integer  "contact_count"
+    t.text     "image_data"
   end
-
-  add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
-  add_index "products", ["market_id"], name: "index_products_on_market_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -100,6 +101,7 @@ ActiveRecord::Schema.define(version: 20170906055104) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.text     "image_data"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
@@ -108,8 +110,6 @@ ActiveRecord::Schema.define(version: 20170906055104) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "forum_categories", "categories"
-  add_foreign_key "products", "categories"
   add_foreign_key "forum_categories", "markets"
-  add_foreign_key "products", "markets"
   add_foreign_key "forum_categories", "users"
 end
