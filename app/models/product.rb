@@ -2,6 +2,7 @@ class Product < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :market
 	belongs_to :category
+	has_many :images
 	
 	validates :title, presence: true
 	def user
