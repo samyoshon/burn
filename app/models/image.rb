@@ -1,4 +1,4 @@
 class Image < ActiveRecord::Base
-	include ImageUploader[:image]
+	include ImageUploader::Attachment.new(:image)
 	belongs_to :product
 end

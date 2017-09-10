@@ -9,9 +9,10 @@ Rails.application.routes.draw do
 
   # resources :products, module: :markets do
   resources :products do
-    collection do
-      match 'search' => 'product#search', via: [:get, :post], as: :search
-    end
+    resources :images
+    # collection do
+    #   match 'search' => 'product#search', via: [:get, :post], as: :search
+    # end
   end 
 
   get '/users/profile', to: 'users#profile', as: 'user_profile'

@@ -1,4 +1,4 @@
-class ImagesController < ApplicationController
+class Products::ImagesController < ApplicationController
   before_action :set_product
   # before_action :set_image, only: [:show, :edit, :update, :destroy]
 
@@ -75,6 +75,6 @@ class ImagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_params
-      params.require(:image).permit(:image, :image_data)
+      params.require(:image).permit(:product_id, :image, :image_data)
     end
 end
