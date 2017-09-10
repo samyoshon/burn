@@ -82,6 +82,9 @@ ActiveRecord::Schema.define(version: 20170907051711) do
     t.text     "image_data"
   end
 
+  add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
+  add_index "products", ["market_id"], name: "index_products_on_market_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -112,4 +115,7 @@ ActiveRecord::Schema.define(version: 20170907051711) do
   add_foreign_key "forum_categories", "categories"
   add_foreign_key "forum_categories", "markets"
   add_foreign_key "forum_categories", "users"
+  
+  add_foreign_key "products", "markets"
+  add_foreign_key "products", "categories"
 end
