@@ -1,6 +1,7 @@
-class AddProductIdToPhotos < ActiveRecord::Migration
+class AddCategoryIdToProducts < ActiveRecord::Migration
   def change
-    add_reference :photos, :product, index: true, foreign_key: true
-    add_column :photos, :image_data, :text
+    add_reference :products, :category, index: true, foreign_key: true
+    add_reference :products, :market, index: true, foreign_key: true
+    add_reference :products, :user, index: true, foreign_key: true
   end
 end

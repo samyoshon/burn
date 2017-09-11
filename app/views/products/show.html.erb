@@ -3,5 +3,6 @@
 <p><%= @product.price %></p>
 <p><%= @product.description %></p>
 <p><%= @product.user.email %></p>
+
 <p><%= image_tag @product.image_url(:thumb) %></p>
 <p><%= local_time_ago @product.created_at %></p>

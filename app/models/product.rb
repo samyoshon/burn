@@ -8,6 +8,7 @@ class Product < ActiveRecord::Base
 	validates :title, presence: true
 	accepts_nested_attributes_for :images
 	validates_associated :images
+	
 	def user
     	User.unscoped { super }
    	end

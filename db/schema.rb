@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170907051711) do
+ActiveRecord::Schema.define(version: 20170910190834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,15 @@ ActiveRecord::Schema.define(version: 20170907051711) do
 
   add_index "forum_threads", ["deleted_at"], name: "index_forum_threads_on_deleted_at", using: :btree
 
+  create_table "images", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "product_id"
+    t.text     "image_data"
+  end
+
+  add_index "images", ["product_id"], name: "index_images_on_product_id", using: :btree
+
   create_table "markets", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "store_id"
@@ -66,6 +75,15 @@ ActiveRecord::Schema.define(version: 20170907051711) do
     t.datetime "updated_at",  null: false
     t.text     "image_data"
   end
+
+  create_table "photos", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "product_id"
+    t.text     "image_data"
+  end
+
+  add_index "photos", ["product_id"], name: "index_photos_on_product_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.integer  "user_id"
@@ -79,11 +97,7 @@ ActiveRecord::Schema.define(version: 20170907051711) do
     t.datetime "expire_date"
     t.integer  "view_count"
     t.integer  "contact_count"
-    t.text     "image_data"
   end
-
-  add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
-  add_index "products", ["market_id"], name: "index_products_on_market_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -115,7 +129,6 @@ ActiveRecord::Schema.define(version: 20170907051711) do
   add_foreign_key "forum_categories", "categories"
   add_foreign_key "forum_categories", "markets"
   add_foreign_key "forum_categories", "users"
-  
-  add_foreign_key "products", "markets"
-  add_foreign_key "products", "categories"
+  add_foreign_key "images", "products"
+  add_foreign_key "photos", "products"
 end
