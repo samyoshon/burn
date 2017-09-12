@@ -63,13 +63,16 @@ gem 'gemoji'
 gem 'sanitize'
 
 # for shrine
-gem 'fastimage'
-gem 'image_processing'
-gem 'mini_magick'
-gem 'shrine'
+# gem 'fastimage'
+# gem 'image_processing'
+# gem 'mini_magick'
+# gem 'shrine'
 gem 'aws-sdk'
-gem 'roda'
+# gem 'roda'
 gem 'jquery-fileupload-rails'
+
+# for carrierwave
+gem 'carrierwave', '~> 1.0'
 
 gem 'paranoia'
 gem 'rb-readline' 

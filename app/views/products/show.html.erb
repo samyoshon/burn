@@ -4,5 +4,7 @@
 <p><%= @product.description %></p>
 <p><%= @product.user.email %></p>
 
-<p><%= image_tag @product.image_url(:thumb) %></p>
+<% @product.images.each do |p| %>
+	<p><%= image_tag p.url %></p>
+<% end %>
 <p><%= local_time_ago @product.created_at %></p>

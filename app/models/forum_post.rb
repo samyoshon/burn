@@ -1,5 +1,5 @@
 class ForumPost < ActiveRecord::Base
-  include ImageUploader::Attachment.new(:image)
+  # include ImageUploader::Attachment.new(:image)
   belongs_to :forum_thread
   belongs_to :user
 

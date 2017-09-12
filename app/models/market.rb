@@ -1,5 +1,5 @@
 class Market < ActiveRecord::Base
-	include ImageUploader::Attachment.new(:image)
+	# include ImageUploader::Attachment.new(:image)
 	# acts_as_paranoid
 
 	belongs_to :user
