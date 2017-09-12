@@ -1,3 +1,6 @@
+require "image_processing/mini_magick"
+require "fastimage"
+
 class ImageUploader < Shrine
   include ImageProcessing::MiniMagick
 
@@ -8,9 +11,11 @@ class ImageUploader < Shrine
   plugin :store_dimensions
   plugin :validation_helpers
   plugin :cached_attachment_data
+  plugin :determine_mime_type
   plugin :versions, names: [:original, :large, :medium, :small, :thumb]
 
   Attacher.validate do
+    puts get.mime_type # returns empty strings
     validate_max_size 2.megabytes, message: 'is too large (max is 2 MB)'
     validate_mime_type_inclusion ['image/jpg', 'image/jpeg', 'image/png', 'image/gif']
   end

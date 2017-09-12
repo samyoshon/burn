@@ -19,8 +19,8 @@ Shrine.storages = {
 
 Shrine.plugin :activerecord
 Shrine.plugin :direct_upload
-Shrine.plugin :cached_attachment_data
 Shrine.plugin :restore_cached_data
+# Shrine.plugin :cached_attachment_data
 # uncomment end
 
 # Shrine.plugin :cached_attachment_data # for forms

@@ -27,6 +27,14 @@
     <%= f.text_area :description, placeholder: "Description", class: "form-control" %>
   </div>
 
+  <div id="product-images">
+      <% @product.images.each do |image| %>
+        <div>
+          <%= image_tag image.image.url, width: 300 %>
+        </div>
+      <% end %>
+  </div>
+
   <%= f.fields_for :images, Image.new do |p| %>
     <div class="form-group">
     <% if p.object.image.present? %>
@@ -37,6 +45,8 @@
     <%= p.file_field :image, multiple: :true, name: "product[images_attributes][0][image]", placeholder: "Image", class: "form-control" %>
     </div> 
   <% end %>
+
+
 
   <div class="form-group">
     <%= f.submit class: "btn btn-primary" %>
