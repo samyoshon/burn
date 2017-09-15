@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :confirmable
 
-  validates :email, presence: true
+  validates :email, presence: true, :email_format => true
 
   has_many :forum_threads
   has_many :forum_posts
