@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, :set_user
+
+  validates :email, email_format: true
   # def index
   #   @users = User.all
   #   @import = User::Import.new

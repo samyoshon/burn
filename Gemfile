@@ -62,17 +62,25 @@ gem 'github-markdown'
 gem 'gemoji'
 gem 'sanitize'
 
+gem 'jquery-inputmask-rails', github: 'knapo/jquery-inputmask-rails'
+
 # for shrine
 # gem 'fastimage'
 # gem 'image_processing'
 # gem 'mini_magick'
 # gem 'shrine'
-gem 'aws-sdk'
+# gem 'aws-sdk'
 # gem 'roda'
-gem 'jquery-fileupload-rails'
+# gem 'jquery-fileupload-rails'
 
 # for carrierwave
 gem 'carrierwave', '~> 1.0'
+gem 'slim-rails', '~> 3.0.1'
+gem 'fog-aws'
+
+gem 'client_side_validations'
 
 gem 'paranoia'
 gem 'rb-readline' 
+
+gem 'owlcarousel-rails'

@@ -4,7 +4,9 @@
 <p><%= @product.description %></p>
 <p><%= @product.user.email %></p>
 
+<div class="owl-carousel">
 <% @product.images.each do |p| %>
-	<p><%= image_tag p.url %></p>
+	<div><%= image_tag p.url %></div>
 <% end %>
+</div>
 <p><%= local_time_ago @product.created_at %></p>
