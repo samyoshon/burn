@@ -27,6 +27,6 @@ Rails.application.routes.draw do
       post :import
     end
   end
-
-  root to: "products#index"
+  match '', to: 'products#index', via: :get, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
+  root to: "markets#index"
 end
