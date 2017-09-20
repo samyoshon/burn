@@ -62,12 +62,15 @@ class UsersController < ApplicationController
 
   private
     def set_user
-      @user = current_user.id
-    end 
-    
-    def set_product
-      @product = Product.find(params[:product][:id])
+      @user = User.find_by!(id: params[:id], market: @market)
+    rescue
+      flash[:alert] = "Market could not be found"
+      redirect_to root_path
     end
+    
+    # def set_product
+    #   @product = Product.find(params[:product][:id])
+    # end
 
     def user_import_params
       params.require(:user_import).permit(:file)

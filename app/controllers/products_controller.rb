@@ -1,16 +1,25 @@
-# class Markets::ProductsController < ApplicationController
 class ProductsController < ApplicationController
-  # before_action :authenticate_user!, except: [:index, :show]
-  # before_action :set_market
-  # , :set_product
   before_action :set_product, except: [:index, :new, :create]
   before_filter :authenticate_user!, only: [:new, :create, :edit, :update]
 
   def index
-    @q = Product.search(params[:q])
-    @products = @q.result(distinct: true)
+    # @q = Product.search(params[:q])
+    # @products = @q.result(distinct: true)
 
-    @products_all = Product.where(["created_at > ?", 360.days.ago])
+    # @products_all = Product.where(["created_at > ?", 360.days.ago])
+
+    @q = Product.search(params[:q])
+
+    @products = Product.all.where(market: @market)
+    if params[:q].present?
+      @products = @q.result.where(market: @market)
+    end
+
+    # if params[:location].present?
+    #   @products = @products.near(params[:location]).where(market: @market)
+    # end
+
+    # @products = @products.paginate(:page => params[:page], :per_page => 30)
   end
 
   # What is this supposed to do again?
@@ -29,7 +38,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = current_user.products.build(product_params)
-    # @product.market_id = @market.id
+    @product.market_id = @market.id
     # @product.user_id = current_user.id
 
     if @product.save
@@ -55,11 +64,18 @@ class ProductsController < ApplicationController
   private
 
   # def set_market
-  #   @market = Market.find(params[:market_id])
+  #   @market = Market.find_by_subdomain!(request.subdomain) unless request.subdomain.empty?
+  # end
+
+  # def set_product
+  #   @product = Product.find(params[:id])
   # end
 
   def set_product
-    @product = Product.find(params[:id])
+    @product = Product.find_by!(id: params[:id], market: @market)
+  rescue
+    flash[:alert] = "Product could not be found"
+    redirect_to root_path
   end
 
   def product_params

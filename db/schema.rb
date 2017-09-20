@@ -87,19 +87,23 @@ ActiveRecord::Schema.define(version: 20170919151821) do
   add_index "photos", ["product_id"], name: "index_photos_on_product_id", using: :btree
 
   create_table "products", force: :cascade do |t|
-    t.integer  "user_id"
     t.string   "title"
     t.text     "description"
     t.decimal  "price"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
-    t.integer  "market_id"
-    t.integer  "category_id"
     t.datetime "expire_date"
     t.integer  "view_count"
     t.integer  "contact_count"
     t.string   "images",        default: [],              array: true
+    t.integer  "category_id"
+    t.integer  "market_id"
+    t.integer  "user_id"
   end
+
+  add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
+  add_index "products", ["market_id"], name: "index_products_on_market_id", using: :btree
+  add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -124,11 +128,13 @@ ActiveRecord::Schema.define(version: 20170919151821) do
     t.boolean  "is_admin",               default: false
     t.boolean  "is_advertiser",          default: false
     t.boolean  "is_mod",                 default: false
+    t.integer  "market_id"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["market_id"], name: "index_users_on_market_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "forum_categories", "categories"
@@ -136,4 +142,8 @@ ActiveRecord::Schema.define(version: 20170919151821) do
   add_foreign_key "forum_categories", "users"
   add_foreign_key "images", "products"
   add_foreign_key "photos", "products"
+  add_foreign_key "products", "categories"
+  add_foreign_key "products", "markets"
+  add_foreign_key "products", "users"
+  add_foreign_key "users", "markets"
 end
