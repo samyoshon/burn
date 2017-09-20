@@ -68,15 +68,11 @@ class UsersController < ApplicationController
       redirect_to root_path
     end
     
-    # def set_product
-    #   @product = Product.find(params[:product][:id])
+    # def user_import_params
+    #   params.require(:user_import).permit(:file)
     # end
 
-    def user_import_params
-      params.require(:user_import).permit(:file)
-    end
-
-    def product_params
-      params.require(:product).permit(:user_id, :title, :description, :price, :market_id, :category_id, :expire_date)
-    end
+    # def product_params
+    #   params.require(:product).permit(:user_id, :title, :description, :price, :market_id, :category_id, :expire_date)
+    # end
 end

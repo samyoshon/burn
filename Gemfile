@@ -78,7 +78,11 @@ gem 'carrierwave', '~> 1.0'
 gem 'slim-rails', '~> 3.0.1'
 gem 'fog-aws'
 
+# for email validations
 gem 'client_side_validations'
+
+# for rich text editor
+gem 'trix'
 
 gem 'paranoia'
 gem 'rb-readline' 

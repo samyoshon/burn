@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require local_time
 //= require owl.carousel
+//= require trix
 //= require_tree .

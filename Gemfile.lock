@@ -235,6 +235,8 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.6)
     tilt (2.0.8)
+    trix (0.11.0)
+      rails (> 4.1, < 5.2)
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.3)
@@ -283,9 +285,10 @@ DEPENDENCIES
   slim-rails (~> 3.0.1)
   spring
   sucker_punch
+  trix
   turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.15.3
+   1.15.4
