@@ -5,7 +5,7 @@
 
   <%= f.fields_for :forum_posts do |p| %>
     <div class="form-group">
-      <%= p.text_area :body, placeholder: "Add a comment", rows: 10, class: "form-control" %>
+      <%= p.trix_editor :body, placeholder: "Add a comment", rows: 10, class: "form-control" %>
     </div>
   <% end %>
 
