@@ -1,7 +1,7 @@
 
-<h1><%= @product.title %></h1>
+<h1><%= markdownify @product.title %></h1>
 <p><%= @product.price %></p>
-<p><%= @product.description %></p>
+<p><%= markdownify @product.description %></p>
 <p><%= @product.user.email %></p>
 
 <div class="owl-carousel">

@@ -1,5 +1,5 @@
 <%= link_to product do %>
-		<div><h3><%= product.title %></h3></div>
+		<div><h3><%= markdownify product.title %></h3></div>
 		<div><h6 class="badge"><%= product.category.category_name %></h6></div>
 	<% if product.expire_date.nil? %>
 	<% end %>
