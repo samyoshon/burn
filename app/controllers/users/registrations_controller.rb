@@ -8,13 +8,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 	private 
 
-	def update_resource(resource, params)
-    	resource.update_without_password(params)
-  	end
+    def update_resource(resource, params)
+      resource.update_without_password(params)
+      # redirect_to new_post_path - need to fix
+    end
 
- 
-  	def registration_params
-  		params.require(:user).permit(:email, :password, :password_confirmation)
-	end
+    def registration_params
+  		params.require(:user).permit(:email, :password, :password_confirmation, :images)
+    end
 end
 

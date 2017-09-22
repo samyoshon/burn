@@ -19,6 +19,23 @@
 
 
 @import "bootstrap";
+@import "styles/*";
+
+/* START HERE */
+
+.forum_post {
+  border-top: 1px solid #ccc;
+  padding: 8px 0px;
+
+  &:target {
+    background-color: #e5e5e5;
+    padding: 8px;
+  }
+}
+
+.sidenav {
+	height: 100vh;
+}
 
 trix-editor {
   border: 1px solid #bbb;
