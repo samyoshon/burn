@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   end
 
   def products
-    @products = current_user.products
+    @products = current_user.products.where(market: @market)
   end
 
   def update
@@ -63,10 +63,17 @@ class UsersController < ApplicationController
     def set_user
       @user = current_user.id
     end 
+
+    # def set_product
+    #   @product = Product.find_by!(id: params[:product][:id], market: @market)
+    # rescue
+    #   flash[:alert] = "Product could not be found"
+    #   redirect_to root_path
+    # end
     
-    def set_product
-      @product = Product.find(params[:product][:id])
-    end
+    # def set_product
+    #   @product = Product.find(params[:product][:id])
+    # end
 
     def user_import_params
       params.require(:user_import).permit(:file)
