@@ -10,9 +10,9 @@ class ProductsController < ApplicationController
 
     @q = Product.search(params[:q])
 
-    @products = Product.all.where(market: @market)
+    @products = Product.where(["products.expire_date IS null"]).where(["market_id = ?", @market.id])
     if params[:q].present?
-      @products = @q.result.where(market: @market)
+      @products = @q.result.where(["products.expire_date IS null"]).where(["market_id = ?", @market.id])
     end
 
     # if params[:location].present?

@@ -64,12 +64,12 @@ class UsersController < ApplicationController
       @user = current_user.id
     end 
 
-    # def set_product
-    #   @product = Product.find_by!(id: params[:product][:id], market: @market)
-    # rescue
-    #   flash[:alert] = "Product could not be found"
-    #   redirect_to root_path
-    # end
+    def set_product
+      @product = Product.find_by!(id: params[:product][:id], market: @market)
+    rescue
+      flash[:alert] = "Product could not be found"
+      redirect_to root_path
+    end
     
     # def set_product
     #   @product = Product.find(params[:product][:id])
