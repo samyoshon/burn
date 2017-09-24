@@ -10,9 +10,10 @@ class ProductsController < ApplicationController
 
     @q = Product.search(params[:q])
 
-    @products = Product.where(["products.expire_date IS null"]).where(["market_id = ?", @market.id])
+    @products = Product.where("market_id = ? AND products.expire_date IS null", @market.id)
+
     if params[:q].present?
-      @products = @q.result.where(["products.expire_date IS null"]).where(["market_id = ?", @market.id])
+      @products = @q.result.where("market_id = ? AND products.expire_date IS null", @market.id)
     end
 
     # if params[:location].present?
@@ -39,7 +40,6 @@ class ProductsController < ApplicationController
   def create
     @product = current_user.products.build(product_params)
     @product.market_id = @market.id
-    # @product.user_id = current_user.id
 
     if @product.save
       redirect_to @product
@@ -80,7 +80,6 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:user_id, :title, :description, :price, :market_id, :category_id, :expire_date, {images:[]})
-      # , images_attributes: [:id, :image, :image_data, :product_id])
   end
 
 end

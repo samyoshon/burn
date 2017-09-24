@@ -9,12 +9,12 @@ Rails.application.routes.draw do
   resources :markets, :path => 'marketplace' #url = marketplace
 
   # resources :products, module: :markets do
-  resources :products do
+  resources :products
     # resources :images
     # collection do
     #   match 'search' => 'product#search', via: [:get, :post], as: :search
     # end
-  end 
+
 
   get '/users/profile', to: 'users#profile', as: 'user_profile'
   put '/users/profile', to: 'users#update_profile', as: 'user_update_profile'
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
       post :import
     end
   end
-  
+
   get '', to: 'products#index', constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
   root to: "markets#index"
 end

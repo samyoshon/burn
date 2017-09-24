@@ -1,10 +1,12 @@
 class Product < ActiveRecord::Base
 	mount_uploaders :images, ImageUploader
 	# include ImageUploader::Attachment.new(:image)
+	
 
 	belongs_to :user
 	belongs_to :market
 	belongs_to :category
+
 	# has_many :images
 	# accepts_nested_attributes_for :images
 	
@@ -15,8 +17,6 @@ class Product < ActiveRecord::Base
 	# validates :price, presence: true
 	# validates :description, presence: true
 
-
-	
 	def user
     	User.unscoped { super }
    	end

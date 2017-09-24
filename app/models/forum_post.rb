@@ -1,7 +1,8 @@
 class ForumPost < ActiveRecord::Base
   # include ImageUploader::Attachment.new(:image)
-  belongs_to :forum_thread
+  mount_uploaders :images, ImageUploader
   belongs_to :user
+  belongs_to :forum_thread
 
   validates :body, presence: true
 

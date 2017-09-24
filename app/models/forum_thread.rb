@@ -1,8 +1,10 @@
 class ForumThread < ActiveRecord::Base
-  # include ImageUploader::Attachment.new(:image)
-  acts_as_paranoid
+  # acts_as_paranoid
 
   belongs_to :user
+  belongs_to :market
+  belongs_to :forum_category
+
   has_many :forum_posts
   has_many :users, through: :forum_posts
 
@@ -10,6 +12,10 @@ class ForumThread < ActiveRecord::Base
 
   validates :subject, presence: true
   validates_associated :forum_posts
+  
+  def user
+    User.unscoped { super }
+  end
 
   def to_param
     "#{id}-#{subject}".parameterize

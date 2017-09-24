@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170922053458) do
+ActiveRecord::Schema.define(version: 20170923234122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,15 +25,11 @@ ActiveRecord::Schema.define(version: 20170922053458) do
 
   create_table "forum_categories", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "category_id"
     t.integer  "market_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "category_name"
   end
-
-  add_index "forum_categories", ["category_id"], name: "index_forum_categories_on_category_id", using: :btree
-  add_index "forum_categories", ["market_id"], name: "index_forum_categories_on_market_id", using: :btree
-  add_index "forum_categories", ["user_id"], name: "index_forum_categories_on_user_id", using: :btree
 
   create_table "forum_posts", force: :cascade do |t|
     t.integer  "forum_thread_id"
@@ -47,15 +43,18 @@ ActiveRecord::Schema.define(version: 20170922053458) do
   create_table "forum_threads", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "subject"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.datetime "deleted_at"
-    t.integer  "view_count"
     t.integer  "post_count"
-    t.text     "image_data"
+    t.integer  "forum_category_id"
+    t.integer  "market_id"
   end
 
   add_index "forum_threads", ["deleted_at"], name: "index_forum_threads_on_deleted_at", using: :btree
+  add_index "forum_threads", ["forum_category_id"], name: "index_forum_threads_on_forum_category_id", using: :btree
+  add_index "forum_threads", ["market_id"], name: "index_forum_threads_on_market_id", using: :btree
+  add_index "forum_threads", ["user_id"], name: "index_forum_threads_on_market_id", using: :btree
 
   create_table "markets", force: :cascade do |t|
     t.integer  "user_id"
@@ -111,6 +110,8 @@ ActiveRecord::Schema.define(version: 20170922053458) do
     t.boolean  "is_mod",                 default: false
     t.integer  "market_id"
     t.text     "images"
+    t.integer  "is_flagged"
+    t.integer  "phone_number"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
@@ -119,9 +120,9 @@ ActiveRecord::Schema.define(version: 20170922053458) do
   add_index "users", ["market_id"], name: "index_users_on_market_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "forum_categories", "categories"
-  add_foreign_key "forum_categories", "markets"
-  add_foreign_key "forum_categories", "users"
+  add_foreign_key "forum_threads", "forum_categories"
+  add_foreign_key "forum_threads", "markets"
+  add_foreign_key "forum_threads", "users"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "markets"
   add_foreign_key "products", "users"
