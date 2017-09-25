@@ -1,4 +1,8 @@
 <%= link_to product do %>
 	<h3><%= markdownify product.title %></h3>
 	<h6 class="badge"><%= product.category.category_name %></h6>
+
+	<% if product.user.is_advertiser? %>
+		<h1><%= product.user.id %></h1>
+	<% end %>
 <% end %>
