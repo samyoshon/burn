@@ -2,7 +2,7 @@
 	<%= search_form_for @q, html: { class: "form-inline category_id"} do |f| %>
 	    <%= f.search_field :title_cont, placeholder: "Search...", class: "form-control" %>
 		<% Category.all.each do |category| %>
-        	<%= f.check_box :category_id_in, {multiple: true}, category.id, nil %><%= category.category_name %>
+        	<%= f.check_box :category_id_in, {multiple: true, include_blank: true, onchange: 'this.form.submit();' }, category.id, nil %><%= category.category_name %>
       	<% end %>
 		<%= f.search_field :price_gt, placeholder: "Low...", class: "form-control" %>
 		<%= f.search_field :price_lt, placeholder: "High...", class: "form-control" %>
