@@ -1,5 +1,5 @@
 <%= link_to forum_thread do %>
   <h3><%= markdownify forum_thread.subject %></h3>
   <h6 class="badge"><%= forum_thread.forum_category.category_name %></h6>
-  <h3><%= forum_thread.forum_posts.count %></h3>
+  <h3 class="btn-circle"><%= forum_thread.forum_posts.count %></h3>
 <% end %>
