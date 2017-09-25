@@ -1,5 +1,8 @@
 <%= render partial: "forum_threads/subnav" %>
 <div class="container">
   <h1 class="page-header">Forum Threads</h1>
-  <%= render @forum_threads %>
+  <%= render partial: "forum_threads/sidenav" %>
+  <div class="container col-md-10">
+  	<%= render @forum_threads %>
+  </div>
 </div>

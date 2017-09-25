@@ -2,13 +2,12 @@
 	<div class="sidenav">
 		<%= search_form_for @q, html: { class: "form-inline category_id"} do |f| %>
 			<% Category.all.each do |category| %>
-	        	<label class="sidenav-label">
+	        	<label class="sidenav-category-label">
 	        		<%= f.check_box :category_id_in, {class: "checkbox inline", multiple: true, include_blank: true, onchange: 'this.form.submit();' }, category.id, nil %>
 	        		<%= category.category_name %>
 	        	</label>
 	      	<% end %>
-			<%= f.search_field :price_gt, placeholder: "Low...", class: "form-control" %>
-			<%= f.search_field :price_lt, placeholder: "High...", class: "form-control" %>
+			<%= f.search_field :price_gteq, placeholder: "Low", class: "form-control subnav-price-label" %> - <%= f.search_field :price_lteq, placeholder: "High", class: "form-control subnav-price-label" %>
 		    <%= f.submit "Search", class: "btn btn-success" %>
 		<% end %>
 	</div>
