@@ -1,7 +1,7 @@
 <div class="container col-md-2">
 	<div class="sidenav">
 		<%= search_form_for @q, html: { class: "form-inline category_id"} do |f| %>
-			<% ForumCategory.all.each do |forum_category| %>
+			<% ForumCategory.all.order("created_at asc").each do |forum_category| %>
 	        	<label class="sidenav-category-label">
 	        		<%= f.check_box :forum_category_id_in, {class: "checkbox inline", multiple: true, include_blank: true, onchange: 'this.form.submit();' }, forum_category.id, nil %>
 	        		<%= forum_category.category_name %>
