@@ -2,7 +2,7 @@
 	<div class="sidenav">
 		<%= search_form_for @q, html: { class: "form-inline category_id"} do |f| %>
 			<% Category.all.each do |category| %>
-	        	<label>
+	        	<label class="sidenav-label">
 	        		<%= f.check_box :category_id_in, {class: "checkbox inline", multiple: true, include_blank: true, onchange: 'this.form.submit();' }, category.id, nil %>
 	        		<%= category.category_name %>
 	        	</label>
