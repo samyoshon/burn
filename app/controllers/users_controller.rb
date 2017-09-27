@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, :set_user
+  before_action :authenticate_user!, :set_user, :set_banner
 
   # def index
   #   @users = User.all
@@ -43,6 +43,30 @@ class UsersController < ApplicationController
     end
   end
 
+  def banners 
+    if current_user.is_admin == true
+      @banner = Banner.new
+    else 
+      redirect_to root_path
+    end
+  end
+
+  def update_banners
+    if current_user.is_admin == true
+      respond_to do |format|
+        if @banner.update(banner_params)
+          format.html { redirect_to :user_banners, notice: 'Banner was successfully updated.' }
+          format.json { render :user_banners, status: :ok, location: :user_banners }
+        else
+          format.html { render :edit }
+          format.json { render json: @banner.errors, status: :unprocessable_entity }
+        end
+      end
+    else 
+      redirect_to root_path
+    end
+  end
+
   def bookmarks
 
   end
@@ -70,6 +94,10 @@ class UsersController < ApplicationController
       flash[:alert] = "Product could not be found"
       redirect_to root_path
     end
+
+    def set_banner
+      @banner = Banner.find_by!(user_id: @user, market: @market)
+    end
     
     def user_import_params
       params.require(:user_import).permit(:file)
@@ -77,5 +105,9 @@ class UsersController < ApplicationController
 
     def product_params
       params.require(:product).permit(:user_id, :title, :description, :price, :market_id, :category_id, :expire_date)
+    end
+
+    def banner_params
+      params.require(:banner).permit(:user_id, :market_id, :product_index, :product_show, :forum_index, :forum_show, :account_profile)
     end
 end

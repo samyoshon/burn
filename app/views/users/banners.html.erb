@@ -1,0 +1,42 @@
+<h1>Editing Banners</h1>
+
+<%= form_for(@banner, :url => 'banners', :html => {:multipart => true})  do |f| %>
+  <% if @banner.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@banner.errors.count, "error") %> prohibited this listing from being saved:</h2>
+
+      <ul>
+      <% @banner.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<!-- WHY DID I EMAIL MASK? -->
+  <div class="form-group">
+    <%= f.text_field :product_index, autofocus: true, placeholder: "product/index", class: "form-control", id: "email-mask", required: true %>
+  </div>  
+
+  <div class="form-group">
+    <%= f.text_field :product_show, placeholder: "product/show", class: "form-control", id: "email-mask", required: true %>
+  </div>  
+
+  <div class="form-group">
+    <%= f.text_field :forum_index, placeholder: "forum/index", class: "form-control", id: "email-mask", required: true %>
+  </div>  
+
+  <div class="form-group">
+    <%= f.text_field :forum_show, placeholder: "forum/show", class: "form-control", id: "email-mask", required: true %>
+  </div>  
+
+  <div class="form-group">
+    <%= f.text_field :account_profile, placeholder: "account/profile", class: "form-control", id: "email-mask", required: true %>
+  </div>
+
+  
+  <div class="form-group">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

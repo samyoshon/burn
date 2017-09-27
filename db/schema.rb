@@ -11,10 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170923234122) do
+ActiveRecord::Schema.define(version: 20170926052531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "banners", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "market_id"
+    t.text     "product_index"
+    t.text     "product_show"
+    t.text     "forum_index"
+    t.text     "forum_show"
+    t.text     "account_profile"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "banners", ["market_id"], name: "index_banners_on_market_id", using: :btree
+  add_index "banners", ["user_id"], name: "index_banners_on_user_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string   "category_name"
@@ -30,6 +45,9 @@ ActiveRecord::Schema.define(version: 20170923234122) do
     t.datetime "updated_at",    null: false
     t.string   "category_name"
   end
+
+  add_index "forum_categories", ["market_id"], name: "index_forum_categories_on_market_id", using: :btree
+  add_index "forum_categories", ["user_id"], name: "index_forum_categories_on_user_id", using: :btree
 
   create_table "forum_posts", force: :cascade do |t|
     t.integer  "forum_thread_id"
@@ -54,7 +72,6 @@ ActiveRecord::Schema.define(version: 20170923234122) do
   add_index "forum_threads", ["deleted_at"], name: "index_forum_threads_on_deleted_at", using: :btree
   add_index "forum_threads", ["forum_category_id"], name: "index_forum_threads_on_forum_category_id", using: :btree
   add_index "forum_threads", ["market_id"], name: "index_forum_threads_on_market_id", using: :btree
-  add_index "forum_threads", ["user_id"], name: "index_forum_threads_on_market_id", using: :btree
 
   create_table "markets", force: :cascade do |t|
     t.integer  "user_id"
@@ -120,9 +137,12 @@ ActiveRecord::Schema.define(version: 20170923234122) do
   add_index "users", ["market_id"], name: "index_users_on_market_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "banners", "markets"
+  add_foreign_key "banners", "users"
+  add_foreign_key "forum_categories", "markets"
+  add_foreign_key "forum_categories", "users"
   add_foreign_key "forum_threads", "forum_categories"
   add_foreign_key "forum_threads", "markets"
-  add_foreign_key "forum_threads", "users"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "markets"
   add_foreign_key "products", "users"

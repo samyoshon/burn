@@ -24,6 +24,9 @@ Rails.application.routes.draw do
 
   get '/users/forum_posts', to: 'users#forum_posts', as: 'user_forum_posts'
   
+  get '/users/banners', to: 'users#banners', as: 'user_banners'
+  post '/users/banners', to: 'users#update_banners', as: 'user_update_banners'
+  
   resources :users do
     collection do
       post :import
