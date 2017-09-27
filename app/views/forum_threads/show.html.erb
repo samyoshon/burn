@@ -1,3 +1,6 @@
+<% if @banner.forum_show.present? %>
+    <div class="alert alert-info"><%= @banner.forum_show %></div>
+ <% end %>
 <div class="container">
   <h1><%= markdownify @forum_thread.subject %></h1>
   <p class="text-muted">Created by <%= @forum_thread.user.name %></p>

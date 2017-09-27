@@ -1,5 +1,10 @@
+<% if @banner.product_index.present? %>
+    <div class="alert alert-info"><%= @banner.product_index %></div>
+ <% end %>
+
 <%= render partial: "products/subnav" %>
 <div class="container">
+
   <h1 class="page-header">Marketplace</h1>
   <%= render partial: "products/sidenav" %>
   <div class="container col-md-10"> 

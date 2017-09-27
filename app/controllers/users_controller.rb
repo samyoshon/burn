@@ -24,6 +24,7 @@ class UsersController < ApplicationController
 
   def profile
     @user = current_user
+    @banner = Banner.first
   end
 
   def products

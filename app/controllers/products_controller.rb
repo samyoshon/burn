@@ -16,6 +16,8 @@ class ProductsController < ApplicationController
       @products = @q.result.where("market_id = ? AND products.expire_date IS null", @market.id)
     end
 
+    @banner = Banner.first
+
     # if params[:location].present?
     #   @products = @products.near(params[:location]).where(market: @market)
     # end
@@ -31,6 +33,8 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    
+    @banner = Banner.first
   end
 
   def new

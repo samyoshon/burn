@@ -10,10 +10,14 @@ class ForumThreadsController < ApplicationController
     if params[:q].present?
       @forum_threads = @q.result.where("market_id = ?", @market.id)
     end
+
+    @banner = Banner.first
   end
 
   def show
     @forum_post = ForumPost.new
+
+    @banner = Banner.first
   end
 
   def new
