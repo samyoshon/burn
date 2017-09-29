@@ -23,6 +23,7 @@ class ForumThreadsController < ApplicationController
   def new
     @forum_thread = ForumThread.new
     @forum_thread.forum_posts.new
+    @banner = Banner.first
   end
 
   def create

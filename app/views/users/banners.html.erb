@@ -1,3 +1,5 @@
+<%= render partial: "users/sidenav" %>
+
 <h1>Editing Banners</h1>
 
 <%= form_for(@banner, :url => 'banners', :html => {:multipart => true})  do |f| %>
@@ -14,15 +16,23 @@
   <% end %>
 
 
-<!-- WHY DID I EMAIL MASK? -->
+
+  <br>
+  <h4>Product</h4>
   <div class="form-group">
-    <%= f.text_field :product_index, autofocus: true, placeholder: "product/index", class: "form-control", id: "email-mask" %>
+    <%= f.text_field :product_index, autofocus: true, placeholder: "product/index", class: "form-control", id: "email-mask" %> <!-- WHY DID I EMAIL MASK? -->
   </div>  
 
   <div class="form-group">
     <%= f.text_field :product_show, placeholder: "product/show", class: "form-control", id: "email-mask" %>
   </div>  
 
+  <div class="form-group">
+    <%= f.text_field :product_new, placeholder: "product/new", class: "form-control", id: "email-mask" %>
+  </div> 
+
+  <br>
+  <h4>Forum</h4>
   <div class="form-group">
     <%= f.text_field :forum_index, placeholder: "forum/index", class: "form-control", id: "email-mask" %>
   </div>  
@@ -31,6 +41,12 @@
     <%= f.text_field :forum_show, placeholder: "forum/show", class: "form-control", id: "email-mask" %>
   </div>  
 
+  <div class="form-group">
+    <%= f.text_field :forum_new, placeholder: "forum/new", class: "form-control", id: "email-mask" %>
+  </div>  
+
+  <br>
+  <h4>Account</h4>
   <div class="form-group">
     <%= f.text_field :account_profile, placeholder: "account/profile", class: "form-control", id: "email-mask" %>
   </div>

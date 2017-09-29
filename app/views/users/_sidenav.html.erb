@@ -3,6 +3,9 @@
 		<li><%= link_to "Profile", edit_user_registration_path, class: "" %></li>
 		<li><%= link_to "Products", user_products_path, class: "" %></li>
 		<li><%= link_to "Forum Posts", user_forum_posts_path, class: "" %></li>
+		<% if current_user.admin? %>
 		<li><%= link_to "Banners", user_banners_path, class: "" %></li>
+		<li><%= link_to "Advertisers", user_advertisers_path, class: "" %></li>
+		<% end %>
 	</div>
 </div>	

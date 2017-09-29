@@ -5,3 +5,5 @@
 //     var category_id = document.getElementsByClassName($(this).parent().attr("id"));
 //     $(category_id).submit();
 // });
+
+$(".alert").alert('close');

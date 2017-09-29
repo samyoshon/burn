@@ -39,6 +39,8 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+
+    @banner = Banner.first
   end
 
   def create

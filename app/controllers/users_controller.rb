@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, :set_user, :set_banner
-
+  load_and_authorize_resource
   # def index
   #   @users = User.all
   #   @import = User::Import.new
@@ -22,9 +22,62 @@ class UsersController < ApplicationController
   #   end
   # end
 
+  
+  # def become
+  #   return unless current_user.admin?
+  #   sign_in(:user, User.find(params[:id]))
+  #   redirect_to root_url # or user_root_url
+  # end
+
   def profile
     @user = current_user
     @banner = Banner.first
+  end
+
+  def advertisers
+    if current_user.admin?
+      @users = User.all
+    else 
+      redirect_to root_path
+    end
+  end
+
+  def update_advertisers
+    if current_user.admin?
+      @user = User.find(params[:format])
+        params[:user].delete(:password) if params[:user][:password].blank?
+        params[:user].delete(:password_confirmation) if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
+      if @user.update(advertiser_params)
+        flash[:notice] = "Successfully updated User."
+        redirect_to user_advertisers_path
+      else
+        flash[:alert] = "Could not update User."
+        render :action => 'edit'
+      end
+    else 
+      redirect_to root_path
+    end
+
+
+
+        # @user = User.find(params[:id])
+    #     @user = User.find_by!(params["format"=>'12'])
+    #     params[:user].delete(:password) if params[:user][:password].blank?
+    #     params[:user].delete(:password_confirmation) if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
+    # respond_to do |format|
+    #     if @user.update(advertiser_params)
+    #       format.html { redirect_to @user, notice: 'Product was successfully updated.' }
+    #       format.json { render :show, status: :ok, location: @user }
+    #     else
+    #       format.html { render :edit }
+    #       format.json { render json: @user.errors, status: :unprocessable_entity }
+    #     end
+    #   end
+
+
+    # else 
+    #   redirect_to root_path
+    # end
   end
 
   def products
@@ -35,7 +88,7 @@ class UsersController < ApplicationController
     set_product
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to :user_products, notice: 'Product was successfully deleted.' }
+        format.html { redirect_to :user_products, notice: 'Product was successfully deleted.'}
         format.json { render :user_products, status: :ok, location: :user_products }
       else
         format.html { render :edit }
@@ -45,7 +98,7 @@ class UsersController < ApplicationController
   end
 
   def banners 
-    if current_user.is_admin == true
+    if current_user.admin?
       @banner = Banner.new
     else 
       redirect_to root_path
@@ -53,7 +106,7 @@ class UsersController < ApplicationController
   end
 
   def update_banners
-    if current_user.is_admin == true
+    if current_user.admin?
       respond_to do |format|
         if @banner.update(banner_params)
           format.html { redirect_to :user_banners, notice: 'Banner was successfully updated.' }
@@ -89,6 +142,10 @@ class UsersController < ApplicationController
       @user = current_user.id
     end 
 
+    def set_users
+      @users = User.all
+    end
+
     def set_product
       @product = Product.find_by!(id: params[:product][:id], market: @market)
     rescue
@@ -103,12 +160,16 @@ class UsersController < ApplicationController
     def user_import_params
       params.require(:user_import).permit(:file)
     end
+    
+    def advertiser_params
+      params.require(:user).permit(:is_advertiser)
+    end
 
     def product_params
       params.require(:product).permit(:user_id, :title, :description, :price, :market_id, :category_id, :expire_date)
     end
 
     def banner_params
-      params.require(:banner).permit(:user_id, :market_id, :product_index, :product_show, :forum_index, :forum_show, :account_profile)
+      params.require(:banner).permit(:user_id, :market_id, :product_index, :product_show, :product_new, :forum_index, :forum_show, :forum_new, :account_profile)
     end
 end

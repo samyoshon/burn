@@ -33,6 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'devise', '~> 4.1.0'
+gem 'cancan', '~> 1.6', '>= 1.6.10'
 gem 'bootstrap-sass' #
 
 group :development, :test do
