@@ -7,6 +7,7 @@ gem 'rails', '4.2.7'
 gem 'pg', '~> 0.20'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+gem 'bootstrap-sass'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -23,6 +24,12 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+# for bootup speed
+gem 'bootsnap', require: false
+
+gem 'paranoia'
+gem 'rb-readline' 
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -32,9 +39,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# for devise
 gem 'devise', '~> 4.1.0'
+# for devise, admin into other user
 gem 'cancan', '~> 1.6', '>= 1.6.10'
-gem 'bootstrap-sass' #
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -55,12 +63,21 @@ group :development do
 end
 
 gem 'sucker_punch'
+
+# for search
 gem 'ransack'
+
+# for timestamp
 gem 'local_time'
 
+# for emojis
 gem 'html-pipeline'
 gem 'github-markdown'
 gem 'gemoji'
+
+# for rich text editor
+gem 'trix'
+
 gem 'sanitize'
 
 gem 'jquery-inputmask-rails', github: 'knapo/jquery-inputmask-rails'
@@ -82,10 +99,5 @@ gem 'fog-aws'
 # for email validations
 gem 'client_side_validations'
 
-# for rich text editor
-gem 'trix'
-
-gem 'paranoia'
-gem 'rb-readline' 
-
+# for image carousel
 gem 'owlcarousel-rails'

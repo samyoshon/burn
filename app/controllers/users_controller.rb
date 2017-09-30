@@ -51,33 +51,12 @@ class UsersController < ApplicationController
         flash[:notice] = "Successfully updated User."
         redirect_to user_advertisers_path
       else
-        flash[:alert] = "Could not update User."
-        render :action => 'edit'
+        flash[:alert] = @user.errors.full_messages
+        redirect_to user_advertisers_path
       end
     else 
       redirect_to root_path
     end
-
-
-
-        # @user = User.find(params[:id])
-    #     @user = User.find_by!(params["format"=>'12'])
-    #     params[:user].delete(:password) if params[:user][:password].blank?
-    #     params[:user].delete(:password_confirmation) if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
-    # respond_to do |format|
-    #     if @user.update(advertiser_params)
-    #       format.html { redirect_to @user, notice: 'Product was successfully updated.' }
-    #       format.json { render :show, status: :ok, location: @user }
-    #     else
-    #       format.html { render :edit }
-    #       format.json { render json: @user.errors, status: :unprocessable_entity }
-    #     end
-    #   end
-
-
-    # else 
-    #   redirect_to root_path
-    # end
   end
 
   def products
