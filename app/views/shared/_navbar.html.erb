@@ -18,8 +18,14 @@
         <li><%= link_to "Community", forum_threads_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <% if current_user.is_advertiser != true %> 
           <li><%= link_to "Post Thread", new_forum_thread_path %></li>
+        <% end %>
+        <% if current_user.is_advertiser != true %> 
           <li><%= link_to "Post Product", new_product_path %></li>
+        <% else %>
+          <li><%= link_to "Post Ad", new_product_path %></li>
+        <% end %>
         <% if user_signed_in? %>
           <li><%= link_to "Account", edit_user_registration_path %></li>
           <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>

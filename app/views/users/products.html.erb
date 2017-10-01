@@ -1,6 +1,7 @@
 <%= render partial: "users/sidenav" %>
 
 <div class="container col-md-10">
+	<h1>Previous Products</h1>
 	<% @products.each do |product| %>
 		<%= form_for product, url: user_update_products_path, html: {id: product.id} do |f| %>
 		  	<% if product.errors.any? %>

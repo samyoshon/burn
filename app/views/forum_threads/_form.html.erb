@@ -27,9 +27,9 @@
 
   <div class="form-group">
     <% if current_user.is_advertiser == true %>
-      <%= f.submit class: "btn btn-primary", disabled: true %>
+      <%= f.submit "Post Thread", class: "btn btn-primary", disabled: true %>
     <% else %>
-      <%= f.submit class: "btn btn-primary" %>
+      <%= f.submit "Post Thread", class: "btn btn-primary" %>
     <% end %>
   </div>
 <% end %>
