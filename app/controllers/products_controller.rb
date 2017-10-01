@@ -1,3 +1,4 @@
+$max_products = 6
 class ProductsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create]
   before_filter :authenticate_user!, only: [:new, :create, :edit, :update]
@@ -39,8 +40,8 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-
     @banner = Banner.first
+    @products = current_user.products.count
   end
 
   def create

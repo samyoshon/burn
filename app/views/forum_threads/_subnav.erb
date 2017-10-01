@@ -3,4 +3,5 @@
 	    <%= f.search_field :subject_cont, placeholder: "Search...", class: "form-control" %>
 	    <%= f.submit "Search", class: "btn btn-success" %>
 	<% end %>
+	    <%= button_to "Post Thread", new_forum_thread_path, :method => "get", class: 'btn btn-primary pull-right' %>
 </div>

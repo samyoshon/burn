@@ -4,5 +4,6 @@
 	    <%= f.search_field :title_cont, placeholder: "Search...", class: "form-control" %>
 	    <%= f.submit "Search", class: "btn btn-success" %>
 	<% end %>
+	    <%= button_to "Post Product", new_product_path, :method => "get", class: 'btn btn-primary pull-right' %>
 	</div>
 </div>

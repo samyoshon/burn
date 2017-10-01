@@ -1,43 +1,45 @@
 <%= render partial: "users/sidenav" %>
 
-<h1>Set Advertisers</h1>
+<div class="container col-md-10">
+	<h1>Set Advertisers</h1>
 
-<% @users.each do |user| %>
-		<%= form_for(user, as: :user, :url => user_update_advertisers_path(user), :html => { :method => :put, id: user.id }) do |f| %>
-	  	<% if user.errors.any? %>
+	<% @users.each do |user| %>
+			<%= form_for(user, as: :user, :url => user_update_advertisers_path(user), :html => { :method => :put, id: user.id }) do |f| %>
+		  	<% if user.errors.any? %>
 
-	    	<div id="error_explanation">
-	      		<h2><%= pluralize(user.errors.count, "error") %> prohibited this listing from being saved:</h2>
+		    	<div id="error_explanation">
+		      		<h2><%= pluralize(user.errors.count, "error") %> prohibited this listing from being saved:</h2>
 
-	      	<ul>
-	      		<% @user.errors.full_messages.each do |message| %>
-	        		<li><%= message %></li>
-	      		<% end %>
-	      	</ul>
-	    	</div>
-	 	<% end %>
+		      	<ul>
+		      		<% @user.errors.full_messages.each do |message| %>
+		        		<li><%= message %></li>
+		      		<% end %>
+		      	</ul>
+		    	</div>
+		 	<% end %>
 
-	<!-- view only none expired posts -->
-	
-	
-	<!-- link to update user -->
-	<%= link_to edit_user_registration_path(user) do %>
-		<ul>
-   			<li><%= user.id %></li>
-			<li><%= user.email %></li>
-			<li><%= user.is_advertiser %></li>
-		</ul>
+		<!-- view only none expired posts -->
+		
+		
+		<!-- link to update user -->
+		<%= link_to edit_user_registration_path(user) do %>
+			<ul>
+	   			<li><%= user.id %></li>
+				<li><%= user.email %></li>
+				<li><%= user.is_advertiser %></li>
+			</ul>
+		<% end %>
+
+		<!-- expire user -->
+
+		  <div class="form-group">
+		    <%= f.hidden_field :is_advertiser, value: true %>
+		    <%= f.hidden_field :user_id, value: user.id %>
+		  </div>
+
+		  <div class="form-group">
+		    <%= f.submit "Update", class: "btn btn-primary" %>
+		  </div>
+		<% end %>
 	<% end %>
-
-	<!-- expire user -->
-
-	  <div class="form-group">
-	    <%= f.hidden_field :is_advertiser, value: true %>
-	    <%= f.hidden_field :user_id, value: user.id %>
-	  </div>
-
-	  <div class="form-group">
-	    <%= f.submit "Update", class: "btn btn-primary" %>
-	  </div>
-	<% end %>
-<% end %>
+</div>

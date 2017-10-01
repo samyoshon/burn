@@ -1,41 +1,43 @@
 <%= render partial: "users/sidenav" %>
 
-<% @products.each do |product| %>
-	<%= form_for product, url: user_update_products_path, html: {id: product.id} do |f| %>
-	  	<% if product.errors.any? %>
-	    	<div id="error_explanation">
-	      		<h2><%= pluralize(product.errors.count, "error") %> prohibited this listing from being saved:</h2>
+<div class="container col-md-10">
+	<% @products.each do |product| %>
+		<%= form_for product, url: user_update_products_path, html: {id: product.id} do |f| %>
+		  	<% if product.errors.any? %>
+		    	<div id="error_explanation">
+		      		<h2><%= pluralize(product.errors.count, "error") %> prohibited this listing from being saved:</h2>
 
-	      	<ul>
-	      		<% @product.errors.full_messages.each do |message| %>
-	        		<li><%= message %></li>
-	      		<% end %>
-	      	</ul>
-	    	</div>
-	 	<% end %>
+		      	<ul>
+		      		<% @product.errors.full_messages.each do |message| %>
+		        		<li><%= message %></li>
+		      		<% end %>
+		      	</ul>
+		    	</div>
+		 	<% end %>
 
-	<!-- view only none expired posts -->
-	<% if product.expire_date.nil? %>
-	
-	<!-- link to update product -->
-	<%= link_to edit_product_path(product) do %>
-		<ul>
-   			<li><%= product.id %></li>
-			<li><%= product.title %></li>
-		</ul>
+		<!-- view only none expired posts -->
+		<% if product.expire_date.nil? %>
+		
+		<!-- link to update product -->
+		<%= link_to edit_product_path(product) do %>
+			<ul>
+	   			<li><%= product.id %></li>
+				<li><%= product.title %></li>
+			</ul>
+		<% end %>
+
+		<!-- expire product -->
+
+		  <div class="form-group">
+		    <%= f.hidden_field :id, value: product.id %>
+		    <%= f.hidden_field :expire_date, value: Time.now %>
+		  </div>
+
+		  <div class="form-group">
+		    <%= f.submit "Update", class: "btn btn-primary" %>
+		  </div>
+		<% end %>
+		<% end %>
 	<% end %>
-
-	<!-- expire product -->
-
-	  <div class="form-group">
-	    <%= f.hidden_field :id, value: product.id %>
-	    <%= f.hidden_field :expire_date, value: Time.now %>
-	  </div>
-
-	  <div class="form-group">
-	    <%= f.submit "Update", class: "btn btn-primary" %>
-	  </div>
-	<% end %>
-	<% end %>
-<% end %>
+</div>
 

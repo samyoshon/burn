@@ -6,4 +6,4 @@
 //     $(category_id).submit();
 // });
 
-$(".alert").alert('close');
+// $(".alert").alert('close');

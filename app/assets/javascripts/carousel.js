@@ -1,4 +1,4 @@
-$( document ).ready(function() {
-    console.log( "ready!" );
+$(document).ready(function() {
+    console.log("owl-carousel");
     $(".owl-carousel").owlCarousel();
 });
