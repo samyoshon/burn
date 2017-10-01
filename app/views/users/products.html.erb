@@ -16,13 +16,21 @@
 		 	<% end %>
 
 		<!-- view only none expired posts -->
-		<% if product.expire_date.nil? %>
+		
+
+
 		
 		<!-- link to update product -->
 		<%= link_to edit_product_path(product) do %>
 			<ul>
 	   			<li><%= product.id %></li>
 				<li><%= product.title %></li>
+				
+				<% if product.expire_date.nil? %>
+					<li>Status: Posted</li>
+				<% else %>
+					<li>Status: Expired</li>
+				<% end %>
 			</ul>
 		<% end %>
 
@@ -36,7 +44,6 @@
 		  <div class="form-group">
 		    <%= f.submit "Update", class: "btn btn-primary" %>
 		  </div>
-		<% end %>
 		<% end %>
 	<% end %>
 </div>

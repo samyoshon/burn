@@ -60,7 +60,11 @@ class UsersController < ApplicationController
   end
 
   def products
-    @products = current_user.products.where(market: @market)
+    if current_user.admin?
+      @products = Product.all.where(market: @market)
+    else 
+      @products = current_user.products.where(market: @market)
+    end
   end
 
   def update

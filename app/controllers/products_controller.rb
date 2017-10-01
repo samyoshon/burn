@@ -1,5 +1,6 @@
 #global
-$max_products = 6
+$max_products = 20
+$days_posted = 14
 
 class ProductsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create]
@@ -49,6 +50,7 @@ class ProductsController < ApplicationController
   def create
     @product = current_user.products.build(product_params)
     @product.market_id = @market.id
+    @product.expire_date = $days_posted.days.from_now
 
     if @product.save
       redirect_to @product
