@@ -1,4 +1,6 @@
+#global
 $max_products = 6
+
 class ProductsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create]
   before_filter :authenticate_user!, only: [:new, :create, :edit, :update]

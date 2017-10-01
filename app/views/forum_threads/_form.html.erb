@@ -26,6 +26,10 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.submit class: "btn btn-primary" %>
+    <% if current_user.is_advertiser == true %>
+      <%= f.submit class: "btn btn-primary", disabled: true %>
+    <% else %>
+      <%= f.submit class: "btn btn-primary" %>
+    <% end %>
   </div>
 <% end %>

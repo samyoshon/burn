@@ -21,9 +21,14 @@ class ForumThreadsController < ApplicationController
   end
 
   def new
-    @forum_thread = ForumThread.new
-    @forum_thread.forum_posts.new
-    @banner = Banner.first
+    if current_user.is_advertiser == true
+      redirect_to root_path
+      flash[:alert] = "Sorry, advertisers do not have permissions to post."
+    else
+      @forum_thread = ForumThread.new
+      @forum_thread.forum_posts.new
+      @banner = Banner.first
+    end
   end
 
   def create
