@@ -1,5 +1,8 @@
 <% if @banner.forum_new.present? %>
-    <div class="alert alert-info"><%= @banner.forum_new %></div>
+    <div class="alert alert-info alert-dismissable">
+  		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  		<%= @banner.forum_new %>
+  	</div>
 <% end %>
 
 <h1>New Thread</h1>

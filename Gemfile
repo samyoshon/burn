@@ -75,6 +75,9 @@ gem 'html-pipeline'
 gem 'github-markdown'
 gem 'gemoji'
 
+# for font awesome
+gem "font-awesome-rails"
+
 # for rich text editor
 gem 'trix'
 
@@ -100,4 +103,4 @@ gem 'fog-aws'
 gem 'client_side_validations'
 
 # for image carousel
-gem 'owlcarousel-rails'
+gem "jquery-slick-rails"

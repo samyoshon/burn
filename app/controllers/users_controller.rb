@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, :set_user, :set_banner
-  load_and_authorize_resource
+  before_action :authenticate_user!, :set_user
+  # load_and_authorize_resource
   # def index
   #   @users = User.all
   #   @import = User::Import.new
@@ -89,6 +89,7 @@ class UsersController < ApplicationController
   end
 
   def update_banners
+    set_banner
     if current_user.admin?
       respond_to do |format|
         if @banner.update(banner_params)
@@ -104,12 +105,12 @@ class UsersController < ApplicationController
     end
   end
 
-  def bookmarks
-
-  end
-
   def forum_posts 
     @forum_posts = current_user.forum_posts
+  end
+
+  def bookmarks
+
   end
 
   def notifications

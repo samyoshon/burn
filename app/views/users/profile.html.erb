@@ -1,6 +1,9 @@
 <% if @banner.account_profile.present? %>
-    <div class="alert alert-info"><%= @banner.account_profile %></div>
- <% end %>
+    <div class="alert alert-info alert-dismissable">
+  		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  		<%= @banner.account_profile %>
+  	</div>
+<% end %>
  
 <%= render partial: "users/sidenav" %>
 

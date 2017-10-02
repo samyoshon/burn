@@ -1,5 +1,4 @@
 $(document).ready(function(){
-  console.log('phone');
   $("input[type='tel']").each(function(){
     $(this).on("change keyup paste", function (e) {
       var output,
@@ -25,7 +24,6 @@ $(document).ready(function(){
 });
 
 $(document).on('page:load',function(){
-  console.log('phone2');
   $("input[type='tel']").each(function(){
     $(this).on("change keyup paste", function (e) {
       var output,

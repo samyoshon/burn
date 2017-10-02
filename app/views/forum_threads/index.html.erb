@@ -1,5 +1,8 @@
 <% if @banner.forum_index.present? %>
-    <div class="alert alert-info"><%= @banner.forum_index %></div>
+    <div class="alert alert-info alert-dismissable">
+  		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  		<%= @banner.forum_index %>
+	</div>
 <% end %>
 
 <%= render partial: "forum_threads/subnav" %>

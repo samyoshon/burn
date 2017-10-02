@@ -18,10 +18,10 @@
         <li><%= link_to "Community", forum_threads_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <% if current_user.is_advertiser != true %> 
+        <% if !current_user.present? || current_user.is_advertiser != true %> 
           <li><%= link_to "Post Thread", new_forum_thread_path %></li>
         <% end %>
-        <% if current_user.is_advertiser != true %> 
+        <% if !current_user.present? || current_user.is_advertiser != true %> 
           <li><%= link_to "Post Product", new_product_path %></li>
         <% else %>
           <li><%= link_to "Post Ad", new_product_path %></li>

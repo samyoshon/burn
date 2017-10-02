@@ -12,8 +12,9 @@
  *
  *= require_tree .
  *= require_self
- *= require owl.carousel
- *= require owl.theme
+ *= require font-awesome
+ *= require slick
+ *= require slick-theme
  *= require trix
  */
 
@@ -22,16 +23,6 @@
 @import "styles/*";
 
 /* START HERE */
-
-.forum_post {
-  border-top: 1px solid #ccc;
-  padding: 8px 0px;
-
-  &:target {
-    background-color: #e5e5e5;
-    padding: 8px;
-  }
-}
 
 trix-editor {
   border: 1px solid #bbb;

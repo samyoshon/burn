@@ -1,5 +1,8 @@
 <% if @banner.product_show.present? %>
-    <div class="alert alert-info"><%= @banner.product_show %></div>
+    <div class="alert alert-info alert-dismissable">
+  	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  	<%= @banner.product_show %>
+  </div>
 <% end %>
 
 <h1><%= markdownify @product.title %></h1>

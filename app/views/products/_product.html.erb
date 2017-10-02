@@ -1,8 +1,17 @@
-<%= link_to product do %>
-	<h3><%= markdownify product.title %></h3>
-	<h6 class="badge"><%= product.category.category_name %></h6>
-
-	<% if product.user.is_advertiser? %>
-		<h1><%= product.user.id %></h1>
-	<% end %>
+<% content_for :head do %>
+  <meta name="turbolinks-cache-control" content="no-cache">
 <% end %>
+
+<div class="col-md-4 product-container">
+	<div class="scroller">
+		<% product.images.each do |p| %>
+			<div><%= image_tag p.url %></div>
+		<% end %>
+	</div>
+
+	<%= link_to product do %>
+		<h4><%= markdownify product.title %></h3>
+		<p><%= markdownify product.description %></p>
+		<h6 class="badge"><%= product.category.category_name %></h6>
+	<% end %>
+</div>

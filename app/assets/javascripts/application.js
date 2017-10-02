@@ -15,7 +15,7 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require local_time
-//= require owl.carousel
+//= require jquery.slick
 //= require trix
 //= require_tree .
 
