@@ -19,3 +19,13 @@
 //= require trix
 //= require_tree .
 
+$(document).ready(function() {
+	$('.scroller').slick({
+		dots: true,
+		infinite: true,
+		arrows: true,
+		// appendArrows: $('.scroller'),
+		slidesToShow: 1,
+		slidesToScroll: 1
+	});
+});
