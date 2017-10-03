@@ -7,11 +7,6 @@ class ProductsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create, :edit, :update]
 
   def index
-    # @q = Product.search(params[:q])
-    # @products = @q.result(distinct: true)
-
-    # @products_all = Product.where(["created_at > ?", 360.days.ago])
-
     @q = Product.search(params[:q])
 
     @products = Product.where("market_id = ? AND products.expire_date IS null", @market.id)
@@ -37,13 +32,16 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    
     @banner = Banner.first
   end
 
   def new
     @product = Product.new
     @banner = Banner.first
+    @products = current_user.products.count
+  end
+
+  def edit
     @products = current_user.products.count
   end
 

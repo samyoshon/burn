@@ -2,50 +2,60 @@
 
 <div class="container col-md-10">
 	<h1>Previous Products</h1>
-	<% @products.each do |product| %>
-		<%= form_for product, url: user_update_products_path, html: {id: product.id} do |f| %>
-		  	<% if product.errors.any? %>
-		    	<div id="error_explanation">
-		      		<h2><%= pluralize(product.errors.count, "error") %> prohibited this listing from being saved:</h2>
+	<table class="table-striped">
+		<tr>
+		    <th>Status</th>
+		    <th>Action</th>
+		    <th>Title</th>
+		    <th>Category</th>
+		    <th>Posted Date</th>
+		    <th>Expired Date</th>
+  		</tr>
+		<% @products.each do |product| %>
+			<%= form_for product, url: user_update_products_path, html: {id: product.id} do |f| %>
+			  	<% if product.errors.any? %>
+			    	<div id="error_explanation">
+			      		<h2><%= pluralize(product.errors.count, "error") %> prohibited this listing from being saved:</h2>
 
-		      	<ul>
-		      		<% @product.errors.full_messages.each do |message| %>
-		        		<li><%= message %></li>
-		      		<% end %>
-		      	</ul>
-		    	</div>
-		 	<% end %>
+			      	<ul>
+			      		<% @product.errors.full_messages.each do |message| %>
+			        		<li><%= message %></li>
+			      		<% end %>
+			      	</ul>
+			    	</div>
+			 	<% end %>
 
 		<!-- view only none expired posts -->
-		
-
-
-		
-		<!-- link to update product -->
-		<%= link_to edit_product_path(product) do %>
-			<ul>
-	   			<li><%= product.id %></li>
-				<li><%= product.title %></li>
-				
-				<% if product.expire_date.nil? %>
-					<li>Status: Posted</li>
+		  	<tr>
+			    <% if product.expire_date.nil? %>
+			    	<td>Posted</td>
 				<% else %>
-					<li>Status: Expired</li>
+					<td>Expired</td>
 				<% end %>
-			</ul>
+			    <td>
+			    	<%= link_to edit_product_path(product) do %>
+			    		<%= product.title %>
+			    	<% end %>
+			    </td>
+			    <td><%= product.category.category_name %></td>
+			    <td><%= product.created_at.to_formatted_s(:db)  %></td>
+				<% if product.expire_date.present? %>
+					<td><%= product.expire_date > Time.now ? "Active" : product.expire_date.to_formatted_s(:db) %></td>
+				<% else %>
+					<td>Active</td>
+				<% end %>
+
+			    <!-- link to update product -->
+				<%= f.hidden_field :id, value: product.id %>
+			    <%= f.hidden_field :expire_date, value: Time.now %>
+
+			    <!-- expire product -->
+			    <td>
+			    	<%= f.submit "Archive" %>
+			    </td>
+		  	</tr>
+			<% end %>
 		<% end %>
-
-		<!-- expire product -->
-
-		  <div class="form-group">
-		    <%= f.hidden_field :id, value: product.id %>
-		    <%= f.hidden_field :expire_date, value: Time.now %>
-		  </div>
-
-		  <div class="form-group">
-		    <%= f.submit "Update", class: "btn btn-primary" %>
-		  </div>
-		<% end %>
-	<% end %>
+	</table>
 </div>
 
