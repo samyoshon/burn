@@ -4,7 +4,7 @@ $days_posted = 14
 
 class ProductsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create]
-  before_filter :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_filter :authenticate_user!, only: [:show, :new, :create, :edit, :update]
 
   def index
     @q = Product.search(params[:q])
@@ -58,8 +58,10 @@ class ProductsController < ApplicationController
   end
 
   def update
+    @product.expire_date = $days_posted.days.from_now
     respond_to do |format|
       if @product.update(product_params)
+        @product.save
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else

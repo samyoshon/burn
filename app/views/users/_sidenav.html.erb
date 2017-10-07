@@ -1,11 +1,13 @@
 <div class="container col-md-2">
 	<div class="sidenav">
-		<li><%= link_to "Profile", edit_user_registration_path, class: "" %></li>
-		<li><%= link_to "Products", user_products_path, class: "" %></li>
-		<li><%= link_to "Forum Posts", user_forum_posts_path, class: "" %></li>
-		<% if current_user.admin? %>
-		<li><%= link_to "Banners", user_banners_path, class: "" %></li>
-		<li><%= link_to "Advertisers", user_advertisers_path, class: "" %></li>
+		<div class="list-group">
+			<%= link_to "Profile", edit_user_registration_path, class: "list-group-item list-group-item-action" %>
+			<%= link_to "Products", user_products_path, class: "list-group-item list-group-item-action" %>
+			<%= link_to "Forum Posts", user_forum_posts_path, class: "list-group-item list-group-item-action" %>
+			<% if current_user.admin? %>
+			<%= link_to "Banners", user_banners_path, class: "list-group-item list-group-item-action" %>
+			<%= link_to "Advertisers", user_advertisers_path, class: "list-group-item list-group-item-action" %>
 		<% end %>
+		</div>
 	</div>
 </div>	

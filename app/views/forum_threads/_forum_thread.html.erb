@@ -1,5 +1,13 @@
-<%= link_to forum_thread do %>
-  <h3><%= markdownify forum_thread.subject %></h3>
-  <h6 class="badge"><%= forum_thread.forum_category.category_name %></h6>
-  <h3 class="btn-circle"><%= forum_thread.forum_posts.count %></h3>
-<% end %>
+  <div class="container col-md-12">
+	<%= link_to forum_thread do %>
+  	<div class="col-md-10">
+  		<h3><%= markdownify forum_thread.subject %></h3>
+  	</div>
+	<% end %>
+  	<div class="col-md-1 badge">
+  		<%= forum_thread.forum_posts.count %>
+  	</div>
+  	<div class="col-md-1 badge">
+  		<%= forum_thread.forum_category.category_name %>
+  	</div>
+  </div>

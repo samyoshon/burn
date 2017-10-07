@@ -19,12 +19,20 @@
 //= require trix
 //= require_tree .
 
+$(document).on('turbolinks:load', function() {
 // carousel js
-$(document).ready(function() {
 	$('.scroller').slick({
 		infinite: true,
 		arrows: true,
 		slidesToShow: 1,
 		slidesToScroll: 1
 	});
+
+// sidenav active
+	$('div.list-group > a.list-group-item').click(function() {
+		$('div.list-group > a').removeClass('active');
+		$(this).addClass('active');
+	});
 });
+
+

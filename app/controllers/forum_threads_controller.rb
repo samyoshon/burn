@@ -1,6 +1,6 @@
 class ForumThreadsController < ApplicationController
   before_action :set_forum_thread, except: [:index, :new, :create]
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :authenticate_user!, only: [:show, :new, :create, :edit, :update]
 
   def index
     @q = ForumThread.search(params[:q])

@@ -2,8 +2,15 @@
 
 <div class="container col-md-10">
 	<h1>Set Advertisers</h1>
-
-	<% @users.each do |user| %>
+	<table class="table-striped">
+		<tr>
+		    <th>ID</th>
+		    <th>Advertiser</th>
+		    <th>Email</th>
+		    <th>Market</th>
+		    <th>Update</th>
+  		</tr>
+		<% @users.each do |user| %>
 			<%= form_for(user, as: :user, :url => user_update_advertisers_path(user), :html => { :method => :put, id: user.id }) do |f| %>
 		  	<% if user.errors.any? %>
 
@@ -22,24 +29,17 @@
 		
 		
 		<!-- link to update user -->
-		<%= link_to edit_user_registration_path(user) do %>
-			<ul>
-	   			<li><%= user.id %></li>
-				<li><%= user.email %></li>
-				<li><%= user.is_advertiser %></li>
-			</ul>
-		<% end %>
+		<tr>
+			<td><%= user.id %></td>
+			<td><%= user.is_advertiser %></td>
+			<td><%= user.email %></td>
+			<td><%= user.market_id %></td>
+			<%= f.hidden_field :is_advertiser, value: true %>
+		    <%= f.hidden_field :user_id, value: user.id %>
+		    <td><%= f.submit "Update", class: "btn btn-danger" %></td>
+		</tr>
 
 		<!-- expire user -->
-
-		  <div class="form-group">
-		    <%= f.hidden_field :is_advertiser, value: true %>
-		    <%= f.hidden_field :user_id, value: user.id %>
-		  </div>
-
-		  <div class="form-group">
-		    <%= f.submit "Update", class: "btn btn-primary" %>
-		  </div>
 		<% end %>
 	<% end %>
 </div>

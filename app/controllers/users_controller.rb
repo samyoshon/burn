@@ -61,14 +61,15 @@ class UsersController < ApplicationController
 
   def products
     if current_user.admin?
-      @products = Product.all.where(market: @market)
+      @products = Product.all.where(market: @market).order("created_at DESC")
     else 
-      @products = current_user.products.where(market: @market)
+      @products = current_user.products.where(market: @market).order("created_at DESC")
     end
   end
 
   def update
     set_product
+
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to :user_products, notice: 'Product was successfully deleted.'}

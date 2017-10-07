@@ -13,9 +13,10 @@
 
 <%= render "shared/navbar" %>
 
-<div class="layout-container">
-  <%= flash.notice %>
-  <%= flash.alert %>
+<div class="container">
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, class: "alert alert-info" %>
+  <% end %>
   <%= yield %>
 </div>
 
