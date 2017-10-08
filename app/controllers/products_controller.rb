@@ -4,12 +4,12 @@ $days_posted = 14
 
 class ProductsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create]
-  before_filter :authenticate_user!, only: [:show, :new, :create, :edit, :update]
+  before_filter :authenticate_user!, only: [:new, :create, :edit, :update]
 
   def index
     @q = Product.search(params[:q])
 
-    @products = Product.where("market_id = ? AND products.expire_date IS null", @market.id)
+    @products = Product.where("market_id = ? AND products.expire_date IS null OR products.expire_date > ?", @market.id, Time.now)
 
     if params[:q].present?
       @products = @q.result.where("market_id = ? AND products.expire_date IS null", @market.id)

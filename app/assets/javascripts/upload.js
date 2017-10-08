@@ -1,58 +1,34 @@
-// $(document).on("turbolinks:load", function() {
+function previewFiles() {
+  $('#preview').empty();
 
-//   $("[type=file]").fileupload({
-//     add: function(e, data) {
-//       // data.progressBar = $('<div class="progress" style="width: 300px"><div class="progress-bar"></div></div>').insertAfter("body"); // progress bar
-//       var options      = {
-//         extension: data.files[0].name.match(/(\.\w+)?$/)[0], // set the file extension
-//         _: Date.now() // prevent caching
-//       };
+  var preview = document.querySelector('#preview');
+  var files   = document.querySelector('input[type=file]').files;
 
-//       $.getJSON("/images/upload/cache/presign", options, function(result) {
-//         data.formData  = result.fields;
-//         data.url       = result.url;
-//         data.paramName = "file";
-//         data.submit();
-//       });
+  function readAndPreview(file) {
 
-//     },
+    // Make sure `file.name` matches our extensions criteria
+    if ( /\.(jpe?g|png|gif)$/i.test(file.name) ) {
+      var reader = new FileReader();
 
-//     progress: function(e, data) {
-//       // var progress   = parseInt(data.loaded / data.total * 100, 10); // progress bar
-//       // var percentage = progress.toString() + '%'; // progress bar
-//       // data.progressBar.find(".progress-bar").css("width", percentage).html(percentage); // progress bar
-//     },
+      reader.addEventListener("load", function () {
+        var image = new Image();
+        image.height = 100;
+        image.title = file.name;
+        image.src = this.result;
+        preview.appendChild( image );
+      }, false);
 
-//     done: function(e, data) {
-//       // data.progressBar.remove();
+      reader.readAsDataURL(file);
+    }
 
-//       var image = {
-//         id:       data.formData.key.match(/cache\/(.+)/)[1], // we have to remove the prefix part
-//         storage:  'cache',
-//         metadata: {
-//           size:      data.files[0].size,
-//           filename:  data.files[0].name.match(/[^\/\\]+$/)[0], // IE return full path
-//           mime_type: data.files[0].type
-//         }
-//       };
+  }
 
-//       var form      = $(this).closest("form");
-//       var form_data = new FormData(form[0]);
-//       form_data.append($(this).attr("name"), JSON.stringify(image));
+  if (files) {
+    [].forEach.call(files, readAndPreview);
+  }
 
-//       $.ajax(form.attr("action"), {
-//         contentType: false,
-//         processData: false,
-//         data:        form_data,
-//         method:      form.attr("method"),
-//         dataType:    "json",
-//         success: function(response) {
-//           var $img = $("<img/>", {src: response.image_url, width: 400});
-//           var $div = $("<div/>").append($img);
-//           $("#product-images").append($div);
-//         }
-//       });
-//     }
-//   });
+}
 
-// });
+$(document).on('turbolinks:load', function() {
+
+});

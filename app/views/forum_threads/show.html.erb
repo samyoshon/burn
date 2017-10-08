@@ -3,7 +3,7 @@
   		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   		<%= @banner.forum_show %>
   	</div>
-<% elsif current_user.is_advertiser == true %>
+<% elsif current_user.present? && current_user.is_advertiser == true %>
 	<div class="alert alert-danger alert-dismissable">
   		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   		Sorry, advertisers do not have permissions to post.

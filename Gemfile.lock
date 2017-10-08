@@ -124,6 +124,10 @@ GEM
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
+    jquery-fileupload-rails (0.4.7)
+      actionpack (>= 3.1)
+      railties (>= 3.1)
+      sass (>= 3.2)
     jquery-rails (4.3.1)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -142,6 +146,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mini_magick (4.8.0)
     mini_portile2 (2.3.0)
     minitest (5.10.3)
     msgpack (1.1.0)
@@ -279,10 +284,12 @@ DEPENDENCIES
   github-markdown
   html-pipeline
   jbuilder (~> 2.0)
+  jquery-fileupload-rails
   jquery-inputmask-rails!
   jquery-rails
   jquery-slick-rails
   local_time
+  mini_magick
   paranoia
   pg (~> 0.20)
   rails (= 4.2.7)

@@ -12,6 +12,7 @@
 	<%= link_to product do %>
 		<h4><%= markdownify product.title %></h3>
 		<p><%= markdownify product.description %></p>
-		<h6 class="badge"><%= product.category.category_name %></h6>
 	<% end %>
+	
+	<h6 class="badge"><%= product.category.category_name %></h6>
 </div>

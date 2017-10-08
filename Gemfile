@@ -96,6 +96,7 @@ gem 'jquery-inputmask-rails', github: 'knapo/jquery-inputmask-rails'
 
 # for carrierwave
 gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
 gem 'slim-rails', '~> 3.0.1'
 gem 'fog-aws'
 

@@ -4,7 +4,7 @@
   </div>
   
   <div class="form-group">
-    <% if current_user.is_advertiser != true || !current_user.present? %>
+    <% if current_user.present? && current_user.is_advertiser != true %>
       <%= f.submit "Post Comment", class: "btn btn-primary" %>
     <% else %>
       <%= f.submit "Post Comment", class: "btn btn-primary", disabled: true %>
