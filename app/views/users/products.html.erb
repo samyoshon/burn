@@ -43,7 +43,7 @@
 				    	<% end %>
 				    </td>
 				<% end %>
-			    <td><%= product.title %></td>
+			    <td><%= link_to product_path(product) do %><%= product.title %><% end %></td>
 			    <td><%= product.category.category_name %></td>
 			    <td><%= product.created_at.to_formatted_s(:db)  %></td>
 				<% if product.expire_date.present? %>

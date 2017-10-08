@@ -6,9 +6,15 @@
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
     <%= devise_error_messages! %>
 
-    <div><%= image_tag @user.images.url %></div>
-
-    <div><%= f.file_field :images, placeholder: "Image" %></div>
+    
+      <% if @user.images.url.present? %>
+        <div id="preview"><%= image_tag @user.images.url %></div>
+      <% elsif %>
+        <div id="preview"></div>
+      <% end %>
+    
+    </br>
+    <div><%= f.file_field :images, :onchange => "previewFiles()", placeholder: "Profile Image" %></div><br />
 
     <div><%= f.label :first_name %><br />
     <%= f.text_field :first_name, :autofocus => true, placeholder: "First Name", class: "form-control" %></div>
