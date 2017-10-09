@@ -1,4 +1,6 @@
 $(document).on('turbolinks:load', function() {
+  $('[data-toggle="tooltip"]').tooltip();
+
   $("input[type='tel']").each(function(){
     $(this).on("change keyup paste", function (e) {
       var output,

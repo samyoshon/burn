@@ -18,9 +18,8 @@
  *= require trix
  */
 
-
 @import "bootstrap";
-@import "styles/*";
+@import "styles/**/*";
 
 /* START HERE */
 
@@ -51,6 +50,6 @@ input[type=number]::-webkit-outer-spin-button {
 	padding: 0 20px;
 }
 
-td, th {
-  padding: 10px 15px;
+a.tooltip-icon:hover {
+  text-decoration: none;
 }

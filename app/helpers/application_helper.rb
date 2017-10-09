@@ -8,4 +8,8 @@ module ApplicationHelper
     ], pipeline_context
     pipeline.call(content)[:output].to_s.html_safe
   end
+
+  def active_class(link_path)
+    current_page?(link_path) ? 'active' : ""
+  end
 end

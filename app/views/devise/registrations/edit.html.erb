@@ -25,7 +25,8 @@
     <div><%= f.label :email %><br />
     <%= f.email_field :email, placeholder: "Email", class: "form-control" %></div>
 
-    <div><%= f.label :phone_number %><br />
+    <div><%= f.label :phone_number %><a href="#" class="tooltip-icon" data-toggle="tooltip" title="Add a phone number if you'd like the option to be contacted via text."> <i class="fa fa-info-circle" aria-hidden="true"></i> </a><br />
+
     <%= f.phone_field :phone_number, placeholder: "(XXX)-XXX-XXXX", class: "form-control" %></div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

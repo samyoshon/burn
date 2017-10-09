@@ -12,3 +12,14 @@
 	width: 40% !important;
 }
 
+/*user sidenav*/
+
+li.active > a {
+  color: white !important;
+  background-color: #337ab7 !important;
+  border-color: #337ab7 !important;
+}
+
+a.list-group-item {
+  border-style: none !important;
+}

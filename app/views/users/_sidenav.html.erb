@@ -1,12 +1,22 @@
 <div class="container col-md-2">
 	<div class="sidenav">
 		<div class="list-group">
-			<%= link_to "Profile", edit_user_registration_path, class: "list-group-item list-group-item-action" %>
-			<%= link_to "Products", user_products_path, class: "list-group-item list-group-item-action" %>
-			<%= link_to "Forum Posts", user_forum_posts_path, class: "list-group-item list-group-item-action" %>
+			<li class="<%= active_class(edit_user_registration_path) %> list-group-item list-group-item-action">
+				<%= link_to "Profile", edit_user_registration_path, class: "list-group-item list-group-item-action" %> 
+			</li>
+			<li class="<%= active_class(user_products_path) %> list-group-item list-group-item-action">
+				<%= link_to "Products", user_products_path, class: "list-group-item list-group-item-action" %>
+			</li>
+			<li class="<%= active_class(user_forum_posts_path) %> list-group-item list-group-item-action">
+				<%= link_to "Forum Posts", user_forum_posts_path, class: "list-group-item list-group-item-action" %>
+			</li>
 			<% if current_user.admin? %>
-			<%= link_to "Banners", user_banners_path, class: "list-group-item list-group-item-action" %>
-			<%= link_to "Advertisers", user_advertisers_path, class: "list-group-item list-group-item-action" %>
+			<li class="<%= active_class(user_banners_path) %> list-group-item list-group-item-action">
+				<%= link_to "Banners", user_banners_path, class: "list-group-item list-group-item-action" %>
+			</li>
+			<li class="<%= active_class(user_advertisers_path) %> list-group-item list-group-item-action">
+				<%= link_to "Advertisers", user_advertisers_path, class: "list-group-item list-group-item-action" %>
+			</li>
 		<% end %>
 		</div>
 	</div>

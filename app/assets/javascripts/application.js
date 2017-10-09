@@ -27,12 +27,6 @@ $(document).on('turbolinks:load', function() {
 		slidesToShow: 1,
 		slidesToScroll: 1
 	});
-
-// sidenav active
-	$('div.list-group > a.list-group-item').click(function() {
-		$('div.list-group > a').removeClass('active');
-		$(this).addClass('active');
-	});
 });
 
 
