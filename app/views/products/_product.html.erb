@@ -5,13 +5,13 @@
 <div class="col-md-4 product-container">
 	<div class="scroller">
 		<% product.images.each do |p| %>
-			<div><%= image_tag(p.url, class: "image-container") %></div>
+			<div><%= image_tag(p.url, size: "250x200", class: "image-container") %></div>
 		<% end %>
 	</div>
 
 	<%= link_to product do %>
-		<h4><%= markdownify product.title %></h3>
-		<p><%= markdownify product.description %></p>
+		<h4 class="product-title"><%= markdownify product.title %></h3>
+		<h6 class="product-description"><%= markdownify product.description %></h6>
 	<% end %>
 	
 	<h6 class="badge"><%= product.category.category_name %></h6>

@@ -4,8 +4,21 @@
 
 .product-container {
 	height: 380px;
+
+	a {
+		text-decoration: none;
+	}
+	
+	.product-title p, .product-description div {
+		height: 20px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
 }
 
 .image-container {
 	height: 200px;
 }
+
+
