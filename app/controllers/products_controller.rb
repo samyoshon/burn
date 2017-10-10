@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
     @products = Product.where("market_id = ? AND products.expire_date IS null OR products.expire_date > ?", @market.id, Time.now)
 
     if params[:q].present?
-      @products = @q.result.where("market_id = ? AND products.expire_date IS null", @market.id)
+      @products = @q.result.where("market_id = ? AND products.expire_date IS null OR products.expire_date > ?", @market.id, Time.now)
     end
 
     @banner = Banner.first
