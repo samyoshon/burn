@@ -5,10 +5,10 @@ class ForumThreadsController < ApplicationController
   def index
     @q = ForumThread.search(params[:q])
 
-    @forum_threads = ForumThread.where("market_id = ?", @market.id)
+    @forum_threads = ForumThread.paginate(page: params[:page], per_page: 30).where("market_id = ?", @market.id)
     
     if params[:q].present?
-      @forum_threads = @q.result.where("market_id = ?", @market.id)
+      @forum_threads = @q.result.paginate(page: params[:page], per_page: 30).where("market_id = ?", @market.id)
     end
 
     @banner = Banner.first

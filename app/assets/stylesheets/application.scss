@@ -30,6 +30,9 @@ trix-editor {
   padding: 0.4em 0.6em;
   min-height: 5em;
   outline: none;
+  overflow-y: scroll;
+  height: 100px;
+  resize: none;
 }
 
 input[type=number] {

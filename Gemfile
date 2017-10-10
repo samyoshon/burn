@@ -70,6 +70,9 @@ gem 'ransack'
 # for timestamp
 gem 'local_time'
 
+# for pagination
+gem 'will_paginate', '~> 3.1.0'
+
 # for emojis
 gem 'html-pipeline'
 gem 'github-markdown'

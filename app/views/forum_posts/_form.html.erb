@@ -1,6 +1,7 @@
 <%= form_for [@forum_thread, @forum_post] do |f| %>
   <div class="form-group">
-    <%= f.trix_editor :body, placeholder: "Add a comment", rows: 10, class: "form-control" %>
+    <%= f.hidden_field :body, placeholder: "Add a comment", rows: 10, class: "form-control", id: "forum_post_body" %>
+    <trix-editor input="forum_post_body"></trix-editor>
   </div>
   
   <div class="form-group">

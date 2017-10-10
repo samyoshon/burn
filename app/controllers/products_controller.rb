@@ -9,10 +9,10 @@ class ProductsController < ApplicationController
   def index
     @q = Product.search(params[:q])
 
-    @products = Product.where("market_id = ? AND products.expire_date IS null OR products.expire_date > ?", @market.id, Time.now)
+    @products = Product.paginate(page: params[:page], per_page: 5).where("market_id = ? AND products.expire_date IS null OR products.expire_date > ?", @market.id, Time.now)
 
     if params[:q].present?
-      @products = @q.result.where("market_id = ? AND products.expire_date IS null OR products.expire_date > ?", @market.id, Time.now)
+      @products = @q.result.paginate(page: params[:page], per_page: 5).where("market_id = ? AND products.expire_date IS null OR products.expire_date > ?", @market.id, Time.now)
     end
 
     @banner = Banner.first
