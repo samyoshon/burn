@@ -1,6 +1,7 @@
 #global
 $max_products = 20
 $days_posted = 14
+$pagination_count = 5
 
 class ProductsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create]

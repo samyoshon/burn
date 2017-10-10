@@ -11,8 +11,8 @@
   <%= render partial: "forum_threads/sidenav" %>
   <div class="container col-md-10">
   	<%= render @forum_threads %>
-  </div>
-  <div>
-  	<%= will_paginate @forum_threads %>
+    <div class="container col-md-12">
+    	<%= will_paginate @forum_threads %>
+    </div>
   </div>
 </div>
