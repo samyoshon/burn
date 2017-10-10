@@ -3,16 +3,20 @@
 <% end %>
 
 <div class="col-md-4 product-container">
-	<div class="scroller">
-		<% product.images.each do |p| %>
-			<div><%= image_tag(p.url, size: "250x200", class: "image-container") %></div>
-		<% end %>
-	</div>
+	<% if product.images.present? %>
+		<div class="scroller">
+			<% product.images.each do |p| %>
+					<div><%= image_tag(p.url, class: "image-container") %></div>
+			<% end %>
+		</div>
+	<% else %>
+		<div><%= image_tag("no-image.png", alt: "Default Profile Pic", class: "image-container no-image") %></div>
+	<% end %>
 
 	<%= link_to product do %>
-		<h4 class="product-title"><%= markdownify product.title %></h3>
-		<h6 class="product-description"><%= markdownify product.description %></h6>
+		<h4 class="product-title"><%= sanitize markdownify product.title %></h3>
+		<h6 class="product-description"><%= sanitize markdownify product.description %></h6>
 	<% end %>
 	
-	<h6 class="badge"><%= product.category.category_name %></h6>
+	<h6 class="badge"><%= sanitize product.category.category_name %></h6>
 </div>

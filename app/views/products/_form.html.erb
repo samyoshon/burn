@@ -32,21 +32,22 @@
   <div class="form-group">
     <% if @product.images? %>
       <% @product.images.each do |p| %>
-        <%= image_tag(p.url(:thumb), class: "image-container") %>
+        <%= image_tag(p.url, class: "image-container-preview") %>
       <% end %>
     <% end %>
     <div id="preview"></div>
     </br>
-    <%= f.file_field :images, :onchange => "previewFiles()", multiple: true, placeholder: "Image", class: "form-control"%>
+    <%= f.file_field :images, :onchange => "previewFiles()", multiple: true, placeholder: "Image", accept: ".jpg, .jpeg, .gif, .png", class: "form-control", id: "image-form" %>
+    <p id="fp"></p>
     <%= f.hidden_field :images_cache, multiple: true %>
   </div>
 
   <div class="form-group">
     <h6>Products will stay posted for <%= $days_posted %> days.</h6>
     <% if @products > $max_products %>
-      <%= f.submit "Post Product", class: "btn btn-primary", disabled: true %>
+      <%= f.submit "Post Product", class: "btn btn-primary", disabled: true, id: "product-submit-btn" %>
     <% else %>
-      <%= f.submit "Post Product", class: "btn btn-primary" %>
+      <%= f.submit "Post Product", class: "btn btn-primary", id: "product-submit-btn" %>
     <% end %>
   </div>
 <% end %>

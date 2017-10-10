@@ -11,10 +11,10 @@
 			<div><%= image_tag(p.url, class: "image-container") %></div>
 		<% end %>
 	</div>
-	<h1><%= markdownify @product.title %></h1>
+	<h1><%= sanitize markdownify @product.title %></h1>
 	<p><%= @product.price %></p>
-	<p><%= markdownify @product.description %></p>
-	<p><%= @product.user.email %></p>
+	<p><%= sanitize markdownify @product.description %></p>
+	<p><%= sanitize @product.user.email %></p>
 
 	<p><%= local_time_ago @product.created_at %></p>
 </div>

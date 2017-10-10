@@ -14,7 +14,7 @@
       <% end %>
     
     </br>
-    <div><%= f.file_field :images, :onchange => "previewFiles()", placeholder: "Profile Image" %></div><br />
+    <div><%= f.file_field :images, :onchange => "previewFiles()", placeholder: "Profile Image", accept: ".jpg, .jpeg, .gif, .png" %></div><br />
 
     <div><%= f.label :first_name %><br />
     <%= f.text_field :first_name, :autofocus => true, placeholder: "First Name", class: "form-control" %></div>

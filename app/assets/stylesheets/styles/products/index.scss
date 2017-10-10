@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .product-container {
-	height: 380px;
+	height: 360px;
 
 	a {
 		text-decoration: none;
@@ -19,6 +19,16 @@
 
 .image-container {
 	height: 200px;
+	width: 100%;
+	object-fit: contain;
+}
+
+.image-container-preview {
+	height: 100px;
+}
+
+.no-image {
+	margin-bottom: 30px;
 }
 
 
