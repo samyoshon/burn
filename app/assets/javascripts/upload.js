@@ -29,7 +29,7 @@ function previewFiles() {
   }
 
 
-  // frontend validation
+  // frontend validation - 2mb limit
   var fi = document.getElementById('image-form'); // GET THE FILE INPUT.
         $('#product-submit-btn').prop('disabled', false);
         $('#fp').empty();
@@ -39,7 +39,7 @@ function previewFiles() {
             for (var i = 0; i <= fi.files.length - 1; i++) {
                 var fsize = fi.files.item(i).size;      // THE SIZE OF THE FILE.
                 if (fsize/1024 > 2048) {    // 2048 = 2MB
-                  document.getElementById('fp').innerHTML = document.getElementById('fp').innerHTML + '<br /> ' + fi.files.item(i).name + ' is too big. Attachment size limit is 2MB.'; //+ Math.round((fsize / 1024)) + ' KB';
+                  document.getElementById('fp').innerHTML = document.getElementById('fp').innerHTML + '<br /> ' + '<b>' + fi.files.item(i).name + ' is too big. Attachment size limit is 2MB.</b>'; //+ Math.round((fsize / 1024)) + ' KB';
                   $('#product-submit-btn').prop('disabled', true);
                 }
             }
