@@ -1,6 +1,8 @@
 $(document).on('turbolinks:load', function() {
+  // tooltip
   $('[data-toggle="tooltip"]').tooltip();
 
+  // phone number validation
   $("input[type='tel']").each(function(){
     $(this).on("change keyup paste", function (e) {
       var output,
