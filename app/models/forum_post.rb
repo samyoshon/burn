@@ -1,4 +1,4 @@
-class ForumPost < ActiveRecord::Base
+class ForumPost < ApplicationRecord
   # include ImageUploader::Attachment.new(:image)
   mount_uploaders :images, ImageUploader
   belongs_to :user

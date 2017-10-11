@@ -5,15 +5,15 @@ $pagination_count = 5
 
 class ProductsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create]
-  before_filter :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
 
   def index
     @q = Product.search(params[:q])
 
-    @products = Product.paginate(page: params[:page], per_page: 5).where("market_id = ? AND products.expire_date IS null OR products.expire_date > ?", @market.id, Time.now)
+    @products = Product.paginate(page: params[:page], per_page: $pagination_count).where("market_id = ? AND products.expire_date IS null OR products.expire_date > ?", @market.id, Time.now)
 
     if params[:q].present?
-      @products = @q.result.paginate(page: params[:page], per_page: 5).where("market_id = ? AND products.expire_date IS null OR products.expire_date > ?", @market.id, Time.now)
+      @products = @q.result.paginate(page: params[:page], per_page: $pagination_count).where("market_id = ? AND products.expire_date IS null OR products.expire_date > ?", @market.id, Time.now)
     end
 
     @banner = Banner.first

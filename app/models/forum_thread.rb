@@ -1,4 +1,4 @@
-class ForumThread < ActiveRecord::Base
+class ForumThread < ApplicationRecord
   # acts_as_paranoid
 
   belongs_to :user

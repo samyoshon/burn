@@ -1,4 +1,4 @@
-class Market < ActiveRecord::Base
+class Market < ApplicationRecord
 	# include ImageUploader::Attachment.new(:image)
 	# acts_as_paranoid
 

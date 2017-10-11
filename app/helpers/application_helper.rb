@@ -1,4 +1,5 @@
 module ApplicationHelper
+  
   def markdownify(content)
     pipeline_context = { gfm: true, asset_root: "https://a248.e.akamai.net/assets.github.com/images/icons" }
     pipeline = HTML::Pipeline.new [
