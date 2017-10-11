@@ -1,4 +1,4 @@
 <%= div_for forum_post do %>
-  <p class="text-muted">Posted by <%= sanitize forum_post.user.name %> <%= sanitize local_time_ago forum_post.created_at %></p>
+  <p class="text-muted">Posted by <%= sanitize forum_post.user.name %> <%=  local_time_ago forum_post.created_at %></p>
   <p><%= sanitize markdownify forum_post.body %></p>
 <% end %>

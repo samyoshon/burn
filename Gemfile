@@ -81,7 +81,7 @@ gem 'gemoji'
 # gem 'github-linguist'
 
 # for font awesome
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 
 # for rich text editor
 gem 'trix'
@@ -110,4 +110,4 @@ gem 'fog-aws'
 gem 'client_side_validations'
 
 # for image carousel
-gem "jquery-slick-rails"
+gem 'jquery-slick-rails'

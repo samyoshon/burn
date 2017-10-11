@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+
 	mount_uploaders :images, ImageUploader
 	# include ImageUploader::Attachment.new(:image)
 	
