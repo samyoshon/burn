@@ -85,6 +85,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
+    commonmarker (0.17.4)
+      ruby-enum (~> 0.5)
     concurrent-ruby (1.0.5)
     crass (1.0.2)
     debug_inspector (0.0.3)
@@ -208,6 +210,8 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
+    ruby-enum (0.7.1)
+      i18n
     sanitize (4.5.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.4.4)
@@ -284,6 +288,7 @@ DEPENDENCIES
   carrierwave-imageoptimizer
   client_side_validations
   coffee-rails
+  commonmarker
   devise
   fog-aws
   font-awesome-rails
