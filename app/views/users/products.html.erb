@@ -45,9 +45,9 @@
 				<% end %>
 			    <td><%= link_to product_path(product) do %><%= product.title %><% end %></td>
 			    <td><%= product.category.category_name %></td>
-			    <td><%= product.created_at.to_formatted_s(:db)  %></td>
+			    <td><%= local_time_ago product.created_at.to_formatted_s(:db)  %></td>
 				<% if product.expire_date.present? %>
-					<td><%= product.expire_date > Time.now ? "" : product.expire_date.to_formatted_s(:db) %></td>
+					<td><%= product.expire_date > Time.now ? "" : local_time_ago(product.expire_date.to_formatted_s(:db)) %></td>
 				<% else %>
 					<td></td>
 				<% end %>

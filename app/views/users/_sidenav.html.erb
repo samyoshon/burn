@@ -10,14 +10,20 @@
 			<li class="<%= active_class(user_forum_posts_path) %> list-group-item list-group-item-action">
 				<%= link_to "Forum Posts", user_forum_posts_path, class: "list-group-item list-group-item-action" %>
 			</li>
+			<% if current_user.admin? || current_user.is_mod? %>
+				<li class="<%= active_class(user_flagged_path) %> list-group-item list-group-item-action">
+					<%= link_to "Flagged Products", user_flagged_path, class: "list-group-item list-group-item-action" %>
+				</li>
+			<% end %>
+
 			<% if current_user.admin? %>
-			<li class="<%= active_class(user_banners_path) %> list-group-item list-group-item-action">
-				<%= link_to "Banners", user_banners_path, class: "list-group-item list-group-item-action" %>
-			</li>
-			<li class="<%= active_class(user_advertisers_path) %> list-group-item list-group-item-action">
-				<%= link_to "Advertisers", user_advertisers_path, class: "list-group-item list-group-item-action" %>
-			</li>
-		<% end %>
+				<li class="<%= active_class(user_banners_path) %> list-group-item list-group-item-action">
+					<%= link_to "Banners", user_banners_path, class: "list-group-item list-group-item-action" %>
+				</li>
+				<li class="<%= active_class(user_advertisers_path) %> list-group-item list-group-item-action">
+					<%= link_to "Advertisers", user_advertisers_path, class: "list-group-item list-group-item-action" %>
+				</li>
+			<% end %>
 		</div>
 	</div>
 </div>	

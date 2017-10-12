@@ -59,6 +59,27 @@ class UsersController < ApplicationController
     end
   end
 
+  def flagged
+    if current_user.admin? || current_user.is_mod?
+      @flags = Flag.all.order("created_at DESC")
+    else 
+      redirect_to root_path
+    end
+  end
+
+  def update_flagged
+    set_product
+    respond_to do |format|
+      if @product.update(product_params)
+        format.html { redirect_to :user_flagged, notice: 'Flagged product was successfully deleted.'}
+        format.json { render :user_flagged, status: :ok, location: :user_flagged }
+      else
+        format.html { render :edit }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def products
     if current_user.admin?
       @products = Product.all.where(market: @market).order("created_at DESC")
@@ -69,7 +90,6 @@ class UsersController < ApplicationController
 
   def update
     set_product
-
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to :user_products, notice: 'Product was successfully deleted.'}
@@ -110,13 +130,7 @@ class UsersController < ApplicationController
     @forum_posts = current_user.forum_posts
   end
 
-  def bookmarks
 
-  end
-
-  def notifications
-
-  end
 
   def messages
 

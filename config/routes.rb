@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get '/users/products', to: 'users#products', as: 'user_products'
   put '/users/products', to: 'users#update_products', as: 'user_update_products'
 
+  get '/users/flagged', to: 'users#flagged', as: 'user_flagged'
+  put '/users/flagged', to: 'users#update_flagged', as: 'user_update_flagged'
+
   get '/users/forum_posts', to: 'users#forum_posts', as: 'user_forum_posts'
   
   get '/users/banners', to: 'users#banners', as: 'user_banners'
