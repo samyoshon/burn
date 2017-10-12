@@ -17,6 +17,14 @@
 		<h4 class="product-title"><%= sanitize markdownify product.title %></h3>
 		<h6 class="product-description"><%= sanitize markdownify product.description %></h6>
 	<% end %>
+
+	<% if @user.present? %>
+		<%= form_for @flag, url: product_flag_path do |f| %>
+			<%= f.hidden_field :product_id, :value => product.id %>
+			<%= f.hidden_field :user_id, :value => @user.id %>
+			<%= f.submit(:onclick => "if(!confirm(\'Are you sure you want to report this product?\')) return false;", class: "btn btn-primary") %>
+		<% end %>
+	<% end %>
 	
 	<h6 class="badge"><%= sanitize product.category.category_name %></h6>
 </div>

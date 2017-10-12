@@ -6,7 +6,7 @@
 <% elsif @products > $max_products %>
 	<div class="alert alert-danger alert-dismissable">
   		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  		You can only have 5 products posted at once.
+  		You can only have <%= $max_products %> products posted at once.
 	</div>
 <% end %>
 

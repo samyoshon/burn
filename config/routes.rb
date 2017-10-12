@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   resources :markets, :path => 'marketplace' #url = marketplace
 
+  get '', to: 'products#index', constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
+  post '/products/flag', to: 'products#flag', as: 'product_flag'
   resources :products
   
   resources :users do
@@ -30,6 +32,5 @@ Rails.application.routes.draw do
     end
   end
 
-  get '', to: 'products#index', constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
   root to: "markets#index"
 end

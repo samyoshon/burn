@@ -8,7 +8,7 @@ class Product < ApplicationRecord
 	belongs_to :market
 	belongs_to :category
 
-	# has_many :images
+	has_many :flags
 	# accepts_nested_attributes_for :images
 
 

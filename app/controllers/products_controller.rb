@@ -1,7 +1,7 @@
 #global
-$max_products = 20
+$max_products = 50
 $days_posted = 14
-$pagination_count = 5
+$pagination_count = 50
 
 class ProductsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create]
@@ -17,12 +17,24 @@ class ProductsController < ApplicationController
     end
 
     @banner = Banner.first
+    @flag = Flag.new
+    @user = current_user
 
     # if params[:location].present?
     #   @products = @products.near(params[:location]).where(market: @market)
     # end
 
     # @products = @products.paginate(:page => params[:page], :per_page => 30)
+  end
+
+  def flag
+    @flag = Flag.new(flag_params)
+    if @flag.save
+      flash[:alert] = "Product has been reported."
+      redirect_to root_path
+    else
+      flash[:alert] = "Could not flag product."
+    end
   end
 
   # What is this supposed to do again?
@@ -84,7 +96,7 @@ class ProductsController < ApplicationController
   # end
 
   def set_product
-    @product = Product.find_by!(id: params[:id], market: @market)
+    @product = Product.find_by(id: params[:id], market: @market)
   rescue
     flash[:alert] = "Product could not be found"
     redirect_to root_path
@@ -92,6 +104,10 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:user_id, :title, :description, :price, :market_id, :category_id, :expire_date, {images:[]})
+  end
+
+  def flag_params
+    params.require(:flag).permit(:user_id, :product_id)
   end
 
 end
