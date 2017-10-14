@@ -6,11 +6,9 @@ class User < ApplicationRecord
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :confirmable, :validatable
   # accepts_nested_attributes_for :markets
-  # validates_format_of :email, with: "#{Market.email_address_type}", message: 'You should have an email from @grenoble-em.com'
-  # validates :market_id, presence: true
-  # validate :validate_email
   
   validates :email, email_format: true
+  validates_uniqueness_of :username
 
   belongs_to :market
   has_many :forum_threads
@@ -21,7 +19,7 @@ class User < ApplicationRecord
 
   def self.assign_from_row(row)
     user = User.where(email: row[:email]).first_or_initialize
-    user.assign_attributes row.to_hash.slice(:first_name, :last_name, :market_id, :images, :admin, :is_advertiser, :is_mod)
+    user.assign_attributes row.to_hash.slice(:first_name, :last_name, :market_id, :phone_number, :images, :admin, :is_advertiser, :is_mod, :username)
   end
 
   def self.to_csv
@@ -44,16 +42,12 @@ class User < ApplicationRecord
     end
   end
 
-  def market
-    Market.find_by_subdomain!(request.subdomain) unless request.subdomain.empty?
-  end
-
   private 
 
-  def validate_email
-    return if $current_market.blank? || $current_market.email_address_type?
-    return if email.include?($current_market.email_address_type)
-    errors.add(:email, "must be your student email address (ex: sshon@#{$current_market.email_address_type})")
-  end
+  # def validate_email
+  #   return if $current_market.blank? || $current_market.email_address_type?
+  #   return if email.include?($current_market.email_address_type)
+  #   errors.add(:email, "must be your student email address (ex: sshon@#{$current_market.email_address_type})")
+  # end
 
 end

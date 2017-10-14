@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171012031328) do
+ActiveRecord::Schema.define(version: 20171014203329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,6 +115,8 @@ ActiveRecord::Schema.define(version: 20171012031328) do
     t.integer "user_id"
     t.text "images", default: [], array: true
     t.integer "contact_pref"
+    t.boolean "contact_by_email", default: true
+    t.boolean "contact_by_phone", default: false
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["market_id"], name: "index_products_on_market_id"
     t.index ["user_id"], name: "index_products_on_user_id"
@@ -144,8 +146,9 @@ ActiveRecord::Schema.define(version: 20171012031328) do
     t.integer "market_id"
     t.text "images"
     t.integer "is_flagged"
-    t.integer "phone_number"
     t.boolean "admin", default: false
+    t.string "username"
+    t.string "phone_number"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true

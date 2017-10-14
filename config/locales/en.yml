@@ -22,4 +22,4 @@
 en:
   errors:
     messages:
-      email_format: "is not a valid USC email address"
+      email_format: "is not a valid email address"
