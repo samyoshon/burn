@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
+  helper_method :current_market
   before_action :authenticate_user!, :set_user
+  # helper_method :set_market
+
+
   # load_and_authorize_resource
   # def index
   #   @users = User.all

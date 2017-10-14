@@ -3,6 +3,7 @@ $max_products = 50
 $days_posted = 14
 $pagination_count = 50
 
+
 class ProductsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]

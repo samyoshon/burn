@@ -2,7 +2,7 @@ class Market < ApplicationRecord
 	# include ImageUploader::Attachment.new(:image)
 	# acts_as_paranoid
 
-	belongs_to :user
+	has_many :users
 	has_many :products
 	has_many :forum_threads
 

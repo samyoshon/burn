@@ -54,6 +54,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def set_market
+    # @market = Market.find_by_subdomain!(request.subdomain) unless request.subdomain.empty?
+    @market = Market.find_by(subdomain: request.subdomain) unless request.subdomain.empty?
+  end
+
+  def current_market
+    @market = Market.find_by(subdomain: request.subdomain) unless request.subdomain.empty?
+  end
+
   private 
   def layout_by_resource
     if devise_controller?
@@ -63,7 +72,4 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def set_market
-    @market = Market.find_by_subdomain!(request.subdomain) unless request.subdomain.empty?
-  end
 end
