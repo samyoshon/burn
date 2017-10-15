@@ -1,5 +1,5 @@
 #global
-$max_products = 50
+$max_products = 5
 $days_posted = 14
 $pagination_count = 50
 
@@ -52,6 +52,7 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @banner = Banner.first
+    @user = current_user
     @products = current_user.products.count
   end
 
@@ -104,7 +105,7 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:user_id, :title, :description, :price, :market_id, :category_id, :expire_date, {images:[]}, :contact_by_email, :contact_by_phone)
+    params.require(:product).permit(:user_id, :title, :description, :price, :market_id, :category_id, :expire_date, {images:[]}, :contact_pref, :contact_by_email, :contact_by_phone, user_attributes: [:phone_number])
   end
 
   def flag_params

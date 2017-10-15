@@ -9,10 +9,6 @@ class Product < ApplicationRecord
 	belongs_to :category
 
 	has_many :flags
-	# accepts_nested_attributes_for :images
-
-
-
 
 	# validates :title, presence: true, :email_format => true
 	# # validates :title, presence: true

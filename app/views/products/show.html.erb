@@ -14,7 +14,15 @@
 	<h1><%= sanitize markdownify @product.title %></h1>
 	<p><%= @product.price %></p>
 	<p><%= sanitize markdownify @product.description %></p>
+
 	<p><%= sanitize @product.user.email %></p>
+	<% if @product.user.phone_number? %>
+		<p><%= sanitize @product.user.phone_number %></p>
+	<% elsif @product.contact_pref? %>
+		<p><%= sanitize @product.contact_pref %></p>
+	<% end %>
+
+
 
 	<p><%= local_time_ago @product.created_at %></p>
 </div>

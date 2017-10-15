@@ -7,7 +7,11 @@
   <div class="form-group">
     <% if current_user.present? && current_user.is_advertiser != true %>
       <%= f.submit "Post Comment", class: "btn btn-primary" %>
+    <% elsif current_user.present? && current_user.is_advertiser == true %>
+      <h6>Sorry, advertisers do not have permissions to post.</h6>
+      <%= f.submit "Post Comment", class: "btn btn-primary", disabled: true %>
     <% else %>
+      <h6><%= link_to "You need to sign in to add comment.", new_user_session_path %></h6>
       <%= f.submit "Post Comment", class: "btn btn-primary", disabled: true %>
     <% end %>
   </div>

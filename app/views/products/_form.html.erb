@@ -22,7 +22,7 @@
   </div>
 
   <div class="form-group">
-    <%= f.phone_field :price, required: true,  pattern: "[(][0-9]{3}[)] [0-9]{3}[\-][0-9]{4}", placeholder: "Price", class: "form-control" %>
+    <%= f.text_field :price, required: true, placeholder: "Price", class: "form-control" %>
   </div>
 
   <div class="form-group">
@@ -30,8 +30,9 @@
   </div>
 
   <div class="form-group">
-    <%= f.check_box :contact_by_email, required: true, placeholder: "Description", rows: 10, class: "form-control" %><%= current_user.email %>
-    <%= f.check_box :contact_by_phone, required: true, placeholder: "Description", rows: 10, class: "form-control" %><%= current_user.phone_number %>
+    <%= f.check_box :contact_by_email, placeholder: "contact via email", rows: 10, class: "form-control", disabled: true %><%= current_user.email %>
+    <%= f.check_box :contact_by_phone, placeholder: "contact via phone", rows: 10, class: "form-control" %><%= current_user.phone_number %>
+    <%= f.text_field :contact_pref, placeholder: "Description", rows: 10, class: "form-control" %>
   </div>  
 
   <div class="form-group">
@@ -51,6 +52,7 @@
     <!-- language is in js -->
     <p id="fp"></p> 
     <% if @products > $max_products %>
+      <h6>You can only have <%= $max_products %> products posted at once.</h6>
       <%= f.submit "Post Product", class: "btn btn-primary", disabled: true, id: "product-submit-btn" %>
     <% else %>
       <%= f.submit "Post Product", class: "btn btn-primary", id: "product-submit-btn" %>
