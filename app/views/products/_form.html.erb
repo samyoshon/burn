@@ -58,9 +58,9 @@
     <p id="fp"></p> 
     <% if @products > $max_products %>
       <h6>You can only have <%= $max_products %> products posted at once.</h6>
-      <%= f.submit "Post Product", class: "btn btn-primary", disabled: true, id: "product-submit-btn" %>
+      <%= f.button "Post Product", class: "btn btn-primary", disabled: true, id: "product-submit-btn" %>
     <% else %>
-      <%= f.submit "Post Product", class: "btn btn-primary", id: "product-submit-btn" %>
+      <%= f.button "Post Product", class: "btn btn-primary", id: "product-submit-btn", 'data-disable-with' => "<i class='fa fa-spinner fa-spin'></i> Posting Product...".html_safe %>
     <% end %>
   </div>
 <% end %>

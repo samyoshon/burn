@@ -31,9 +31,9 @@
   <div class="form-group">
     <% if current_user.is_advertiser == true %>
       <h6>Sorry, advertisers do not have permissions to post.</h6>
-      <%= f.submit "Post Thread", class: "btn btn-primary", disabled: true %>
+      <%= f.button "Post Thread", class: "btn btn-primary", disabled: true %>
     <% else %>
-      <%= f.submit "Post Thread", class: "btn btn-primary" %>
+      <%= f.button "Post Thread", class: "btn btn-primary", 'data-disable-with' => "<i class='fa fa-spinner fa-spin'></i> Posting Thread...".html_safe %>
     <% end %>
   </div>
 <% end %>
