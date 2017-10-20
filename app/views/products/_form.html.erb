@@ -31,8 +31,13 @@
 
   <div class="form-group">
     <%= f.check_box :contact_by_email, placeholder: "contact via email", rows: 10, class: "form-control", disabled: true %><%= current_user.email %>
-    <%= f.check_box :contact_by_phone, placeholder: "contact via phone", rows: 10, class: "form-control" %><%= current_user.phone_number %>
-    <%= f.text_field :contact_pref, placeholder: "Description", rows: 10, class: "form-control" %>
+    <% if current_user.phone_number? %>
+      <%= f.check_box :contact_by_phone, placeholder: "contact via phone", rows: 10, class: "form-control", checked: true %>
+      <%= current_user.phone_number %>
+    <% else %>
+      <%= f.check_box :contact_by_phone, placeholder: "contact via phone", rows: 10, class: "form-control" %>
+      <%= f.text_field :contact_pref, placeholder: "Description", rows: 10, class: "form-control" %>
+    <% end %>
   </div>  
 
   <div class="form-group">

@@ -14,6 +14,14 @@
 				<li class="<%= active_class(user_flagged_path) %> list-group-item list-group-item-action">
 					<%= link_to "Flagged Products", user_flagged_path, class: "list-group-item list-group-item-action" %>
 				</li>
+
+				<li class="<%= active_class(user_categories_path) %> list-group-item list-group-item-action">
+					<%= link_to "Product Categories", user_categories_path, class: "list-group-item list-group-item-action" %>
+				</li>
+
+				<li class="<%= active_class(user_forum_categories_path) %> list-group-item list-group-item-action">
+					<%= link_to "Forum Categories", user_forum_categories_path, class: "list-group-item list-group-item-action" %>
+				</li>
 			<% end %>
 
 			<% if current_user.admin? %>

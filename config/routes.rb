@@ -18,6 +18,14 @@ Rails.application.routes.draw do
   
   get '/users/banners', to: 'users#banners', as: 'user_banners'
   post '/users/banners', to: 'users#update_banners', as: 'user_update_banners'
+
+  get '/users/categories', to: 'users#categories', as: 'user_categories'
+  put '/users/categories', to: 'users#update_categories', as: 'user_update_categories'
+  post '/users/categories', to: 'users#create_categories', as: 'user_create_categories'
+
+  get '/users/forum_categories', to: 'users#forum_categories', as: 'user_forum_categories'
+  put '/users/forum_categories', to: 'users#update_forum_categories', as: 'user_update_forum_categories'
+  post '/users/forum_categories', to: 'users#create_forum_categories', as: 'user_create_forum_categories'
   
   resources :forum_threads, :path => 'community' do #url = community
     resources :forum_posts, module: :forum_threads

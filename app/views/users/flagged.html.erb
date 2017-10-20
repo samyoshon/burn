@@ -13,7 +13,7 @@
 		    <th>Archive</th>
   		</tr>
 		<% @flags.each do |flag| %>
-			<%= form_for flag.product, url: user_update_flagged_path, method: :put,html: {id: flag.product.id} do |f| %>
+			<%= form_for flag.product, url: user_update_flagged_path, method: :put, html: {id: flag.product.id} do |f| %>
 			  	<% if flag.product.errors.any? %>
 			    	<div id="error_explanation">
 			      		<h2><%= pluralize(flag.product.errors.count, "error") %> prohibited this listing from being saved:</h2>

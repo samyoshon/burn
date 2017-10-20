@@ -130,6 +130,89 @@ class UsersController < ApplicationController
     end
   end
 
+  def categories 
+    # set_category
+    if current_user.admin?
+      @categories = Category.all.where(market_id: @market).order("created_at DESC")
+      @category = Category.new
+    else 
+      redirect_to root_path
+    end
+  end
+
+  def create_categories
+    if current_user.admin?
+      @category = Category.create(category_params)
+      @category.market_id = @market.id
+
+      if @category.save
+        redirect_to user_categories_path
+      else
+        render action: :new
+      end
+    end
+  end
+
+  def update_categories
+    set_category
+    if current_user.admin?
+      respond_to do |format|
+        if @category.update(category_params)
+          format.html { redirect_to :user_categories, notice: 'Category was successfully updated.' }
+          format.json { render :user_categories, status: :ok, location: :user_categories }
+        else
+          byebug
+          format.html { render :edit }
+          format.json { render json: @category.errors, status: :unprocessable_entity }
+        end
+      end
+    else 
+      redirect_to root_path
+    end
+  end
+
+  def forum_categories 
+    # set_forum_category
+    if current_user.admin?
+      @forum_categories = ForumCategory.all.where(market_id: @market).order("created_at DESC")
+      @forum_category = ForumCategory.new
+    else 
+      redirect_to root_path
+    end
+  end
+
+  def create_forum_categories
+    if current_user.admin?
+      @forum_category = ForumCategory.create(forum_category_params)
+      @forum_category.market_id = @market.id
+
+      if @forum_category.save
+        redirect_to user_forum_categories_path
+      else
+        render action: :new
+      end
+    end
+  end
+
+  def update_forum_categories
+    set_forum_category
+    if current_user.admin?
+      respond_to do |format|
+        if @forum_category.update(forum_category_params)
+          format.html { redirect_to :user_forum_categories, notice: 'Category was successfully updated.' }
+          format.json { render :user_forum_categories, status: :ok, location: :user_forum_categories }
+        else
+          byebug
+          format.html { render :edit }
+          format.json { render json: @forum_category.errors, status: :unprocessable_entity }
+        end
+      end
+    else 
+      redirect_to root_path
+    end
+  end
+
+
   def forum_posts 
     @forum_posts = current_user.forum_posts
   end
@@ -159,6 +242,14 @@ class UsersController < ApplicationController
     def set_banner
       @banner = Banner.find_by!(user_id: @user, market: @market)
     end
+
+    def set_category
+      @category = Category.find_by!(market_id: @market)
+    end
+
+    def set_forum_category
+      @forum_category = ForumCategory.find_by!(market_id: @market)
+    end
     
     def user_import_params
       params.require(:user_import).permit(:file)
@@ -174,5 +265,13 @@ class UsersController < ApplicationController
 
     def banner_params
       params.require(:banner).permit(:user_id, :market_id, :product_index, :product_show, :product_new, :forum_index, :forum_show, :forum_new, :account_profile)
+    end
+
+    def category_params
+      params.require(:category).permit(:market_id, :category_name, :group_id)
+    end
+
+    def forum_category_params
+      params.require(:forum_category).permit(:market_id, :category_name, :group_id)
     end
 end

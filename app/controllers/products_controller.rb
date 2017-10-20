@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
       @products = @q.result.paginate(page: params[:page], per_page: $pagination_count).where("market_id = ? AND products.expire_date IS null OR products.expire_date > ?", @market.id, Time.now)
     end
 
-    @banner = Banner.first
+    @banner = Banner.first_or_create
     @flag = Flag.new
     @user = current_user
 
@@ -46,12 +46,12 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @banner = Banner.first
+    @banner = Banner.first_or_create
   end
 
   def new
     @product = Product.new
-    @banner = Banner.first
+    @banner = Banner.first_or_create
     @user = current_user
     @products = current_user.products.count
   end

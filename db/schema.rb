@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171014203329) do
+ActiveRecord::Schema.define(version: 20171016003441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 20171014203329) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "market_id"
+    t.bigint "group_id"
+    t.index ["group_id"], name: "index_categories_on_group_id"
   end
 
   create_table "flags", force: :cascade do |t|
@@ -53,6 +55,8 @@ ActiveRecord::Schema.define(version: 20171014203329) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "category_name"
+    t.bigint "group_id"
+    t.index ["group_id"], name: "index_forum_categories_on_group_id"
     t.index ["market_id"], name: "index_forum_categories_on_market_id"
     t.index ["user_id"], name: "index_forum_categories_on_user_id"
   end
@@ -82,6 +86,7 @@ ActiveRecord::Schema.define(version: 20171014203329) do
 
   create_table "groups", force: :cascade do |t|
     t.bigint "market_id"
+    t.string "name"
     t.index ["market_id"], name: "index_groups_on_market_id"
   end
 
@@ -158,8 +163,10 @@ ActiveRecord::Schema.define(version: 20171014203329) do
 
   add_foreign_key "banners", "markets"
   add_foreign_key "banners", "users"
+  add_foreign_key "categories", "groups"
   add_foreign_key "flags", "products"
   add_foreign_key "flags", "users"
+  add_foreign_key "forum_categories", "groups"
   add_foreign_key "forum_categories", "markets"
   add_foreign_key "forum_categories", "users"
   add_foreign_key "forum_threads", "forum_categories"
