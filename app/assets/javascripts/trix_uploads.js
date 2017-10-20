@@ -16,14 +16,14 @@
 //   // Create our XHR request
 //   var xhr = new XMLHttpRequest;
 //   console.log('xhr: ', xhr);
-//   xhr.open("POST", "/forum_threads.json", true);
+//   xhr.open("POST", "/forum_threads/forum_posts.json", true);
 //   xhr.setRequestHeader("X-CSRF-Token", Rails.csrfToken());
 
 //   // Report file uploads back to Trix
 //   xhr.upload.onprogress = function(event) {
 //     var progress = event.loaded / event.total * 100;
 //     attachment.setUploadProgress(progress);
-//   }
+//   };
 
 //   // Tell Trix what url and href to use on successful upload
 //   xhr.onload = function() {
@@ -32,73 +32,78 @@
 //       return attachment.setAttributes({
 //         url: data.image_url,
 //         href: data.url
-//       })
+//       });
 //     }
-//   }
+//   };
 
 //   return xhr.send(form);
 // }
 
-(function() {
-  var createStorageKey, host, uploadAttachment;
+// // Listen for the Trix attachment event to trigger upload
+// document.addEventListener("trix-attachment-add", function(event) {
+//   var attachment = event.attachment;
+//   if (attachment.file) {
+//     return uploadAttachment(attachment);
+//   }
+// });
 
-  Trix.config.attachments.preview.caption = {
-    name: false,
-    size: false
-  };
+// (function() {
+//   var createStorageKey, host, uploadAttachment;
 
-  document.addEventListener("trix-attachment-add", function(event) {
-    var attachment;
-    attachment = event.attachment;
-    if (attachment.file) {
-      return uploadAttachment(attachment);
-    }
-  });
+//   Trix.config.attachments.preview.caption = {
+//     name: false,
+//     size: false
+//   };
 
-  host = "https://d13txem1unpe48.cloudfront.net/";
+//   document.addEventListener("trix-attachment-add", function(event) {
+//     var attachment;
+//     attachment = event.attachment;
+//     if (attachment.file) {
+//       return uploadAttachment(attachment);
+//     }
+//   });
 
-  uploadAttachment = function(attachment) {
-    var file, form, key, xhr;
-    file = attachment.file;
-    key = createStorageKey(file);
-    form = new FormData;
-    form.append("key", key);
-    form.append("Content-Type", file.type);
-    form.append("", file);
-    xhr = new XMLHttpRequest;
-    xhr.open("POST", host, true);
-    xhr.upload.onprogress = function(event) {
-      var progress;
-      progress = event.loaded / event.total * 100;
-      return attachment.setUploadProgress(progress);
-    };
-    xhr.onload = function() {
-      var href, url;
-      if (xhr.status === 204) {
-        url = href = host + key;
-        return attachment.setAttributes({
-          url: url,
-          href: href
-        });
-      }
-    };
-    return xhr.send(form);
-  };
+//   host = "https://d13txem1unpe48.cloudfront.net/";
 
-  createStorageKey = function(file) {
-    var date, day, time;
-    date = new Date();
-    day = date.toISOString().slice(0, 10);
-    time = date.getTime();
-    return "tmp/" + day + "/" + time + "-" + file.name;
-  };
+//   uploadAttachment = function(attachment) {
+//     var file, form, key, xhr;
+//     file = attachment.file;
+//     key = createStorageKey(file);
+//     form = new FormData;
+//     form.append("key", key);
+//     form.append("Content-Type", file.type);
+//     form.append("", file);
+//     xhr = new XMLHttpRequest;
+//     xhr.open("POST", host, true);
+//     xhr.upload.onprogress = function(event) {
+//       var progress;
+//       progress = event.loaded / event.total * 100;
+//       return attachment.setUploadProgress(progress);
+//     };
+//     xhr.onload = function() {
+//       var href, url;
+//       if (xhr.status === 204) {
+//         url = href = host + key;
+//         return attachment.setAttributes({
+//           url: url,
+//           href: href
+//         });
+//       }
+//     };
+//     return xhr.send(form);
+//   };
 
-}).call(this);
+//   createStorageKey = function(file) {
+//     var date, day, time;
+//     date = new Date();
+//     day = date.toISOString().slice(0, 10);
+//     time = date.getTime();
+//     return "tmp/" + day + "/" + time + "-" + file.name;
+//   };
 
-// Listen for the Trix attachment event to trigger upload
-document.addEventListener("trix-attachment-add", function(event) {
-  var attachment = event.attachment;
-  if (attachment.file) {
-    return uploadAttachment(attachment);
-  }
+// }).call(this);
+
+document.addEventListener("trix-file-accept", function(event) {
+  event.preventDefault();
 });
+
