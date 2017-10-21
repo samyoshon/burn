@@ -13,15 +13,40 @@
  *= require_tree .
  *= require_self
  *= require font-awesome
+ *= require jquery.atwho
  *= require slick
  *= require slick-theme
  *= require trix
  */
 
+
 @import "bootstrap";
 @import "styles/**/*";
 
 /* START HERE */
+
+/* VARIABLES */
+
+$product-container-height: 380px;
+$image-container-height: 200px;
+$image-container-preview-height: 100px;
+
+/* VARIBLES END */
+
+header {
+  position: fixed !important;
+  width: 100%;
+}
+
+.main-container {
+  padding-top: 75px;
+}
+
+.user-sidenav {
+  position: fixed !important;
+}
+
+
 
 trix-editor {
   border: 1px solid #bbb;
@@ -56,3 +81,9 @@ input[type=number]::-webkit-outer-spin-button {
 a.tooltip-icon:hover {
   text-decoration: none;
 }
+
+.navbar {
+  background: #fff;
+  border-bottom: 5px solid transparent;
+}
+

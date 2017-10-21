@@ -32,6 +32,9 @@ class UsersController < ApplicationController
   #   sign_in(:user, User.find(params[:id]))
   #   redirect_to root_url # or user_root_url
   # end
+  def index
+    @users = User.all
+  end
 
   def profile
     @user = current_user

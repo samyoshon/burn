@@ -1,4 +1,4 @@
-<header class="navbar <%= content_for?(:navbar_style) ? yield(:navbar_style) : "navbar-default" %> navbar-static-top" role="banner">
+<header class="navbar <%= content_for?(:navbar_style) ? yield(:navbar_style) : "navbar-default" %> navbar-static-top" role="banner" style="  background: #fff; border-bottom: 5px solid transparent; -moz-border-image: -moz-linear-gradient(left, <%= @market.first_color %> 0%, <%= @market.second_color %> 100%) !important; -webkit-border-image: -webkit linear-gradient(left, <%= @market.first_color %> 0%, <%= @market.second_color %> 100%) !important; border-image: linear-gradient(to right, <%= @market.first_color %> 0%, <%= @market.second_color %> 100%) !important; border-image-slice: 1 !important;" >
   <div class="content-container">
     <div class="navbar-header">
       <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">

@@ -13,7 +13,17 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.slick
+//= require jquery.atwho
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require trix
 //= require_tree .
+
+$(function(){
+	$('[data-behavior="autocomplete"]').atwho({
+		at: "@",
+		'data': "/users.json",
+		limit: 7
+		// 'data': "/users.json"
+		});
+});

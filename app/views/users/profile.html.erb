@@ -5,9 +5,11 @@
   	</div>
 <% end %>
  
-<%= render partial: "users/sidenav" %>
+<div class="content-container">
+	<%= render partial: "users/sidenav" %>
 
-<div class="container col-md-10">
-	<%= @user.first_name %>
-	<%= @user.last_name %>
+	<div class="container col-md-10">
+		<%= @user.first_name %>
+		<%= @user.last_name %>
+	</div>
 </div>

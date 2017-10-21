@@ -1,64 +1,50 @@
-<%= render partial: "users/sidenav" %>
+<div class="content-container">
+  <%= render partial: "users/sidenav" %>
 
-<div class="container col-md-10">
-  <h1>Forum Categories</h1>
-    <% @forum_categories.each do |forum_category| %>
-      <%= form_for forum_category, url: user_update_forum_categories_path, method: :put, html: {id: forum_category.id} do |f| %>
-          <% if forum_category.errors.any? %>
-            <div id="error_explanation">
-                <h2><%= pluralize(forum_category.errors.count, "error") %> prohibited this listing from being saved:</h2>
+  <div class="container col-md-10">
+    <h1>Forum Categories</h1>
+      <% @forum_categories.each do |forum_category| %>
+        <%= form_for forum_category, url: user_update_forum_categories_path, method: :put, html: {id: forum_category.id} do |f| %>
+            <% if forum_category.errors.any? %>
+              <div id="error_explanation">
+                  <h2><%= pluralize(forum_category.errors.count, "error") %> prohibited this listing from being saved:</h2>
 
-              <ul>
-                <% forum_category.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
-                <% end %>
-              </ul>
-            </div>
+                <ul>
+                  <% forum_category.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+          <% end %>
+              <%= f.text_field :category_name, class: "" %>
+              <%= f.submit "Update", class: "btn btn-danger" %>
         <% end %>
-
-    <!-- view only none expired posts -->
-
-          
-            <%= f.text_field :category_name %>
-          
-
-
-          <!-- link to update category -->
-
-
-          <!-- expire category -->
-          
-            <%= f.submit "Update", class: 'btn btn-danger' %>
-          
       <% end %>
-    <% end %>
 
-</div>
+    <h1>Create Forum Categories</h1>
 
-<div class="container col-md-10">
-  <h1>Create Forum Categories</h1>
+    <%= form_for(@forum_category, url: user_create_forum_categories_path, :html => {:multipart => true})  do |f| %>
+      <% if @forum_category.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@forum_category.errors.count, "error") %> prohibited this listing from being saved:</h2>
 
-  <%= form_for(@forum_category, url: user_create_forum_categories_path, :html => {:multipart => true})  do |f| %>
-    <% if @forum_category.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@forum_category.errors.count, "error") %> prohibited this listing from being saved:</h2>
+          <ul>
+          <% @forum_category.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-        <ul>
-        <% @forum_category.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
+      <h4>Category</h4>
+      <div class="form-group">
+        <%= f.text_field :category_name, autofocus: true, placeholder: "Add Category", class: "form-control" %>
+      </div>
+
+      <%= f.hidden_field :market, value: $current_market %>
+      <div class="form-group">
+        <%= f.submit "Create Forum Category", class: "btn btn-primary", 'data-disable-with' => "Creating Forum Category...".html_safe %>
       </div>
     <% end %>
-
-    <h4>Category</h4>
-    <div class="form-group">
-      <%= f.text_field :category_name, autofocus: true, placeholder: "Add Category", class: "form-control" %>
-    </div>
-
-    <%= f.hidden_field :market, value: $current_market %>
-    <div class="form-group">
-      <%= f.submit "Create Forum Category", class: "btn btn-primary" %>
-    </div>
-  <% end %>
+  </div>
 </div>

@@ -1,4 +1,4 @@
-<div class="container col-md-2">
+<div class="col-md-2 sidenav-container">
 	<div class="sidenav">
 		<%= search_form_for @q, html: { class: "form-inline category_id"} do |f| %>
 			<% Category.all.order("category_name asc").each do |category| %>
@@ -7,10 +7,14 @@
 	        		<%= category.category_name %>
 	        	</label>
 	      	<% end %>
-				<%= f.search_field :price_gteq, placeholder: "Low", class: "form-control subnav-price-label" %> 
+
+	      	<br>
+	      	<h6>Price</h6>
+
+			<%= f.search_field :price_gteq, placeholder: "Low", class: "form-control sidenav-price-label" %> 
 				to 
-				<%= f.search_field :price_lteq, placeholder: "High", class: "form-control subnav-price-label" %>
-		    <%= f.submit "Search", class: "btn btn-success" %>
+			<%= f.search_field :price_lteq, placeholder: "High", class: "form-control sidenav-price-label" %>
+		    <%= f.button '<i class="fa fa-chevron-right" aria-hidden="true"></i>'.html_safe, class: "btn btn-primary", 'data-disable-with' => "<i class='fa fa-spinner fa-spin'>".html_safe %>
 		<% end %>
 	</div>
 </div>

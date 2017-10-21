@@ -1,4 +1,4 @@
-<div class="container col-md-2">
+<div class="col-md-2 sidenav-container">
 	<div class="sidenav">
 		<%= search_form_for @q, html: { class: "form-inline category_id"} do |f| %>
 			<% ForumCategory.all.order("category_name asc").each do |forum_category| %>

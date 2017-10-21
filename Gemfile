@@ -112,3 +112,7 @@ gem 'client_side_validations'
 
 # for image carousel
 gem 'jquery-slick-rails'
+
+# for @ mentions
+gem 'jquery-atwho-rails'
+# gem 'redcarpet'

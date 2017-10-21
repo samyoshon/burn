@@ -2,6 +2,10 @@
 	height: 100vh;
 }
 
+.sidenav-container {
+  padding: 0;
+}
+
 .sidenav-category-label {
 	display: block;
 	cursor: pointer;
@@ -9,10 +13,12 @@
 
 .sidenav-price-label {
 	display: inline-block;
-	width: 40% !important;
+	width: 30% !important;
 }
 
+
 /*user sidenav*/
+
 li.list-group-item {
 	padding: 0;
 }
@@ -26,3 +32,14 @@ li.active > a {
 a.list-group-item {
   border-style: none !important;
 }
+
+.list-group-item:first-child {
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;	
+}
+
+.list-group-item:last-child {
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;	
+}
+

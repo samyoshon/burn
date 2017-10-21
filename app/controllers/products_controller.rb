@@ -47,6 +47,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @banner = Banner.first_or_create
+    @user = current_user
   end
 
   def new

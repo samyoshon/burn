@@ -6,23 +6,41 @@
 	  </div>
 	<% end %>
 
-	<div class="scroller">
-		<% @product.images.each do |p| %>
-			<div><%= image_tag(p.url, class: "image-container") %></div>
+	<div class="col-md-6">
+		<% if @product.images.present? %>
+			<div class="slider slider-for">
+				<% @product.images.each do |p| %>
+					<div><%= image_tag(p.url, class: "image-container") %></div>
+				<% end %>
+			</div>
+			<div class="slider slider-nav">
+				<% @product.images.each do |p| %>
+					<div><%= image_tag(p.url, class: "image-container") %></div>
+				<% end %>
+			</div>
+		<% else %>
+			<div><%= image_tag("no-image.png", alt: "Default Profile Pic", class: "image-container no-image") %></div>
 		<% end %>
 	</div>
-	<h1><%= sanitize markdownify @product.title %></h1>
-	<p><%= @product.price %></p>
-	<p><%= sanitize markdownify @product.description %></p>
+	
+	<div class="col-md-6">
+		<h1><%= sanitize markdownify @product.title %></h1>
+		<p><%= @product.price %></p>
+		<p><%= sanitize markdownify @product.description %></p>
+		<p><%= local_time_ago @product.created_at %></p>
 
-	<p><%= sanitize @product.user.email %></p>
-	<% if @product.user.phone_number? %>
-		<p><%= sanitize @product.user.phone_number %></p>
-	<% elsif @product.contact_pref? %>
-		<p><%= sanitize @product.contact_pref %></p>
-	<% end %>
+		<div class="btn btn-default btn-contact-info">Contact Seller</div>
+		<% if @user.present? %>
+			<div class="show-contact-info" style="display: none;">
+				<p><i class="fa fa-envelope" aria-hidden="true"></i> <%= sanitize @product.user.email %></p>
+				<% if @product.user.phone_number? %>
+					<p><i class="fa fa-phone" aria-hidden="true"></i> <%= sanitize @product.user.phone_number %></p>
+				<% elsif @product.contact_pref? %>
+					<p><i class="fa fa-phone" aria-hidden="true"></i> <%= sanitize @product.contact_pref %></p>
+				<% end %>
+			</div>
+		<% end %>
+	</div>
 
 
-
-	<p><%= local_time_ago @product.created_at %></p>
 </div>
