@@ -46,7 +46,10 @@ header {
   position: fixed !important;
 }
 
-
+.alert {
+  margin-top: -20px;
+  border-radius: 0px;
+}
 
 trix-editor {
   border: 1px solid #bbb;

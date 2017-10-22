@@ -243,7 +243,7 @@ class UsersController < ApplicationController
     end
 
     def set_banner
-      @banner = Banner.find_by!(user_id: @user, market: @market)
+      @banner = Banner.where(user_id: @user, market: @market).first_or_create
     end
 
     def set_category

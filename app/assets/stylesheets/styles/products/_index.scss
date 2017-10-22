@@ -19,10 +19,16 @@ $image-container-preview-height: 100px;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
+		color: #444;
 	}
 
 	&:hover {
 		box-shadow: 0px 1px 2px #888888;
+	}
+
+	&:hover #new_flag {
+		display: inline-block;
+		float: right;
 	}
 }
 
@@ -41,6 +47,11 @@ $image-container-preview-height: 100px;
 	margin-bottom: 30px;
 }
 
+.btn-flag {
+	background: none;
+	border: none;
+}
 
-
-
+#new_flag {
+	display: none;
+}
