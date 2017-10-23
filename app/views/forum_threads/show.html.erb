@@ -13,9 +13,9 @@
 
 <div class="container">
   <h1><%= sanitize  markdownify @forum_thread.subject %></h1>
-  <p class="text-muted">Started <%= local_time_ago @forum_thread.created_at %> by <%= sanitize @forum_thread.user.name %></p>
+  <h5 class="forum-thread-post forum-thread-post-details forum-thread-post-date">Started <%= local_time_ago @forum_thread.created_at %> by <%= sanitize @forum_thread.user.username %></h5>
+  <hr>
   <%= render @forum_thread.forum_posts %>
-
-  <hr />
+  <hr>
   <%= render partial: "forum_posts/form" %>
 </div>

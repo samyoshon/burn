@@ -13,7 +13,7 @@ function previewFiles() {
 
       reader.addEventListener("load", function () {
         var image = new Image();
-        image.height = 100;
+        image.height = 75;
         image.title = file.name;
         image.src = this.result;
         preview.appendChild( image );

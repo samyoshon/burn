@@ -28,7 +28,7 @@
 .forum-thread-post {
   display: inline-block;
 
-  a:hover {
+  a:hover, a:active, a:focus {
     text-decoration: none;
   }
 }
@@ -56,7 +56,6 @@
 .forum-thread-post-date {
   font-weight: 200;
 }
-
 
 .forum-thread-post-username {
   font-weight: 500;

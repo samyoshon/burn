@@ -61,6 +61,10 @@ $image-container-preview-height: 100px;
 	height: $image-container-preview-height;
 }
 
+#preview img {
+	height: $image-container-preview-height;
+}
+
 .no-image {
 	margin-bottom: 30px;
 }
