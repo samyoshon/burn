@@ -2,7 +2,7 @@
   <meta name="turbolinks-cache-control" content="no-cache">
 <% end %>
 
-<div class="col-lg-3 col-md-4 mb-4 product-container">
+<div class="col-lg-3 col-md-4 col-sm-6 mb-4 product-container">
   <div class="card h-100">
     <% if product.images.present? %>
 		<div class="scroller">
@@ -23,11 +23,11 @@
 			<%= sanitize markdownify product.title %>
 		<% end %>
       </h4>
-      <h5><%= product.price %></h5>
+      <h5>$<%= product.price %></h5>
       <h5 class="card-text product-description"><%= sanitize markdownify product.description %></h5>
     </div>
     <div class="card-footer">
-      <small class="badge"><%= sanitize product.category.category_name %></small>
+      <small><%= local_time_ago product.created_at %></small>
       <% if @user.present? %>
 		<%= form_for @flag, url: product_flag_path do |f| %>
 			<%= f.hidden_field :product_id, :value => product.id %>

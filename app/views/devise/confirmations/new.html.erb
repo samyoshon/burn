@@ -1,12 +1,22 @@
-<h2>Resend confirmation instructions</h2>
+<div class="container">
+	<div class="row">
+    	<div class="col-sm-8 col-sm-offset-2 sign-up-div">
 
-<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
+    		<h2>Resend confirmation instructions</h2>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true, class: "form-control" %></div>
+			<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+			  <%= devise_error_messages! %>
 
-  <div><%= f.submit "Resend confirmation instructions", class: "btn btn-primary" %></div>
-<% end %>
+			  <div><%= f.label :email %><br />
+			  <%= f.email_field :email, :autofocus => true, class: "form-control" %></div>
 
-<%= render "devise/shared/links" %>
+			  <br>
+
+			  <div><%= f.button "Resend confirmation instructions", class: "btn btn-primary", 'data-disable-with' => "<i class='fa fa-spinner fa-spin'></i> Resending...", style: "background-color: #{@market.first_color}; border-color: #{@market.first_color}" %></div>
+			  <% end %>
+			<hr>
+			<%= render "devise/shared/links" %>
+
+		</div>
+	</div>
+</div>

@@ -1,0 +1,39 @@
+/* VARIABLES */
+
+$show-image-container-height: 500px;
+$show-image-selection-container-height: 50px;
+$profile-image-container-height: 40px;
+$box-shadow: 0px 1px 2px #888888;
+
+/* VARIABLES END */
+
+.show-image-container {
+	height: $show-image-container-height;
+	width: 100%;
+	object-fit: contain;
+}
+
+.show-image-selection-container {
+	height: $show-image-selection-container-height;
+}
+
+.profile-image-container {
+	height: $profile-image-container-height;
+	width: $profile-image-container-height;
+	display: inline-block;
+    border-radius: 50%;
+    object-fit: contain;
+}
+
+.social-icons a {
+	height: 20px;
+}
+
+.show-images-container {
+	padding: 0px 50px;
+}
+
+.show-details-container {
+	box-shadow: $box-shadow;
+	padding: 20px;
+}

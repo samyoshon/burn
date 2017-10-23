@@ -10,17 +10,17 @@ $(document).on('turbolinks:load', function() {
 	$('.slider-for').slick({
 		slidesToShow: 1,
 		slidesToScroll: 1,
-		arrows: false,
+		arrows: true,
 		fade: true,
 		asNavFor: '.slider-nav'
 	});
 	
 	$('.slider-nav').slick({
-		slidesToShow: 3,
+		slidesToShow: 6,
 		slidesToScroll: 1,
 		asNavFor: '.slider-for',
 		dots: true,
-		centerMode: true,
+		centerMode: false,
 		focusOnSelect: true
 	});
 			

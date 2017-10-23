@@ -31,9 +31,9 @@
   <div class="form-group">
     <% if current_user.is_advertiser == true %>
       <h6>Sorry, advertisers do not have permissions to post.</h6>
-      <%= f.button "Post Thread", class: "btn btn-primary", disabled: true %>
+      <%= f.button "Post Thread", class: "btn btn-primary", disabled: true, style: "background-color: #{@market.first_color}; border-color: #{@market.first_color}" %>
     <% else %>
-      <%= f.button "Post Thread", class: "btn btn-primary", 'data-disable-with' => "<i class='fa fa-spinner fa-spin'></i> Posting Thread...".html_safe %>
+      <%= f.button "Post Thread", class: "btn btn-primary", 'data-disable-with' => "<i class='fa fa-spinner fa-spin'></i> Posting Thread...".html_safe, style: "background-color: #{@market.first_color}; border-color: #{@market.first_color}" %>
     <% end %>
   </div>
 <% end %>

@@ -5,16 +5,17 @@ $pagination_count = 50
 
 
 class ProductsController < ApplicationController
+  before_action :set_market
   before_action :set_product, except: [:index, :new, :create]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
 
   def index
     @q = Product.search(params[:q])
 
-    @products = Product.paginate(page: params[:page], per_page: $pagination_count).where("market_id = ? AND products.expire_date IS null OR products.expire_date > ?", @market.id, Time.now)
+    @products = Product.paginate(page: params[:page], per_page: $pagination_count).where("market_id = ? AND (products.expire_date IS null OR products.expire_date > ?)", @market.id, Time.now)
 
     if params[:q].present?
-      @products = @q.result.paginate(page: params[:page], per_page: $pagination_count).where("market_id = ? AND products.expire_date IS null OR products.expire_date > ?", @market.id, Time.now)
+      @products = @q.result.paginate(page: params[:page], per_page: $pagination_count).where("market_id = ? AND (products.expire_date IS null OR products.expire_date > ?)", @market.id, Time.now)
     end
 
     @banner = Banner.first_or_create
@@ -90,16 +91,12 @@ class ProductsController < ApplicationController
 
   private
 
-  # def set_market
-  #   @market = Market.find_by_subdomain!(request.subdomain) unless request.subdomain.empty?
-  # end
-
-  # def set_product
-  #   @product = Product.find(params[:id])
-  # end
+  def set_market
+    @market = Market.find_by_subdomain!(request.subdomain) unless request.subdomain.empty?
+  end
 
   def set_product
-    @product = Product.find_by(id: params[:id], market: @market)
+    @product = Product.find_by!(id: params[:id], market: @market)
   rescue
     flash[:alert] = "Product could not be found"
     redirect_to root_path

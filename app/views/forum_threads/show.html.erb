@@ -13,7 +13,7 @@
 
 <div class="container">
   <h1><%= sanitize  markdownify @forum_thread.subject %></h1>
-  <p class="text-muted">Created by <%= sanitize @forum_thread.user.name %></p>
+  <p class="text-muted">Started <%= local_time_ago @forum_thread.created_at %> by <%= sanitize @forum_thread.user.name %></p>
   <%= render @forum_thread.forum_posts %>
 
   <hr />

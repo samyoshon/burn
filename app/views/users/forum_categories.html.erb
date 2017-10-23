@@ -43,7 +43,7 @@
 
       <%= f.hidden_field :market, value: $current_market %>
       <div class="form-group">
-        <%= f.submit "Create Forum Category", class: "btn btn-primary", 'data-disable-with' => "Creating Forum Category...".html_safe %>
+        <%= f.button "Create Forum Category", class: "btn btn-primary", 'data-disable-with' => "Creating Forum Category...".html_safe, style: "background-color: #{@market.first_color}; border-color: #{@market.first_color}" %>
       </div>
     <% end %>
   </div>

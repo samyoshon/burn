@@ -8,18 +8,31 @@ $image-container-preview-height: 100px;
 
 .product-container {
 	height: $product-container-height;
-	margin-top: 15px;
+	margin-bottom: 15px;
 
 	a {
 		text-decoration: none;
 	}
 	
-	.product-title p, .product-description div {
+	.product-title p {
 		height: 20px;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		color: #444;
+	}
+
+	.product-description div {
+		display: none;
+	}
+
+	.product-description div:first-child {
+		height: 20px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		color: #444;
+		display: block;
 	}
 
 	&:hover {
@@ -29,6 +42,11 @@ $image-container-preview-height: 100px;
 	&:hover #new_flag {
 		display: inline-block;
 		float: right;
+	}
+
+	&:hover .product-title p {
+		color: #777;
+    	text-decoration: underline;
 	}
 }
 

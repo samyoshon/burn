@@ -5,31 +5,45 @@
 	  	<%= @banner.product_show %>
 	  </div>
 	<% end %>
+  <!-- Portfolio Item Heading -->
+  
 
-	<div class="col-md-6">
-		<% if @product.images.present? %>
+  <!-- Portfolio Item Row -->
+  <div class="row">
+
+    <div class="col-md-7 show-images-container">
+      	<% if @product.images.present? %>
 			<div class="slider slider-for">
 				<% @product.images.each do |p| %>
-					<div><%= image_tag(p.url, class: "image-container") %></div>
+					<div><%= image_tag(p.url, class: "show-image-container") %></div>
 				<% end %>
 			</div>
 			<div class="slider slider-nav">
 				<% @product.images.each do |p| %>
-					<div><%= image_tag(p.url, class: "image-container") %></div>
+					<div><%= image_tag(p.url, class: "show-image-selection-container") %></div>
 				<% end %>
 			</div>
 		<% else %>
 			<div><%= image_tag("no-image.png", alt: "Default Profile Pic", class: "image-container no-image") %></div>
 		<% end %>
-	</div>
-	
-	<div class="col-md-6">
-		<h1><%= sanitize markdownify @product.title %></h1>
-		<p><%= @product.price %></p>
-		<p><%= sanitize markdownify @product.description %></p>
-		<p><%= local_time_ago @product.created_at %></p>
+    </div>
 
-		<div class="btn btn-default btn-contact-info">Contact Seller</div>
+    <div class="col-md-5 show-details-container">
+      <h3><%= image_tag(@product.user.images.url, class: "profile-image-container") %> <%= @product.user.username %></h3>
+  	  <h4 class="social-icons">
+  		<a href="#" ><i class="fa fa-facebook" aria-hidden="true" style="color: <%= @market.first_color %>"></i></a>
+  		<a href="#"><i class="fa fa-instagram" aria-hidden="true" style="color: <%= @market.first_color %>"></i></a>
+  		<a href="#"><i class="fa fa-snapchat" aria-hidden="true" style="color: <%= @market.first_color %>"></i></a>
+  		<a href="#"><i class="fa fa-twitter" aria-hidden="true" style="color: <%= @market.first_color %>"></i></a>
+  	  </h4>
+      <p><%= local_time_ago @product.created_at %></p>
+      <hr>
+      <h2 class="my-4"><%= sanitize markdownify @product.title %></h2>
+      <h4 class="my-3">Product Description</h4>
+      <p><%= sanitize markdownify @product.description %></p>
+      <p>$<%= @product.price %></p>
+      <hr>
+      <div class="btn btn-default btn-contact-info">Contact Seller</div>
 		<% if @user.present? %>
 			<div class="show-contact-info" style="display: none;">
 				<p><i class="fa fa-envelope" aria-hidden="true"></i> <%= sanitize @product.user.email %></p>
@@ -40,7 +54,8 @@
 				<% end %>
 			</div>
 		<% end %>
-	</div>
+	 </div>
+    </div>
 
-
-</div>
+    
+  </div>
