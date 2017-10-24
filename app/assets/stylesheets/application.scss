@@ -43,10 +43,6 @@ header {
   padding-top: 75px;
 }
 
-.user-sidenav {
-  position: fixed !important;
-}
-
 .alert {
   margin-top: -20px;
   border-radius: 0px;
@@ -82,12 +78,14 @@ input[type=number]::-webkit-outer-spin-button {
 	padding: 0 20px;
 }
 
-a.tooltip-icon:hover {
-  text-decoration: none;
-}
-
 .navbar {
   background: #fff;
   border-bottom: 5px solid transparent;
 }
 
+footer {
+  margin-top: 100px;
+  height: 100px;
+  width: 100%;
+  background-color: #e7e7e7;
+}

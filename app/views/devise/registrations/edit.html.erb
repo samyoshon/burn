@@ -41,10 +41,22 @@
       <div class="form-group">
         <div><%= f.label :phone_number %><a href="#" class="tooltip-icon" data-toggle="tooltip" title="Add a phone number if you'd like the option to be contacted via text."> <i class="fa fa-info-circle" aria-hidden="true"></i> </a><br />
         <%= f.phone_field :phone_number, required: true, placeholder: "(XXX) XXX-XXXX", class: "form-control" %>
+        </div>
       </div>
 
-      <br>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.select(:school_program, options_for_select(['Undergraduate', 'Graduate', 'Post Graduate'], 3), {prompt: true, required: true}, {class: "form-control"}) %>
+          </div>
+        </div>
 
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.select(:school_class, options_for_select((2018..2025).map{|n| n%1 == 0 ? n.to_i : n}, 3), {prompt: true, required: true}, {class: "form-control"}) %>
+          </div>
+        </div>
+      </div>
       <div class="row">
         <div class="col-sm-4">
           <div class="form-group" id="input-container">

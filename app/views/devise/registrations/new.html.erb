@@ -40,7 +40,21 @@
           </div>
 
           <br>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.select(:school_program, options_for_select(['Undergraduate', 'Graduate', 'Post Graduate'], 3), {prompt: true, required: true}, {class: "form-control"}) %>
+              </div>
+            </div>
 
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.select(:school_class, options_for_select((2018..2025).map{|n| n%1 == 0 ? n.to_i : n}, 3), {prompt: true, required: true}, {class: "form-control"}) %>
+              </div>
+            </div>
+          </div>
+
+          <br>
           <div class="form-group">
             <%= f.password_field :password, required: true, autocomplete: "off", placeholder: "Password", class: "form-control" %>
           </div>
@@ -48,7 +62,7 @@
           <%= f.hidden_field :market_id, :value => @market.id %> 
             
           <div class="form-group">
-            <%= f.button "Sign up", class: "btn btn-success btn-block", 'data-disable-with' => "<i class='fa fa-spinner fa-spin'></i> Signing up...".html_safe, style: "background-color: #{@market.first_color}; border-color: #{@market.first_color}" %>
+            <%= f.button "Sign up", class: "btn btn-success btn-block btn-gradient", 'data-disable-with' => "<i class='fa fa-spinner fa-spin'></i> Signing up...".html_safe, style: "background: #{@market.first_color};  background: -webkit-linear-gradient(left, #{@market.first_color} , #{@market.second_color}); background: -o-linear-gradient(right, #{@market.first_color}, #{@market.second_color}); background: -moz-linear-gradient(right, #{@market.first_color}, #{@market.second_color}); background: linear-gradient(to right, #{@market.first_color} , #{@market.second_color});"%>
           </div>
         <% end %>
       <hr>

@@ -43,7 +43,7 @@
       <p><%= sanitize markdownify @product.description %></p>
       <p>$<%= @product.price %></p>
       <hr>
-      <div class="btn btn-default btn-contact-info">Contact Seller</div>
+      <div class="btn btn-contact-info btn-gradient btn-block" style="background: <%= @market.first_color %>;  background: -webkit-linear-gradient(left, <%= @market.first_color %> , <%= @market.second_color %>); background: -o-linear-gradient(right, <%= @market.first_color %>, <%= @market.second_color %>); background: -moz-linear-gradient(right, <%= @market.first_color %>, <%= @market.second_color %>); background: linear-gradient(to right, <%= @market.first_color %> , <%= @market.second_color %>);">Contact Seller</div>
 		<% if @user.present? %>
 			<div class="show-contact-info" style="display: none;">
 				<p><i class="fa fa-envelope" aria-hidden="true"></i> <%= sanitize @product.user.email %></p>

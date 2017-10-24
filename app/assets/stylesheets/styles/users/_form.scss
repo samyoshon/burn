@@ -1,0 +1,33 @@
+input {
+	border-radius: 0 !important;
+}
+
+#input_container { 
+    position:relative;
+}
+
+#input-social { 
+    margin:0;
+    padding-left:30px;
+}
+
+#input-social-icon {
+    position:absolute;
+    bottom: 25px;
+    left: 25px;
+}
+
+a.tooltip-icon:hover, a.tooltip-icon:focus {
+  text-decoration: none;
+}
+
+.btn-gradient {
+	border: none;
+	border-radius: 0;
+	font-weight: 900;
+	font-size: 15px;
+
+	&:hover {
+		opacity: 0.8;
+	}
+}

@@ -4,7 +4,7 @@ $(document).on('turbolinks:load', function() {
 
   // phone number validation
   $("input[type='tel']").each(function(){
-    $(this).on("change keyup paste", function (e) {
+    $(this).on("keyup paste", function (e) {
       var output,
         $this = $(this),
         input = $this.val();
