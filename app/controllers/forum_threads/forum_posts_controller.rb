@@ -22,6 +22,6 @@ class ForumThreads::ForumPostsController < ApplicationController
     end
 
     def forum_post_params
-      params.require(:forum_post).permit(:body, {images:[]})
+      params.require(:forum_post).permit(:body, :images)
     end
 end

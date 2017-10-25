@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20171024034821) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "images", default: [], array: true
+    t.text "images"
   end
 
   create_table "forum_threads", id: :serial, force: :cascade do |t|

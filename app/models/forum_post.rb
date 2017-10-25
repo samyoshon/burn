@@ -1,7 +1,7 @@
 class ForumPost < ApplicationRecord
   # include ImageUploader::Attachment.new(:image)
 
-  mount_uploaders :images, ImageUploader
+  mount_uploader :images, ImageUploader
   belongs_to :user
   belongs_to :forum_thread
 

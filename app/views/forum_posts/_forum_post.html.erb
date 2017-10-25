@@ -2,8 +2,8 @@
   <p class="text-muted"><%= image_tag(forum_post.user.images.url, class: "profile-image-container") %> <%= forum_post.user.username %> <%=  local_time_ago forum_post.created_at %></p>
   <div class="forum-thread-show-forum-posts-container">
 	  <p><%= sanitize markdownify forum_post.body %></p>
-	  <% forum_post.images.each do |p| %>
-		<div><%= image_tag(p.url, class: "image-container") %></div>
-	  <% end %>
+	  <% if forum_post.images.url.present? %>
+        <div><%= image_tag forum_post.images.url, class: "image-container" %></div>
+      <% end %>
   </div>
 <% end %>
