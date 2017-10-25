@@ -1,6 +1,9 @@
 <div class="col-sm-3 col-md-2 sidenav-container">
 	<div class="sidenav">
-		<%= search_form_for @q, html: { class: "form-inline category_id"} do |f| %>
+	  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Filters
+  	  </a>
+		<%= search_form_for @q, html: { class: "form-inline category_id collapse", id: "collapseExample"} do |f| %>
 			<h6 class="market-highlight" style="color: <%= @market.first_color %>">Categories</h6>
 			<% Category.all.order("category_name asc").each do |category| %>
 	        	<label class="sidenav-category-label">
