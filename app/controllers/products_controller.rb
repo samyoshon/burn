@@ -1,11 +1,11 @@
 #global
-$max_products = 5
+$max_products = 10
 $days_posted = 14
 $pagination_count = 50
 
 
 class ProductsController < ApplicationController
-  before_action :set_market
+  # before_action :set_market
   before_action :set_product, except: [:index, :new, :create]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
 
@@ -17,8 +17,6 @@ class ProductsController < ApplicationController
     if params[:q].present?
       @products = @q.result.paginate(page: params[:page], per_page: $pagination_count).where("market_id = ? AND (products.expire_date IS null OR products.expire_date > ?)", @market.id, Time.now)
     end
-
-    @banner = Banner.first_or_create
     @flag = Flag.new
     @user = current_user
 
@@ -47,13 +45,11 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @banner = Banner.first_or_create
     @user = current_user
   end
 
   def new
     @product = Product.new
-    @banner = Banner.first_or_create
     @user = current_user
     @products = current_user.products.count
   end

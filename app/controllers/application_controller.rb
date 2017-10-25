@@ -10,7 +10,15 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
   before_action :set_market
+  before_action :set_banner
   # layout :layout_by_resource
+  before_action :store_user_location!, if: :storable_location?
+  # The callback which stores the current location must be added before you authenticate the user 
+  # as `authenticate_user!` (or whatever your resource is) will halt the filter chain and redirect 
+  # before the location can be stored.
+  before_action :authenticate_user!
+
+
 
   def after_sign_in_path_for(resource)
     sign_in_url = new_user_session_url
@@ -55,12 +63,11 @@ class ApplicationController < ActionController::Base
   end
 
   def set_market
-    # @market = Market.find_by_subdomain!(request.subdomain) unless request.subdomain.empty?
     @market = Market.find_by(subdomain: request.subdomain) unless request.subdomain.empty?
   end
 
-  def current_market
-    @market = Market.find_by(subdomain: request.subdomain) unless request.subdomain.empty?
+  def set_banner
+    @banner = Banner.first_or_create
   end
 
   private 
@@ -70,6 +77,21 @@ class ApplicationController < ActionController::Base
     else
       "application"
     end
+  end
+
+
+  # Its important that the location is NOT stored if:
+  # - The request method is not GET (non idempotent)
+  # - The request is handled by a Devise controller such as Devise::SessionsController as that could cause an 
+  #    infinite redirect loop.
+  # - The request is an Ajax request as this can lead to very unexpected behaviour.
+  def storable_location?
+    request.get? && is_navigational_format? && !devise_controller? && !request.xhr? 
+  end
+
+  def store_user_location!
+    # :user is the scope we are authenticating
+    store_location_for(:user, request.fullpath)
   end
 
 end

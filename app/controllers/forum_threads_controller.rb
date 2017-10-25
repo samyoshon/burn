@@ -1,5 +1,4 @@
 class ForumThreadsController < ApplicationController
-  before_action :set_banner
   before_action :set_forum_thread, except: [:index, :new, :create]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
 
@@ -11,14 +10,10 @@ class ForumThreadsController < ApplicationController
     if params[:q].present?
       @forum_threads = @q.result.paginate(page: params[:page], per_page: $pagination_count).where("market_id = ?", @market.id)
     end
-
-    # @banner = Banner.first
   end
 
   def show
     @forum_post = ForumPost.new
-
-    # @banner = Banner.first
   end
 
   def new
@@ -28,7 +23,6 @@ class ForumThreadsController < ApplicationController
     else
       @forum_thread = ForumThread.new
       @forum_thread.forum_posts.new
-      # @banner = Banner.first
     end
   end
 
@@ -47,7 +41,7 @@ class ForumThreadsController < ApplicationController
   private
 
     def set_banner
-      @banner = Banner.first
+      @banner = Banner.first_or_create
     end
 
     def set_forum_thread

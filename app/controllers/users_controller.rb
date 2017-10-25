@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  helper_method :current_market
+  # helper_method :current_market
   before_action :authenticate_user!, :set_user
-  # helper_method :set_market
+  helper_method :set_market
 
 
   # load_and_authorize_resource
@@ -38,7 +38,6 @@ class UsersController < ApplicationController
 
   def profile
     @user = current_user
-    @banner = Banner.first
   end
 
   def advertisers

@@ -66,9 +66,9 @@
     <p id="fp"></p> 
     <% if @products > $max_products %>
       <h6>You can only have <%= $max_products %> products posted at once.</h6>
-      <%= f.button "Post Product", class: "btn btn-primary", disabled: true, id: "product-submit-btn", style: "background-color: #{@market.first_color}; border-color: #{@market.first_color}" %>
+      <%= f.button "Post Product", class: "btn btn-primary btn-post", disabled: true, id: "product-submit-btn", style: "background-color: #{@market.first_color}; border-color: #{@market.first_color}" %>
     <% else %>
-      <%= f.button "Post Product", class: "btn btn-primary", id: "product-submit-btn", 'data-disable-with' => "<i class='fa fa-spinner fa-spin'></i> Posting Product...".html_safe, style: "background-color: #{@market.first_color}; border-color: #{@market.first_color}" %>
+      <%= f.button "Post Product", class: "btn btn-primary btn-post", id: "product-submit-btn", 'data-disable-with' => "<i class='fa fa-spinner fa-spin'></i> Posting Product...".html_safe, style: "background-color: #{@market.first_color}; border-color: #{@market.first_color}" %>
     <% end %>
   </div>
 <% end %>

@@ -2,12 +2,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def new
     super
-    $current_market = current_market
+    $current_market = set_market
   end
 
   def edit
     super
-    $current_market = current_market
+    $current_market = set_market
   end
 
   def after_sign_up_path_for(resource)

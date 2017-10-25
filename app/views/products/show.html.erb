@@ -1,10 +1,10 @@
+<% if @banner.product_show.present? %>
+    <div class="alert alert-info alert-dismissable">
+  	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  	<%= @banner.product_show %>
+  </div>
+<% end %>
 <div class="container">
-	<% if @banner.product_show.present? %>
-	    <div class="alert alert-info alert-dismissable">
-	  	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-	  	<%= @banner.product_show %>
-	  </div>
-	<% end %>
   <!-- Portfolio Item Heading -->
   
 

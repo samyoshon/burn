@@ -4,6 +4,7 @@
 	  <p><%= sanitize markdownify forum_post.body %></p>
 	  <% if forum_post.images.url.present? %>
         <div><%= image_tag forum_post.images.url, class: "image-container" %></div>
+      <% else %>
       <% end %>
   </div>
 <% end %>
