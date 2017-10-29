@@ -26,4 +26,7 @@ $(function(){
 		limit: 7
 		// 'data': "/users.json"
 		});
+
+
 });
+
