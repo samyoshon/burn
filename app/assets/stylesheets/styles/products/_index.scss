@@ -6,6 +6,14 @@ $image-container-preview-height: 100px;
 
 /* VARIBLES END */
 
+@media screen and (max-width: 768px) {
+    .container-mobile {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+
+
 .product-container {
 	height: $product-container-height;
 	margin-bottom: 15px;

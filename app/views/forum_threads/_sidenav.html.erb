@@ -1,6 +1,12 @@
-<div class="col-md-2 sidenav-container">
+<a class="sidenav-filters-btn" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+	<div class="col-sm-3 col-md-2 sidenav-container sidenav-container-filters">
+	  	<div ><h4 class="sidenav-filters-header" style="color: <%= @market.first_color %>"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Filters</h4></div>
+	</div>
+</a>
+
+<div class="col-sm-3 col-md-2 sidenav-container sidenav-container-main">
 	<div class="sidenav">
-		<%= search_form_for @q, html: { class: "form-inline category_id"} do |f| %>
+		<%= search_form_for @q, html: { class: "form-inline category_id collapse sidenav-categories", id: "collapseExample"} do |f| %>
 			<h6 class="market-highlight" style="color: <%= @market.first_color %>">Topics</h6>
 			<% ForumCategory.all.order("category_name asc").each do |forum_category| %>
 	        	<label class="sidenav-category-label">

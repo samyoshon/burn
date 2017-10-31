@@ -1,6 +1,8 @@
 <div class="content-container">
+	<div>
 	<%= search_form_for @q, html: { class: "form-inline category_id"} do |f| %>
-	    <%= f.search_field :subject_cont, placeholder: "Search...", class: "form-control" %>
+	    <%= f.search_field :subject_cont, placeholder: "Search...", autofocus: true, class: "form-control" %>
 	    <%= f.button "Search", class: "btn btn-primary", 'data-disable-with' => "<i class='fa fa-spinner fa-spin'></i> Searching...".html_safe, style: "background-color: #{@market.first_color}; border-color: #{@market.first_color}" %>
 	<% end %>
+	</div>
 </div>

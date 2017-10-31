@@ -10,9 +10,9 @@
 
   <h1 class="page-header">Marketplace</h1>
   <%= render partial: "products/sidenav" %>
-  <div class="container col-sm-9 col-md-10"> 
+  <div class="col-sm-9 col-md-10 container-mobile"> 
   	<%= render @products %>
-    <div class="container col-md-12">
+    <div class="col-md-12">
       <%= will_paginate @products %>
     </div>
   </div>

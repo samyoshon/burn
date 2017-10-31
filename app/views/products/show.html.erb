@@ -12,7 +12,7 @@
   <div class="row">
 
     <div class="col-md-7 show-images-container">
-      	<% if @product.images.present? %>
+    <% if @product.images.present? %>
 			<div class="slider slider-for">
 				<% @product.images.each do |p| %>
 					<div><%= image_tag(p.url, class: "show-image-container") %></div>
@@ -44,18 +44,21 @@
       <p>$<%= @product.price %></p>
       <hr>
       <div class="btn btn-contact-info btn-gradient btn-block" style="background: <%= @market.first_color %>;  background: -webkit-linear-gradient(left, <%= @market.first_color %> , <%= @market.second_color %>); background: -o-linear-gradient(right, <%= @market.first_color %>, <%= @market.second_color %>); background: -moz-linear-gradient(right, <%= @market.first_color %>, <%= @market.second_color %>); background: linear-gradient(to right, <%= @market.first_color %> , <%= @market.second_color %>);">Contact Seller</div>
-		<% if @user.present? %>
-			<div class="show-contact-info" style="display: none;">
+		<div class="show-contact-info show-contact-info-hidden">
+    <% if current_user.present? %>
+        <h5>Contact Details:</h5>
 				<p><i class="fa fa-envelope" aria-hidden="true"></i> <%= sanitize @product.user.email %></p>
 				<% if @product.user.phone_number? %>
 					<p><i class="fa fa-phone" aria-hidden="true"></i> <%= sanitize @product.user.phone_number %></p>
 				<% elsif @product.contact_pref? %>
 					<p><i class="fa fa-phone" aria-hidden="true"></i> <%= sanitize @product.contact_pref %></p>
 				<% end %>
-			</div>
-		<% end %>
-	 </div>
-    </div>
+    <% else %>
+      <h5><%= link_to "Log in to see contact details.", new_user_session_path() %></h5>
+    <% end %>
+		</div>
+	</div>
+</div>
 
     
   </div>

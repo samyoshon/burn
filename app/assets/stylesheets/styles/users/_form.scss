@@ -31,3 +31,9 @@ a.tooltip-icon:hover, a.tooltip-icon:focus {
 		opacity: 0.8;
 	}
 }
+
+.container-flex {
+	display: flex;
+	align-items: center;
+  	justify-content: center;
+}

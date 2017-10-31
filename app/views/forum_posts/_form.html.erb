@@ -19,7 +19,7 @@
       <h6>Sorry, advertisers do not have permissions to post.</h6>
       <%= f.button "Post Comment", class: "btn btn-primary btn-post", disabled: true, style: "background-color: #{@market.first_color}; border-color: #{@market.first_color}" %>
     <% else %>
-      <h6><%= link_to "You need to sign in to add comment.", new_user_session_path() %></h6>
+      <h5><%= link_to "Log in to add a comment.", new_user_session_path() %></h5>
       <%= f.button "Post Comment", class: "btn btn-primary btn-post", disabled: true, style: "background-color: #{@market.first_color}; border-color: #{@market.first_color}" %>
     <% end %>
   </div>

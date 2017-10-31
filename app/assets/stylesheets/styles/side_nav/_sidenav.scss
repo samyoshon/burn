@@ -28,7 +28,7 @@ $box-shadow: 0px 1px 2px #888888;
   margin: 0;
 }
 
-#product_search, .sidenav-container {
+#product_search, #forum_thread_search, .sidenav-container {
   padding: 12px;
   box-shadow: $box-shadow;
 }
@@ -64,7 +64,7 @@ li.list-group-item {
   padding: 0;
 }
 
-li.active > a {
+.sidenav-nav > li.active > a {
   color: white !important;
   background-color: #337ab7 !important;
   border-color: #337ab7 !important;
