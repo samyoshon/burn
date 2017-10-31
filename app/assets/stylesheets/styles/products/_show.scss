@@ -13,6 +13,13 @@ $box-shadow: 0px 1px 2px #888888;
 	object-fit: contain;
 }
 
+@media screen and (max-width: 768px) {
+    .show-image-container {
+		height: 100%;
+	}
+}
+
+
 .show-image-selection-container {
 	height: $show-image-selection-container-height;
 }

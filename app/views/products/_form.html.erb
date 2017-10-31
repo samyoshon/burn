@@ -46,14 +46,14 @@
     <div class="col-sm-6">
       <div class="form-group">
         <%= f.check_box :contact_by_email, placeholder: "contact via email", rows: 10, class: "form-product-contact", disabled: true %>
-        <%= current_user.email %>
+        <i class="fa fa-envelope" aria-hidden="true"></i> <%= current_user.email %>
         <br>
         <% if current_user.phone_number? %>
           <%= f.check_box :contact_by_phone, placeholder: "contact via phone", rows: 10, class: "form-product-contact", checked: true %>
-          <%= current_user.phone_number %>
+          <i class="fa fa-phone" aria-hidden="true"></i> <%= current_user.phone_number %>
         <% else %>
           <%= f.check_box :contact_by_phone, placeholder: "contact via phone", rows: 10, class: "form-product-contact" %>
-          <%= f.text_field :contact_pref, placeholder: "Description", rows: 10, class: "form-control" %>
+          <%= f.text_field :contact_pref, placeholder: "(XXX) XXX-XXXX", rows: 10, class: "form-control" %>
         <% end %>
       </div>
     </div>

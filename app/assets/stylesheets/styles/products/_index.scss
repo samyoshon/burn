@@ -6,13 +6,26 @@ $image-container-preview-height: 100px;
 
 /* VARIBLES END */
 
+.btn-search {
+	width: 75px;
+}
+
 @media screen and (max-width: 768px) {
     .container-mobile {
         padding-left: 0px;
         padding-right: 0px;
     }
-}
 
+    .form-search {
+    	display: inline-block;
+    	width: 75%;
+    }
+
+    .btn-search {
+    	display: inline-block;
+    	width: 22%;
+    }
+}
 
 .product-container {
 	height: $product-container-height;
