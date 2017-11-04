@@ -4,7 +4,7 @@
   	<%= @banner.product_show %>
   </div>
 <% end %>
-<div class="container">
+<div class="container mobile-container">
   <!-- Portfolio Item Heading -->
   
 
@@ -30,12 +30,22 @@
 
     <div class="col-md-5 show-details-container">
       <h3><%= image_tag(@product.user.images.url, class: "profile-image-container") %> <%= @product.user.username %></h3>
-  	  <h4 class="social-icons">
-  		<a href="#" ><i class="fa fa-facebook" aria-hidden="true" style="color: <%= @market.first_color %>"></i></a>
-  		<a href="#"><i class="fa fa-instagram" aria-hidden="true" style="color: <%= @market.first_color %>"></i></a>
-  		<a href="#"><i class="fa fa-snapchat" aria-hidden="true" style="color: <%= @market.first_color %>"></i></a>
-  		<a href="#"><i class="fa fa-twitter" aria-hidden="true" style="color: <%= @market.first_color %>"></i></a>
-  	  </h4>
+      <% if current_user.present? || (current_user.present? && current_user.is_advertiser != true) %>
+    	  <h4 class="social-icons">
+    		<% if @product.user.facebook? %>
+          <a href="#" ><i class="fa fa-facebook" aria-hidden="true" style="color: <%= @market.first_color %>"></i></a>
+        <% end %>
+        <% if @product.user.instagram? %>
+    		  <a href="#"><i class="fa fa-instagram" aria-hidden="true" style="color: <%= @market.first_color %>"></i></a>
+        <% end %>
+        <% if @product.user.snapchat? %>
+    		  <a href="#"><i class="fa fa-snapchat" aria-hidden="true" style="color: <%= @market.first_color %>"></i></a>
+        <% end %>
+        <% if @product.user.twitter? %>
+    		  <a href="#"><i class="fa fa-twitter" aria-hidden="true" style="color: <%= @market.first_color %>"></i></a>
+        <% end %>
+    	  </h4>
+      <% end %>
       <p><%= local_time_ago @product.created_at %></p>
       <hr>
       <h2 class="my-4"><%= sanitize markdownify @product.title %></h2>

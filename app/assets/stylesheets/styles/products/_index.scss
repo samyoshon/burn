@@ -25,6 +25,14 @@ $image-container-preview-height: 100px;
     	display: inline-block;
     	width: 22%;
     }
+
+    .no-image {
+		margin-bottom: 30px !important;
+	}
+
+	.image-container {
+		margin-top: 30px !important;
+	}
 }
 
 .product-container {
@@ -75,7 +83,7 @@ $image-container-preview-height: 100px;
 	height: $image-container-height;
 	width: 100%;
 	object-fit: contain;
-	margin-top: 20px;
+	margin-top: 10px;
 }
 
 .image-container-preview {
@@ -87,7 +95,7 @@ $image-container-preview-height: 100px;
 }
 
 .no-image {
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 }
 
 .btn-flag {

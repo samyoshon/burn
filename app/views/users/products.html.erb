@@ -1,10 +1,10 @@
 <div class="content-container">
 	<%= render partial: "users/sidenav" %>
 
-	<div class="container col-md-10">
+	<div class="container col-md-10 col-sm-12">
 		<h1>Previous Products</h1>
 		<table class="table-striped">
-			<tr>
+			<tr class="user-setting-tr-header">
 			    <th>Status</th>
 			    <th>Action</th>
 			    <th>Title</th>
@@ -28,7 +28,7 @@
 				 	<% end %>
 
 			<!-- view only none expired posts -->
-			  	<tr>
+			  	<tr class="user-setting-tr">
 				    <% if product.expire_date.nil? || product.expire_date > Time.now %>
 				    	<td>Active</td>
 				    	<td>
@@ -49,8 +49,6 @@
 				    <td><%= local_time_ago product.created_at.to_formatted_s(:db)  %></td>
 					<% if product.expire_date.present? %>
 						<td><%= product.expire_date > Time.now ? "" : local_time_ago(product.expire_date.to_formatted_s(:db)) %></td>
-					<% else %>
-						<td></td>
 					<% end %>
 
 				    <!-- link to update product -->

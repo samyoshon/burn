@@ -9,13 +9,20 @@ Devise.setup do |config|
   # config.secret_key = 'afa8a3128fb1d0a83582c1e658762796a9e28d52df2a51a08c9369d2817f308a9ba36fb048800c0bd68ac66b165f53c6d8f8b8d63e942b60219f0b683b3cee75'
 
   # ==> Mailer Configuration
+  # Adds subdomain to confirmation email.
+  config.mailer.class_eval do 
+    helper :subdomain 
+  end
+
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'noreply@slashform.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
+
+
 
   # Configure the parent class responsible to send e-mails.
   # config.parent_mailer = 'ActionMailer::Base'

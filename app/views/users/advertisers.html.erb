@@ -1,10 +1,10 @@
 <div class="content-container">
 	<%= render partial: "users/sidenav" %>
 
-	<div class="container col-md-10">
+	<div class="container col-md-10 col-sm-12">
 		<h1>Set Advertisers</h1>
 		<table class="table-striped">
-			<tr>
+			<tr class="user-setting-tr-header">
 			    <th>ID</th>
 			    <th>Advertiser</th>
 			    <th>Email</th>
@@ -30,7 +30,7 @@
 			
 			
 			<!-- link to update user -->
-			<tr>
+			<tr class="user-setting-tr">
 				<td><%= user.id %></td>
 				<td><%= user.is_advertiser %></td>
 				<td><%= user.email %></td>
@@ -42,6 +42,7 @@
 
 			<!-- expire user -->
 			<% end %>
-		<% end %>
+			<% end %>
+		</table>
 	</div>
 </div>

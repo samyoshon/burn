@@ -1,4 +1,13 @@
 .sign-up-div {
 	box-shadow: 0px 1px 2px #888888;
 	padding: 20px;  	
+	margin-top: 8%;
+	background-color: #eee;
+}
+
+@media screen and (max-width: 768px) {
+    .mobile-container {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
 }

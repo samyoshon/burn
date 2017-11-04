@@ -4,4 +4,8 @@ $(document).on('turbolinks:load', function() {
 		$('.show-contact-info').toggleClass('show-contact-info-hidden');
 		$(this).hide();
 	});
+
+	$('.product-container').hover(function() {
+		$('.slick-arrow').show();
+	});
 });

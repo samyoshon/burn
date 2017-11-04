@@ -15,6 +15,7 @@
 
 .slick-prev::before, .slick-next::before {
   color: rgba(0, 0, 0, 0.8) !important;
+  font-size: 28px !important;
 }
 
 .slick-next {
@@ -35,3 +36,13 @@
   width: 15% !important;
 }
 
+.slick-slider{
+    .slick-arrow{
+        display:none !important;
+    }
+    &:hover{
+        .slick-arrow{
+            display:block !important;
+        }
+    }
+}

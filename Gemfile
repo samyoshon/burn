@@ -116,3 +116,5 @@ gem 'jquery-slick-rails'
 # for @ mentions
 gem 'jquery-atwho-rails'
 # gem 'redcarpet'
+
+ruby "2.3.0"

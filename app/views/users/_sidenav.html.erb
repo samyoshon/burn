@@ -1,6 +1,12 @@
-<div class="col-sm-3 col-md-2">
+<a class="sidenav-filters-btn" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+	<div class="col-sm-3 col-md-2 sidenav-container sidenav-container-filters">
+	  	<div ><h4 class="sidenav-filters-header"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Settings</h4></div>
+	</div>
+</a>
+
+<div class="col-sm-3 col-md-2 sidenav-container sidenav-container-main sidenav-container-users">
 	<div class="sidenav">
-		<div class="list-group sidenav-nav">
+		<div class="sidenav-nav collapse sidenav-categories" id="collapseExample">
 			<li class="<%= active_class(edit_user_registration_path) %> list-group-item list-group-item-action">
 				<%= link_to "Profile", edit_user_registration_path, class: "list-group-item list-group-item-action" %> 
 			</li>

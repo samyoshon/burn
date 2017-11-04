@@ -23,5 +23,4 @@ $(document).on('turbolinks:load', function() {
 		centerMode: false,
 		focusOnSelect: true
 	});
-			
 });
