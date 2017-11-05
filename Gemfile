@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'dotenv-rails', groups: [:development, :test]
 # gem 'rails', '4.2.7'
 gem 'rails', '~> 5.1', '>= 5.1.3'
 # Use postgresql as the database for Active Record
