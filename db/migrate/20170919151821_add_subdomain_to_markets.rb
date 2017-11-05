@@ -1,4 +1,4 @@
-class AddSubdomainToMarkets < ActiveRecord::Migration
+class AddSubdomainToMarkets < ActiveRecord::Migration[4.2]
   def change
   	remove_column :products, :category_id
   	remove_column :products, :market_id

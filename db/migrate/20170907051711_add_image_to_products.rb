@@ -1,4 +1,4 @@
-class AddImageToProducts < ActiveRecord::Migration
+class AddImageToProducts < ActiveRecord::Migration[4.2]
   def change
   	add_column :products, :image_data, :text
   	add_column :forum_posts, :image_data, :text

@@ -1,4 +1,4 @@
-class CreateAddUsernameToUsers < ActiveRecord::Migration[5.1]
+class AddUsernameToUsers < ActiveRecord::Migration[5.1]
   def change
     add_column :users, :username, :string, unique: true
     add_column :products, :contact_by_email, :boolean, default: true

@@ -1,4 +1,4 @@
-class AddExpirationToProducts < ActiveRecord::Migration
+class AddExpirationToProducts < ActiveRecord::Migration[4.2]
   def change
     add_column :products, :expire_date, :datetime
     add_column :products, :view_count, :integer

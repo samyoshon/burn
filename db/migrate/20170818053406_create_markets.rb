@@ -1,4 +1,4 @@
-class CreateMarkets < ActiveRecord::Migration
+class CreateMarkets < ActiveRecord::Migration[4.2]
   def change
     create_table :markets do |t|
       t.integer :user_id

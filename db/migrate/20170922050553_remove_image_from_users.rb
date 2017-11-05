@@ -1,4 +1,4 @@
-class RemoveImageFromUsers < ActiveRecord::Migration
+class RemoveImageFromUsers < ActiveRecord::Migration[4.2]
   def change
   	remove_column :products, :image
   	remove_column :users, :image
