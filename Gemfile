@@ -106,7 +106,7 @@ gem 'carrierwave', '~> 1.0'
 gem 'carrierwave-imageoptimizer'
 gem 'mini_magick'
 gem 'slim-rails'
-gem 'fog-aws'
+gem 'fog-aws', group: :production
 
 # for email validations
 gem 'client_side_validations'

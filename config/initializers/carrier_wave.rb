@@ -1,3 +1,7 @@
+require 'carrierwave/storage/abstract'
+require 'carrierwave/storage/file'
+require 'carrierwave/storage/fog'
+
 CarrierWave.configure do |config|
   # config.root = Rails.root.join('tmp') # adding these...
   # config.cache_dir = 'carrierwave' # ...two lines
@@ -16,8 +20,6 @@ CarrierWave.configure do |config|
     config.storage = :file
     config.enable_processing = false
     config.root = "#{Rails.root}/tmp"
-  else
-    config.storage = :fog
   end
 
   config.cache_dir = "#{Rails.root}/tmp/uploads"                  # To let CarrierWave work on heroku
