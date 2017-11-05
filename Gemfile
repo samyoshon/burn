@@ -78,7 +78,7 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'html-pipeline'
 gem 'github-markdown'
 gem 'gemoji'
-gem 'commonmarker' #markdown
+# gem 'commonmarker' #markdown
 # gem 'github-linguist'
 
 # for font awesome
