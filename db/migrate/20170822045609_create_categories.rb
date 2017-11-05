@@ -6,6 +6,6 @@ class CreateCategories < ActiveRecord::Migration[4.2]
       t.timestamps null: false
     end
 
-    add_column :products, :category_id, :integer
+    # add_column :products, :category_id, :integer
   end
 end
