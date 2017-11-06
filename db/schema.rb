@@ -10,34 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171024034821) do
+ActiveRecord::Schema.define(version: 20171106004237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "banners", id: :serial, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "market_id"
+  create_table "banners", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "market_id"
     t.text "product_index"
     t.text "product_show"
+    t.text "product_new"
     t.text "forum_index"
     t.text "forum_show"
+    t.text "forum_new"
     t.text "account_profile"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "product_new"
-    t.text "forum_new"
     t.index ["market_id"], name: "index_banners_on_market_id"
     t.index ["user_id"], name: "index_banners_on_user_id"
   end
 
-  create_table "categories", id: :serial, force: :cascade do |t|
+  create_table "categories", force: :cascade do |t|
     t.string "category_name"
+    t.bigint "user_id"
+    t.bigint "market_id"
+    t.bigint "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "market_id"
-    t.bigint "group_id"
     t.index ["group_id"], name: "index_categories_on_group_id"
+    t.index ["market_id"], name: "index_categories_on_market_id"
+    t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
   create_table "flags", force: :cascade do |t|
@@ -49,85 +52,91 @@ ActiveRecord::Schema.define(version: 20171024034821) do
     t.index ["user_id"], name: "index_flags_on_user_id"
   end
 
-  create_table "forum_categories", id: :serial, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "market_id"
+  create_table "forum_categories", force: :cascade do |t|
+    t.string "category_name"
+    t.bigint "user_id"
+    t.bigint "market_id"
+    t.bigint "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "category_name"
-    t.bigint "group_id"
     t.index ["group_id"], name: "index_forum_categories_on_group_id"
     t.index ["market_id"], name: "index_forum_categories_on_market_id"
     t.index ["user_id"], name: "index_forum_categories_on_user_id"
   end
 
-  create_table "forum_posts", id: :serial, force: :cascade do |t|
-    t.integer "forum_thread_id"
-    t.integer "user_id"
+  create_table "forum_posts", force: :cascade do |t|
+    t.bigint "forum_thread_id"
+    t.bigint "user_id"
     t.text "body"
+    t.text "images"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "images"
+    t.index ["forum_thread_id"], name: "index_forum_posts_on_forum_thread_id"
+    t.index ["user_id"], name: "index_forum_posts_on_user_id"
   end
 
-  create_table "forum_threads", id: :serial, force: :cascade do |t|
-    t.integer "user_id"
+  create_table "forum_threads", force: :cascade do |t|
+    t.bigint "user_id"
     t.string "subject"
+    t.integer "view_count"
+    t.integer "post_count"
+    t.text "images"
+    t.bigint "market_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
-    t.integer "post_count"
-    t.integer "forum_category_id"
-    t.integer "market_id"
+    t.bigint "forum_category_id"
     t.index ["deleted_at"], name: "index_forum_threads_on_deleted_at"
     t.index ["forum_category_id"], name: "index_forum_threads_on_forum_category_id"
     t.index ["market_id"], name: "index_forum_threads_on_market_id"
+    t.index ["user_id"], name: "index_forum_threads_on_user_id"
   end
 
   create_table "groups", force: :cascade do |t|
-    t.bigint "market_id"
     t.string "name"
+    t.bigint "market_id"
     t.index ["market_id"], name: "index_groups_on_market_id"
   end
 
-  create_table "markets", id: :serial, force: :cascade do |t|
-    t.integer "user_id"
+  create_table "markets", force: :cascade do |t|
+    t.bigint "user_id"
     t.integer "store_id"
     t.string "title"
     t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "image_data"
     t.text "subdomain"
+    t.text "images"
     t.string "first_color"
     t.string "second_color"
     t.string "email_address_type"
-    t.bigint "group_id"
-    t.index ["group_id"], name: "index_markets_on_group_id"
-  end
-
-  create_table "products", id: :serial, force: :cascade do |t|
-    t.string "title"
-    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "group_id"
+    t.index ["group_id"], name: "index_markets_on_group_id"
+    t.index ["user_id"], name: "index_markets_on_user_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "market_id"
+    t.bigint "category_id"
+    t.string "title"
+    t.text "description"
+    t.string "images", default: [], array: true
+    t.integer "price"
     t.datetime "expire_date"
     t.integer "view_count"
     t.integer "contact_count"
-    t.integer "category_id"
-    t.integer "market_id"
-    t.integer "user_id"
-    t.text "images", default: [], array: true
-    t.integer "contact_pref"
+    t.string "contact_pref"
     t.boolean "contact_by_email", default: true
     t.boolean "contact_by_phone", default: false
-    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["market_id"], name: "index_products_on_market_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
-  create_table "users", id: :serial, force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -138,47 +147,53 @@ ActiveRecord::Schema.define(version: 20171024034821) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.string "first_name"
-    t.string "last_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.datetime "deleted_at"
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.boolean "is_advertiser", default: false
-    t.boolean "is_mod", default: false
-    t.integer "market_id"
-    t.text "images"
-    t.integer "is_flagged"
-    t.boolean "admin", default: false
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
+    t.datetime "locked_at"
+    t.string "first_name"
+    t.string "last_name"
     t.string "username"
     t.string "phone_number"
+    t.text "images"
+    t.boolean "admin", default: false
+    t.boolean "is_advertiser"
+    t.boolean "is_mod"
+    t.boolean "is_flagged"
     t.string "facebook"
     t.string "instagram"
-    t.string "snapchat"
     t.string "twitter"
+    t.string "snapchat"
     t.integer "school_class"
     t.string "school_program"
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.bigint "market_id"
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
-    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["market_id"], name: "index_users_on_market_id"
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "banners", "markets"
   add_foreign_key "banners", "users"
   add_foreign_key "categories", "groups"
+  add_foreign_key "categories", "markets"
+  add_foreign_key "categories", "users"
   add_foreign_key "flags", "products"
   add_foreign_key "flags", "users"
   add_foreign_key "forum_categories", "groups"
   add_foreign_key "forum_categories", "markets"
   add_foreign_key "forum_categories", "users"
+  add_foreign_key "forum_posts", "forum_threads"
+  add_foreign_key "forum_posts", "users"
   add_foreign_key "forum_threads", "forum_categories"
   add_foreign_key "forum_threads", "markets"
+  add_foreign_key "forum_threads", "users"
   add_foreign_key "groups", "markets"
   add_foreign_key "markets", "groups"
+  add_foreign_key "markets", "users"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "markets"
   add_foreign_key "products", "users"
