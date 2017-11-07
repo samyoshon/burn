@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable #, :confirmable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable  #,:confirmable
   # accepts_nested_attributes_for :markets
   
   # validates :email, email_format: true
@@ -19,7 +19,7 @@ class User < ApplicationRecord
 
   def self.assign_from_row(row)
     user = User.where(email: row[:email]).first_or_initialize
-    user.assign_attributes row.to_hash.slice(:first_name, :last_name, :market_id, :phone_number, :images, :admin, :is_advertiser, :is_mod, :username, :school_class, :school_program)
+    user.assign_attributes row.to_hash.slice(:first_name, :last_name, :market_id, :phone_number, :images, :admin, :is_advertiser, :is_mod, :username, :school_class, :school_program, :facebook, :instagram, :twitter, :snapchat)
   end
 
   def self.to_csv

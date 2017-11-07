@@ -8,4 +8,8 @@ $(document).on('turbolinks:load', function() {
 	$('.product-container').hover(function() {
 		$('.slick-arrow').show();
 	});
+
+	$('#form-phone-checkbox').change(function() {
+		$('.form-phone-form').toggle();
+	});
 });

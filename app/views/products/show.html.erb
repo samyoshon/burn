@@ -24,25 +24,26 @@
 				<% end %>
 			</div>
 		<% else %>
-			<div><%= image_tag("no-image.png", alt: "Default Profile Pic", class: "image-container no-image") %></div>
+			<div><%= image_tag("no-image.png", alt: "Default Profile Pic", class: "image-container no-image show-no-image") %></div>
 		<% end %>
     </div>
 
     <div class="col-md-5 show-details-container">
-      <h3><%= image_tag(@product.user.images.url, class: "profile-image-container") %> <%= @product.user.username %></h3>
+      <h3>
+        <% if @product.user.images.present? %><%= image_tag(@product.user.images.url, class: "profile-image-container") %><% else %><%= image_tag("no-profile.png", class: "profile-image-container") %><% end %> <%= @product.user.username %></h3>
       <% if current_user.present? || (current_user.present? && current_user.is_advertiser != true) %>
     	  <h4 class="social-icons">
     		<% if @product.user.facebook? %>
-          <a href="#" ><i class="fa fa-facebook" aria-hidden="true" style="color: <%= @market.first_color %>"></i></a>
+          <a href="http://www.facebook.com/<%= @product.user.facebook %>" target="_blank"><i class="fa fa-facebook" aria-hidden="true" style="color: <%= @market.first_color %>"></i></a>
         <% end %>
         <% if @product.user.instagram? %>
-    		  <a href="#"><i class="fa fa-instagram" aria-hidden="true" style="color: <%= @market.first_color %>"></i></a>
+    		  <a href="http://www.instagram.com/<%= @product.user.instagram %>" target="_blank"><i class="fa fa-instagram" aria-hidden="true" style="color: <%= @market.first_color %>"></i></a>
         <% end %>
-        <% if @product.user.snapchat? %>
+<!--         <% if @product.user.snapchat? %>
     		  <a href="#"><i class="fa fa-snapchat" aria-hidden="true" style="color: <%= @market.first_color %>"></i></a>
-        <% end %>
+        <% end %> -->
         <% if @product.user.twitter? %>
-    		  <a href="#"><i class="fa fa-twitter" aria-hidden="true" style="color: <%= @market.first_color %>"></i></a>
+    		  <a href="http://www.twitter.com/<%= @product.user.twitter %>" target="_blank"><i class="fa fa-twitter" aria-hidden="true" style="color: <%= @market.first_color %>"></i></a>
         <% end %>
     	  </h4>
       <% end %>

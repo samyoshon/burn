@@ -17,6 +17,12 @@ input {
     left: 25px;
 }
 
+@media screen and (max-width: 768px) {
+    #input-social-icon {
+     	bottom: 10px;
+ 	}
+}
+
 a.tooltip-icon:hover, a.tooltip-icon:focus {
   text-decoration: none;
 }
@@ -36,4 +42,8 @@ a.tooltip-icon:hover, a.tooltip-icon:focus {
 	display: flex;
 	align-items: center;
   	justify-content: center;
+}
+
+.form-phone-form {
+	display: none;
 }

@@ -13,6 +13,10 @@ $box-shadow: 0px 1px 2px #888888;
 	object-fit: contain;
 }
 
+.show-no-image {
+	height: 380px;
+}
+
 @media screen and (max-width: 768px) {
     .show-image-container {
 		height: 100%;
@@ -20,6 +24,10 @@ $box-shadow: 0px 1px 2px #888888;
 
 	.show-images-container {
 		margin-bottom: 20px;
+	}
+
+	.show-no-image {
+		height: 100%;
 	}
 }
 
@@ -60,3 +68,4 @@ $box-shadow: 0px 1px 2px #888888;
 .show-contact-info-hidden {
 	display: none;
 }
+
