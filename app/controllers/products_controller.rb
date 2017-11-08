@@ -1,5 +1,5 @@
 #global
-$max_products = 10
+$max_products = 15
 $days_posted = 14
 $pagination_count = 50
 

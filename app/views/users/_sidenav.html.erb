@@ -13,9 +13,9 @@
 			<li class="<%= active_class(user_products_path) %> list-group-item list-group-item-action">
 				<%= link_to "Products", user_products_path, class: "list-group-item list-group-item-action" %>
 			</li>
-			<li class="<%= active_class(user_forum_posts_path) %> list-group-item list-group-item-action">
+<!-- 			<li class="<%= active_class(user_forum_posts_path) %> list-group-item list-group-item-action">
 				<%= link_to "Forum Posts", user_forum_posts_path, class: "list-group-item list-group-item-action" %>
-			</li>
+			</li> -->
 			<% if current_user.admin? || current_user.is_mod? %>
 				<li class="<%= active_class(user_flagged_path) %> list-group-item list-group-item-action">
 					<%= link_to "Flagged Products", user_flagged_path, class: "list-group-item list-group-item-action" %>

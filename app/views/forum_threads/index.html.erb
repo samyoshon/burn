@@ -9,7 +9,7 @@
 <div class="content-container">
   <h1 class="page-header">Discussions</h1>
   <%= render partial: "forum_threads/sidenav" %>
-  <div class="col-md-10 col-sm-12 container-mobile">
+  <div class="col-md-10 col-sm-12 container-mobile container-mobile-forum">
   	<%= render @forum_threads %>
     <div class="col-md-12">
     	<%= will_paginate @forum_threads %>

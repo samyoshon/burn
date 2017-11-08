@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # mount ImageUploader::UploadEndpoint => "/images/upload"
   devise_for :users, :controllers => {:registrations => "users/registrations", :sessions => "users/sessions", :passwords => "users/passwords", :confirmations => "users/confirmations" }
 
+
   get '/users/profile', to: 'users#profile', as: 'user_profile'
   put '/users/profile', to: 'users#update_profile', as: 'user_update_profile'
 

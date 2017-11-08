@@ -1,6 +1,6 @@
 <%= form_for [@forum_thread, @forum_post] do |f| %>
   <div class="form-group">
-    <%= f.text_area :body, placeholder: "Add a comment", data: {behavior: "autocomplete"}, rows: 20, class: "form-control", id: "forum_post_body" %>
+    <%= f.text_area :body, placeholder: "Add a comment", required: true, data: {behavior: "autocomplete"}, rows: 20, class: "form-control", id: "forum_post_body" %>
     <!-- <trix-editor input="forum_post_body", data: {behavior: "autocomplete"}></trix-editor> -->
   </div>
 

@@ -2,19 +2,20 @@ input {
 	border-radius: 0 !important;
 }
 
-#input_container { 
-    position:relative;
+#input-container { 
+    position: relative;
+    height: 34px !important;
 }
 
 #input-social { 
-    margin:0;
-    padding-left:30px;
+    margin: 0;
+    padding-left: 30px;
 }
 
 #input-social-icon {
     position:absolute;
-    bottom: 25px;
-    left: 25px;
+    bottom: 10px;
+    left: 10px;
 }
 
 @media screen and (max-width: 768px) {
