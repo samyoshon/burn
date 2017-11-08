@@ -11,7 +11,7 @@
 			<% ForumCategory.all.order("category_name asc").each do |forum_category| %>
 	        	<label class="sidenav-category-label">
 	        		<%= f.check_box :forum_category_id_in, {class: "checkbox inline", multiple: true, include_blank: true, onchange: 'this.form.submit();' }, forum_category.id, nil %>
-	        		<%= forum_category.category_name %>
+	        		<%= markdownify forum_category.category_name %>
 	        	</label>
 	      	<% end %>
 		<% end %>
