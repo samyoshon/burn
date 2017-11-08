@@ -1,6 +1,7 @@
 /* VARIABLES */
 
-$product-container-height: 400px;
+$product-container-height: 380px;
+$product-container-height-mobile: 400px;
 $image-container-height: 200px;
 $image-container-preview-height: 100px;
 
@@ -13,6 +14,7 @@ $image-container-preview-height: 100px;
 .product-container {
 	height: $product-container-height;
 	margin-bottom: 15px;
+	box-shadow: 0px 1px 2px #888888;
 
 	a {
 		text-decoration: none;
@@ -83,9 +85,9 @@ $image-container-preview-height: 100px;
 }
 
 @media screen and (max-width: 768px) {
-    .product-container {
-    	box-shadow: 0px 1px 2px #888888;
-    }
+	.product-container {
+		height: $product-container-height-mobile;
+	}
 
     .container-mobile {
         padding-left: 0px;

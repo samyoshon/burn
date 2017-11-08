@@ -20,7 +20,7 @@
     <div class="card-body">
       <h4 class="card-title product-title">
         <%= link_to product do %>
-			<%= sanitize markdownify product.title %>
+			<span style="color: <%= @market.first_color %>"><%= sanitize markdownify product.title %></spam>
 		<% end %>
       </h4>
       <h5>$<%= product.price %></h5>
