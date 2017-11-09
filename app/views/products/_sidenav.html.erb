@@ -1,12 +1,6 @@
-<a class="sidenav-filters-btn" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-	<div class="col-sm-3 col-md-2 sidenav-container sidenav-container-filters">
-	  	<div ><h4 class="sidenav-filters-header" style="color: <%= @market.first_color %>"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Filters</h4></div>
-	</div>
-</a>
-
-<div class="col-sm-3 col-md-2 sidenav-container sidenav-container-main">
+<div class="col-sm-3 col-md-2 hidden-xs hidden-sm">
 	<div class="sidenav">
-		<%= search_form_for @q, html: { class: "form-inline category_id collapse sidenav-categories", id: "collapseExample"} do |f| %>
+		<%= search_form_for @q, html: { class: "form-inline category_id sidenav-categories"} do |f| %>
 			<h6 class="market-highlight" style="color: <%= @market.first_color %>">Categories</h6>
 			<% Category.all.order("category_name asc").each do |category| %>
 	        	<label class="sidenav-category-label">
@@ -24,4 +18,34 @@
 		    <%= f.button '<i class="fa fa-chevron-right" aria-hidden="true"></i>'.html_safe, class: "btn btn-primary", 'data-disable-with' => "<i class='fa fa-spinner fa-spin'>".html_safe, style: "background-color: #{@market.first_color}; border-color: #{@market.first_color}" %>
 		<% end %>
 	</div>
+</div>
+
+<div class="visible-xs visible-sm">
+    <div class="navbar-header">
+      <div class="col-xs-12 sidenav-container sidenav-container-filters navbar-toggle" type="button" data-toggle="collapse" data-target=".fcs-navbar-collapse">
+        <h4 class="sidenav-filters-header" style="color: <%= @market.first_color %>"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Filters</h4>
+      </div>
+    </div>
+
+    <nav class="collapse navbar-collapse fcs-navbar-collapse " role="navigation">
+      <ul class="nav navbar-nav">
+      	<%= search_form_for @q, html: { class: "form-inline category_id sidenav-categories"} do |f| %>
+			<h6 class="market-highlight" style="color: <%= @market.first_color %>">Categories</h6>
+			<% Category.all.order("category_name asc").each do |category| %>
+	        	<label class="sidenav-category-label">
+	        		<%= f.check_box :category_id_in, {class: "checkbox inline", multiple: true, include_blank: true, onchange: 'this.form.submit();' }, category.id, nil %>
+	        		<%= markdownify category.icon %> <%= category.category_name %>
+	        	</label>
+	      	<% end %>
+
+	      	<hr>
+	      	<h6 class="market-highlight" style="color: <%= @market.first_color %>">Price</h6>
+
+			<%= f.search_field :price_gteq, placeholder: "Low", class: "form-control sidenav-price-label" %> 
+				to 
+			<%= f.search_field :price_lteq, placeholder: "High", class: "form-control sidenav-price-label" %>
+		    <%= f.button '<i class="fa fa-chevron-right" aria-hidden="true"></i>'.html_safe, class: "btn btn-primary", 'data-disable-with' => "<i class='fa fa-spinner fa-spin'>".html_safe, style: "background-color: #{@market.first_color}; border-color: #{@market.first_color}" %>
+		<% end %>
+	  </ul>
+    </nav>
 </div>

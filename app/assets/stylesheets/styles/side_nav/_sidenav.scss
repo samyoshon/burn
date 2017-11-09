@@ -14,9 +14,10 @@ $box-shadow: 0px 1px 2px #888888;
   display: block;
 }
 
-/*.sidenav-container-filters {
-  display: none;
-}*/
+.sidenav-container-filters {
+  margin-right: 0px !important;
+  border-radius: 0px !important;
+}
 
 .sidenav-filters {
   &:hover {

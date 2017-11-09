@@ -1,18 +1,6 @@
-<a class="sidenav-filters-btn" type="button" data-toggle="collapse" data-target=".cs-navbar-collapse" aria-expanded="false" aria-controls="collapseExample">
-	<div class="col-sm-3 col-md-2 sidenav-container sidenav-container-filters">
-	  	<div ><h4 class="sidenav-filters-header" style="color: <%= @market.first_color %>"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Filters</h4></div>
-	</div>
-</a>
-
-<!-- <a class="sidenav-filters-btn" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-	<div class="col-sm-3 col-md-2 sidenav-container sidenav-container-filters">
-	  	<div ><h4 class="sidenav-filters-header" style="color: <%= @market.first_color %>"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Filters</h4></div>
-	</div>
-</a> -->
-
-<div class="col-sm-3 col-md-2 sidenav-container sidenav-container-main collapse navbar-collapse cs-navbar-collapse" role="navigation">
-	<div class="sidenav nav navbar-nav">
-		<%= search_form_for @q, html: { class: "form-inline category_id collapse sidenav-categories", id: "collapseExample"} do |f| %>
+<div class="col-sm-3 col-md-2 hidden-xs hidden-sm">
+	<div class="sidenav">
+		<%= search_form_for @q, html: { class: "form-inline category_id sidenav-categories"} do |f| %>
 			<h6 class="market-highlight" style="color: <%= @market.first_color %>">Topics</h6>
 			<% ForumCategory.all.order("category_name asc").each do |forum_category| %>
 	        	<label class="sidenav-category-label">
@@ -22,4 +10,26 @@
 	      	<% end %>
 		<% end %>
 	</div>
+</div>
+
+<div class="visible-xs visible-sm">
+    <div class="navbar-header">
+      <div class="col-xs-12 sidenav-container sidenav-container-filters navbar-toggle" type="button" data-toggle="collapse" data-target=".fcs-navbar-collapse">
+        <h4 class="sidenav-filters-header" style="color: <%= @market.first_color %>"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Filters</h4>
+      </div>
+    </div>
+
+    <nav class="collapse navbar-collapse fcs-navbar-collapse " role="navigation">
+      <ul class="nav navbar-nav">
+      	<%= search_form_for @q, html: { class: "form-inline category_id sidenav-categories"} do |f| %>
+			<h6 class="market-highlight" style="color: <%= @market.first_color %>">Topics</h6>
+			<% ForumCategory.all.order("category_name asc").each do |forum_category| %>
+	        	<label class="sidenav-category-label">
+	        		<li><%= f.check_box :forum_category_id_in, {class: "checkbox inline", multiple: true, include_blank: true, onchange: 'this.form.submit();' }, forum_category.id, nil %>
+	        		<%= markdownify forum_category.icon %> <%= forum_category.category_name %></li>
+	        	</label>
+	      	<% end %>
+		<% end %>
+	  </ul>
+    </nav>
 </div>

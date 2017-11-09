@@ -10,24 +10,24 @@ $(document).on('turbolinks:load', function() {
     //     }
     // });
 
-    $(window).resize(function(){
-        togglePanel();
-    });
+    // $(window).resize(function(){
+    //     togglePanel();
+    // });
 
-    togglePanel();
+    // togglePanel();
 
-    function togglePanel (){
-        var w = $(window).width();
-        if (w <= 769) {
-            $('.sidenav-container-filters').show();
-            $('.sidenav-categories').attr('id', 'collapseExample');
-            $('.sidenav-categories').addClass('collapse');
-            $('.sidenav-container-main').hide();
-        } else {
-            $('.sidenav-container-filters').hide();
-            $('.sidenav-categories').removeAttr('id', 'collapseExample');
-            $('.sidenav-categories').removeClass('collapse');
-            $('.sidenav-container-main').show();
-        }
-    }
+    // function togglePanel (){
+    //     var w = $(window).width();
+    //     if (w <= 769) {
+    //         $('.sidenav-container-filters').show();
+    //         $('.sidenav-categories').attr('id', 'collapseExample');
+    //         $('.sidenav-categories').addClass('collapse');
+    //         $('.sidenav-container-main').hide();
+    //     } else {
+    //         $('.sidenav-container-filters').hide();
+    //         $('.sidenav-categories').removeAttr('id', 'collapseExample');
+    //         $('.sidenav-categories').removeClass('collapse');
+    //         $('.sidenav-container-main').show();
+    //     }
+    // }
 });
