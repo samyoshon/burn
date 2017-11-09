@@ -22,12 +22,12 @@
 
 <div class="visible-xs visible-sm">
     <div class="navbar-header">
-      <div class="col-xs-12 sidenav-container sidenav-container-filters navbar-toggle" type="button" data-toggle="collapse" data-target=".fcs-navbar-collapse">
-        <h4 class="sidenav-filters-header" style="color: <%= @market.first_color %>"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Filters</h4>
+      <div class="col-xs-12 sidenav-container sidenav-container-filters navbar-toggle" type="button" data-toggle="collapse" data-target=".cs-navbar-collapse" style="background-color: <%= @market.first_color %>">
+        <h4 class="sidenav-filters-header" style="color: white"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Filters</h4>
       </div>
     </div>
 
-    <nav class="collapse navbar-collapse fcs-navbar-collapse " role="navigation">
+    <nav class="collapse navbar-collapse cs-navbar-collapse " role="navigation">
       <ul class="nav navbar-nav">
       	<%= search_form_for @q, html: { class: "form-inline category_id sidenav-categories"} do |f| %>
 			<h6 class="market-highlight" style="color: <%= @market.first_color %>">Categories</h6>
