@@ -9,7 +9,8 @@ class User < ApplicationRecord
   
   # validates :email, email_format: true
   validates_uniqueness_of :username
-  validates_format_of :username, :facebook, :instagram, :twitter, :with => /\A[a-zA-Z0-9]*\z/, :message => "no special characters, only letters and numbers allowed"
+  validates_format_of :username, :with => /\A[a-zA-Z0-9]*\z/, :message => "letters and numbers only"
+  validates_format_of :facebook, :instagram, :twitter, :with => /\A[a-zA-Z0-9._]*\z/, :message => "letters, numbers, periods, and underscores only"
   validates_format_of :first_name, :last_name, :with => /\A[a-zA-Z]*\z/, :message => "invalid entry, only letters allowed"
 
   belongs_to :market
