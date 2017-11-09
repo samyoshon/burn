@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   put '/users/forum_categories', to: 'users#update_forum_categories', as: 'user_update_forum_categories'
   post '/users/forum_categories', to: 'users#create_forum_categories', as: 'user_create_forum_categories'
   
-  resources :forum_threads, :path => 'community' do #url = community
+  resources :forum_threads, :path => 'discussions' do #url = community
     resources :forum_posts, module: :forum_threads
   end
 

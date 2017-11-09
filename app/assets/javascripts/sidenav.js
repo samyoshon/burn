@@ -1,14 +1,14 @@
 $(document).on('turbolinks:load', function() {
-    $('.sidenav-filters-btn').click(function() {
-        var display = $('.sidenav-container-main').css('display');
+    // $('.sidenav-filters-btn').click(function() {
+    //     var display = $('.sidenav-container-main').css('display');
 
-        if ( display === 'none' ) {
-            $('.sidenav-container-main').show();
-        } else {
-            $('.sidenav-container-main').collapse('hide');
-            $('.sidenav-container-main').hide();
-        }
-    });
+    //     if ( display === 'none' ) {
+    //         $('.sidenav-container-main').show();
+    //     } else {
+    //         $('.sidenav-container-main').collapse('hide');
+    //         $('.sidenav-container-main').hide();
+    //     }
+    // });
 
     $(window).resize(function(){
         togglePanel();

@@ -4,7 +4,8 @@ $(document).on('turbolinks:load', function() {
 		infinite: true,
 		arrows: true,
 		slidesToShow: 1,
-		slidesToScroll: 1
+		slidesToScroll: 1,
+		dots: true
 	});
 
 	$('.slider-for').slick({

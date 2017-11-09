@@ -1,7 +1,7 @@
 /* VARIABLES */
 
 $product-container-height: 380px;
-$product-container-height-mobile: 400px;
+$product-container-height-mobile: 450px;
 $image-container-height: 200px;
 $image-container-preview-height: 100px;
 
@@ -92,6 +92,10 @@ $image-container-preview-height: 100px;
 @media screen and (max-width: 768px) {
 	.product-container {
 		height: $product-container-height-mobile;
+	}
+
+	.card-body {
+		margin-top: 50px;
 	}
 
     .container-mobile {

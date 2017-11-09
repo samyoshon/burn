@@ -46,3 +46,20 @@
         }
     }
 }
+
+.slick-dots {
+  display: none !important;
+}
+
+@media screen and (max-width: 768px) {
+  .product-container, .slick-slider {
+    &:hover {
+        .slick-arrow{
+            display:none !important;
+        }
+    }
+  }
+  .slick-dots {
+    display: block !important;
+  }
+}
