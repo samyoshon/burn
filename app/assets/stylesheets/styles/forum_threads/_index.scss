@@ -1,21 +1,3 @@
-@media screen and (max-width: 768px) {
-    .forum-thread-post-count {
-      vertical-align: top;
-    }
-
-    .forum-thread-post-container {
-      width: 85%;
-    }
-
-    .forum-thread-container {
-      padding: 10px 0 !important;
-    }
-
-    .container-mobile-forum {
-      margin-top: 10px !important;
-    }
-}
-
 .forum-thread-post-count {
   width: 32px !important;
   height: 32px;
@@ -77,4 +59,23 @@
 
 .forum-thread-post-username {
   font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+    .forum-thread-post-count {
+      vertical-align: top;
+      padding: 1px 0;
+    }
+
+    .forum-thread-post-container {
+      width: 85%;
+    }
+
+    .forum-thread-container {
+      padding: 10px 0 !important;
+    }
+
+    .container-mobile-forum {
+      margin-top: 10px !important;
+    }
 }
