@@ -14,9 +14,10 @@
 
 <div class="visible-xs visible-sm">
     <div class="navbar-header">
-      <button class="col-xs-12 sidenav-container-filters navbar-toggle" type="button" data-toggle="collapse" data-target=".fcs-navbar-collapse" style="background-color: <%= @market.first_color %>">
-        <h6 class="sidenav-filters-header" style="color: white"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Filters</h6>
+      <button class="col-xs-4 sidenav-container sidenav-container-filters navbar-toggle" type="button" data-toggle="collapse" data-target=".fcs-navbar-collapse">
+        <h6 class="sidenav-filters-header" style="color: <%= @market.first_color %>"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Filters</h6>
       </button>
+      <%= button_to "Post Thread", new_forum_thread_path, :method => :get, class: "col-xs-8 sidenav-container sidenav-container-filters navbar-toggle", style: "background-color: #{@market.first_color}; color: white" %>
     </div>
 
     <nav class="collapse navbar-collapse fcs-navbar-collapse " role="navigation">
