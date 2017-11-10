@@ -1,7 +1,7 @@
 <div class="container mobile-container">
   <div class="row">
-    <div class="col-sm-8 col-sm-offset-2 sign-up-div">
-      <h2>Join <%= @market.title %>'s exclusive SlashForm community.</h2>
+    <div class="col-sm-8 col-sm-offset-2 sign-up-div card">
+      <h1>Join <%= @market.title %>'s exclusive SlashForm community.</h1>
       <h4>The Marketplace/Forum/TBD platform.</h4>
       <hr>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -28,7 +28,7 @@
         <%= f.hidden_field :market_id, :value => @market.id %> 
           
         <div class="form-group">
-          <%= f.button "Sign up", class: "btn btn-success btn-block btn-gradient", 'data-disable-with' => "<i class='fa fa-spinner fa-spin'></i> Signing up...".html_safe, style: "background: #{@market.first_color};  background: -webkit-linear-gradient(left, #{@market.first_color} , #{@market.second_color}); background: -o-linear-gradient(right, #{@market.first_color}, #{@market.second_color}); background: -moz-linear-gradient(right, #{@market.first_color}, #{@market.second_color}); background: linear-gradient(to right, #{@market.first_color} , #{@market.second_color});"%>
+          <%= f.button "Sign up", class: "btn btn-block btn-gradient", 'data-disable-with' => "<i class='fa fa-spinner fa-spin'></i> Signing up...".html_safe, style: "background: #{@market.first_color};  background: -webkit-linear-gradient(left, #{@market.first_color} , #{@market.second_color}); background: -o-linear-gradient(right, #{@market.first_color}, #{@market.second_color}); background: -moz-linear-gradient(right, #{@market.first_color}, #{@market.second_color}); background: linear-gradient(to right, #{@market.first_color} , #{@market.second_color});"%>
         </div>
       <% end %>
     <hr>

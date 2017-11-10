@@ -22,14 +22,13 @@ $box-shadow: 0px 1px 2px #888888;
 	margin: auto;
 }
 
-
-
 .profile-image-container {
 	height: $profile-image-container-height;
 	width: $profile-image-container-height;
 	display: inline-block;
     border-radius: 50%;
     object-fit: contain;
+    margin-right: 5px;
 }
 
 .social-icons a {
@@ -41,7 +40,6 @@ $box-shadow: 0px 1px 2px #888888;
 }
 
 .show-details-container {
-	box-shadow: $box-shadow;
 	padding: 20px;
 }
 

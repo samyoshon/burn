@@ -28,7 +28,7 @@
 		<% end %>
     </div>
 
-    <div class="col-md-5 show-details-container">
+    <div class="col-md-5 show-details-container card">
       <h3>
         <% if @product.user.images.present? %><%= image_tag(@product.user.images.url, class: "profile-image-container") %><% else %><%= image_tag("no-profile.png", class: "profile-image-container") %><% end %> <%= @product.user.username %></h3>
       <% if current_user.present? || (current_user.present? && current_user.is_advertiser != true) %>

@@ -1,7 +1,7 @@
 <div class="content-container">
   <%= render partial: "users/sidenav" %>
 
-  <div class="container col-md-10 col-sm-12">
+  <div class="container col-md-10 col-sm-12 container-mobile-product">
     <h1>Forum Categories</h1>
       <% @forum_categories.each do |forum_category| %>
         <%= form_for forum_category, url: user_update_forum_categories_path, method: :put, html: {id: forum_category.id} do |f| %>
