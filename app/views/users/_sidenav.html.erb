@@ -38,13 +38,13 @@
 
 <div class="visible-xs visible-sm">
     <div class="navbar-header">
-      <button class="col-xs-12 sidenav-container sidenav-container-filters navbar-toggle" type="button" data-toggle="collapse" data-target=".cs-navbar-collapse">
-        <h4 class="sidenav-filters-header"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Settings</h4>
+      <button class="col-xs-12 sidenav-container-filters navbar-toggle" type="button" data-toggle="collapse" data-target=".cs-navbar-collapse">
+        <h6 class="sidenav-filters-header"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Settings</h6>
       </button>
     </div>
 
     <nav class="collapse navbar-collapse cs-navbar-collapse " role="navigation">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav user-nav">
   		<li class="<%= active_class(edit_user_registration_path) %> list-group-item list-group-item-action">
 			<%= link_to "Profile", edit_user_registration_path, class: "list-group-item list-group-item-action" %> 
 		</li>
