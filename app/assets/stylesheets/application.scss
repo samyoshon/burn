@@ -110,4 +110,8 @@ footer {
   .alert {
     margin-top: -22px;
   }
+
+  button:active, .button_to:active, .btn:active {
+  	top: 2px;
+  }
 }
