@@ -15,7 +15,7 @@
 			  <% end -%>
 
 			  <br>
-			  <div><%= f.button "Log in", class: "btn btn-block btn-gradient", 'data-disable-with' => "<i class='fa fa-spinner fa-spin'></i> Logging in...", style: "background: #{@market.first_color};  background: -webkit-linear-gradient(left, #{@market.first_color} , #{@market.second_color}); background: -o-linear-gradient(right, #{@market.first_color}, #{@market.second_color}); background: -moz-linear-gradient(right, #{@market.first_color}, #{@market.second_color}); background: linear-gradient(to right, #{@market.first_color} , #{@market.second_color});" %></div>
+			  <div><%= f.button "Log in", class: "btn btn-block btn-gradient card", 'data-disable-with' => "<i class='fa fa-spinner fa-spin'></i> Logging in...", style: "background: #{@market.first_color};  background: -webkit-linear-gradient(left, #{@market.first_color} , #{@market.second_color}); background: -o-linear-gradient(right, #{@market.first_color}, #{@market.second_color}); background: -moz-linear-gradient(right, #{@market.first_color}, #{@market.second_color}); background: linear-gradient(to right, #{@market.first_color} , #{@market.second_color});" %></div>
 			<% end %>
 			<hr>
 			<%= render "devise/shared/links" %>
