@@ -54,7 +54,7 @@
       <h4 class="my-3">Product Description</h4>
       <p><%= sanitize markdownify @product.description %></p>
       <hr>
-      <div class="btn btn-contact-info btn-gradient btn-block" style="background: <%= @market.first_color %>;  background: -webkit-linear-gradient(left, <%= @market.first_color %> , <%= @market.second_color %>); background: -o-linear-gradient(right, <%= @market.first_color %>, <%= @market.second_color %>); background: -moz-linear-gradient(right, <%= @market.first_color %>, <%= @market.second_color %>); background: linear-gradient(to right, <%= @market.first_color %> , <%= @market.second_color %>);">Contact Seller</div>
+      <div class="btn btn-contact-info btn-gradient btn-block card" style="background: <%= @market.first_color %>;  background: -webkit-linear-gradient(left, <%= @market.first_color %> , <%= @market.second_color %>); background: -o-linear-gradient(right, <%= @market.first_color %>, <%= @market.second_color %>); background: -moz-linear-gradient(right, <%= @market.first_color %>, <%= @market.second_color %>); background: linear-gradient(to right, <%= @market.first_color %> , <%= @market.second_color %>);">Contact Seller</div>
 		<div class="show-contact-info show-contact-info-hidden">
     <% if current_user.present? %>
         <h5>Contact Details:</h5>
