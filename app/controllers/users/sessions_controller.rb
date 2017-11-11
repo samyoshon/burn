@@ -9,7 +9,10 @@ class Users::SessionsController < Devise::SessionsController
 
 
 	def after_sign_in_path_for(resource)
-		if current_user.market_id != @market.id
+		if current_user.admin == true
+			flash[:alert] = "Signed in successfully."
+			stored_location_for(resource) || root_path
+		elsif current_user.market_id != @market.id
 			# current_user.deactivate_user(@user)
 		    sign_out(@user)
 		    flash[:alert] = "Email is not a valid email address."

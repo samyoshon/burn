@@ -14,24 +14,31 @@
 
 <!-- WHY DID I EMAIL MASK? -->
   <div class="form-group">
+    <div><%= f.label :title %><br />
     <%= f.text_field :title, autofocus: true, placeholder: "Title", class: "form-control", required: true %>
+    </div>
   </div>
 
   <div class="row">
     <div class="col-sm-6">
+      <div><%= f.label :price %><br />
       <div class="form-group" id="input-container">
         <%= f.number_field :price, required: true, placeholder: "Price", class: "form-control", id: "input-social" %>
         <i class="fa fa-usd" aria-hidden="true" id="input-social-icon"></i>
+        </div>
       </div>
     </div>
     <div class="col-sm-6">
+      <div><%= f.label :category %><br />
       <div class="form-group">
       <%= f.collection_select :category_id, Category.order(:category_name), :id, :category_name, {prompt: true, required: true}, {class: "form-control"} %>
       </div>
     </div>
+    </div>
   </div>
 
   <div class="form-group">
+    <div><%= f.label :description %><br />
     <%= f.trix_editor :description, required: true, placeholder: "Description", rows: 20, class: "form-control" %>
   </div>
 

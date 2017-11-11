@@ -12,11 +12,15 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.text_field :subject, autofocus: true, required: true, placeholder: "Subject", class: "form-control" %>
+    <div><%= f.label :title %><br />
+    <%= f.text_field :subject, autofocus: true, required: true, placeholder: "Title", class: "form-control" %>
+    </div>
   </div>
 
   <div class="form-group">
+    <div><%= f.label :category %><br />
     <%= f.collection_select :forum_category_id, ForumCategory.order(:category_name), :id, :category_name, {prompt: true, required: true}, {class: "form-control"} %>
+    </div>
   </div>
 
   <%= f.fields_for :forum_posts do |p| %>

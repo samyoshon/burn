@@ -1,5 +1,5 @@
 <div class="col-sm-3 col-md-2 hidden-xs hidden-sm sidenav-container-desktop">
-	<div class="sidenav">
+	<div class="sidenav card">
 		<%= search_form_for @q, html: { class: "form-inline category_id sidenav-categories"} do |f| %>
 			<h6 class="market-highlight" style="color: <%= @market.first_color %>">Topics</h6>
 			<% ForumCategory.all.order("category_name asc").each do |forum_category| %>

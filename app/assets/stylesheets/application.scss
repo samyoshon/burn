@@ -104,14 +104,26 @@ footer {
 
 @media screen and (max-width: 768px) {
   input[type="search"] {
-    width: 70%;
+    width: 100%;
+  }
+
+  .form-search {
+  	margin-bottom: 0px;
+  	width: 100%;
   }
 
   .alert {
     margin-top: -22px;
   }
 
+  .alert-dismissable .close, .alert-dismissible .close {
+    right: -10px;
+  }
+
   button:active, .button_to:active, .btn:active {
   	top: 2px;
+    opacity: 80%;
   }
+
+
 }
