@@ -31,7 +31,7 @@
     <div class="col-sm-6">
       <div><%= f.label :category %><br />
       <div class="form-group">
-      <%= f.collection_select :category_id, Category.order(:category_name), :id, :category_name, {prompt: true, required: true}, {class: "form-control"} %>
+      <%= f.collection_select :category_id, Category.order(:category_name), :id, :category_name, {prompt: true}, {class: "form-control", required: true} %>
       </div>
     </div>
     </div>
@@ -61,9 +61,9 @@
         <%= f.check_box :contact_by_email, placeholder: "contact via email", rows: 10, class: "form-product-contact", disabled: true %> Email: <b><%= current_user.email %></b>
         <br>
         <% if current_user.phone_number? %>
-          <%= f.check_box :contact_by_phone, placeholder: "contact via phone", rows: 10, class: "form-product-contact", checked: true %> Phone number<a href="#" class="tooltip-icon" data-toggle="tooltip" title="Add a phone number if you'd like the option to be contacted via text. Standard rates apply."> <i class="fa fa-info-circle" aria-hidden="true"></i></a> : <b><%= current_user.phone_number %></b>
+          <%= f.check_box :contact_by_phone, placeholder: "contact via phone", rows: 10, class: "form-product-contact", checked: true %> Phone number<a href="#" class="tooltip-icon" data-toggle="tooltip" title="Add a phone number if you'd like the option to be contacted via phone. Standard rates apply."> <i class="fa fa-info-circle" aria-hidden="true"></i></a> : <b><%= current_user.phone_number %></b>
         <% else %>
-          <%= f.check_box :contact_by_phone, placeholder: "contact via phone", rows: 10, class: "form-product-contact", id: "form-phone-checkbox" %> Phone number<a href="#" class="tooltip-icon" data-toggle="tooltip" title="Add a phone number if you'd like the option to be contacted via text. Standard rates apply."> <i class="fa fa-info-circle" aria-hidden="true"></i></a><br /> <%= f.phone_field :contact_pref, placeholder: "(XXX) XXX-XXXX", rows: 10, class: "form-control form-phone-form" %>
+          <%= f.check_box :contact_by_phone, placeholder: "contact via phone", rows: 10, class: "form-product-contact", id: "form-phone-checkbox" %> Phone number<a href="#" class="tooltip-icon" data-toggle="tooltip" title="Add a phone number if you'd like the option to be contacted via phone. Standard rates apply."> <i class="fa fa-info-circle" aria-hidden="true"></i></a><br /> <%= f.phone_field :contact_pref, placeholder: "(XXX) XXX-XXXX", rows: 10, class: "form-control form-phone-form" %>
         <% end %>
       </div>
     </div>
