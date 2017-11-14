@@ -38,8 +38,8 @@ function previewFiles() {
             // RUN A LOOP TO CHECK EACH SELECTED FILE.
             for (var i = 0; i <= fi.files.length - 1; i++) {
                 var fsize = fi.files.item(i).size;      // THE SIZE OF THE FILE.
-                if (fsize/1024 > 1024) {    // 1024 = 1MB
-                  document.getElementById('fp').innerHTML = document.getElementById('fp').innerHTML + '<br /> ' + '<b>' + fi.files.item(i).name + ' is too big. Attachment size limit is 1MB.</b>'; //+ Math.round((fsize / 1024)) + ' KB';
+                if (fsize/1024 > 2048) {    // 1024 = 1MB
+                  document.getElementById('fp').innerHTML = document.getElementById('fp').innerHTML + '<br /> ' + '<b>' + fi.files.item(i).name + ' is too big. Attachment size limit is 2MB.</b>'; //+ Math.round((fsize / 1024)) + ' KB';
                   $('.btn-post').prop('disabled', true);
                 }
             }

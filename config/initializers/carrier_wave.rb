@@ -22,7 +22,12 @@ CarrierWave.configure do |config|
     config.root = "#{Rails.root}/tmp"
   end
 
-  config.fog_directory  = ENV["AWS_BUCKET"]                          # required
+  if Rails.env.development? 
+    config.fog_directory  = ENV["AWS_BUCKET_DEV"]                          # required
+  elsif Rails.env.production?
+    config.fog_directory  = ENV["AWS_BUCKET_PROD"]
+  end                          # required
+
   # config.s3_access_policy = :public_read                          # Generate http:// urls. Defaults to :authenticated_read (https://)
   config.fog_public     = false                                        # optional, defaults to true
   config.fog_attributes = { 'Cache-Control' => "max-age=#{365.day.to_i}" } # optional, defaults to {}

@@ -49,7 +49,6 @@
       <% end %>
     <% end %>
     <div id="preview"></div>
-    </br>
     <%= f.file_field :images, :onchange => "previewFiles()", multiple: true, placeholder: "Image", accept: ".jpg, .jpeg, .gif, .png", class: "form-control", id: "image-form" %>
     <%= f.hidden_field :images_cache, multiple: true %>
   </div>
