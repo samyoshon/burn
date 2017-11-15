@@ -64,7 +64,7 @@
         <div class="col-sm-6">
           <div class="form-group">
             <div><%= f.label :class %><br />
-            <%= f.select(:school_class, options_for_select((2018..2025).map{|n| n%1 == 0 ? n.to_i : n}, 3), {prompt: true, required: true}, {class: "form-control"}) %>
+            <%= f.select(:school_class, options_for_select((2017..2030).map{|n| n%1 == 0 ? n.to_i : n}, 3), {prompt: true, required: true}, {class: "form-control"}) %>
             </div>
           </div>
         </div>

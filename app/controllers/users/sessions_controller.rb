@@ -16,7 +16,7 @@ class Users::SessionsController < Devise::SessionsController
 			# current_user.deactivate_user(@user)
 		    sign_out(@user)
 		    flash[:alert] = "Email is not a valid email address."
-				new_user_session_path
+			new_user_session_path
 		else
 			flash[:alert] = "Signed in successfully."
 			stored_location_for(resource) || root_path
