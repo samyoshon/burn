@@ -1,7 +1,7 @@
 #global
-$max_products = 15
+$max_products = 5
 $days_posted = 14
-$pagination_count = 50
+$pagination_count = 25
 
 
 class ProductsController < ApplicationController
