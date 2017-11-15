@@ -7,7 +7,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable
   # accepts_nested_attributes_for :markets
   
-  # validates :email, email_format: true
+  validates :email, email_format: true
   validates_uniqueness_of :username
   validates_format_of :username, :with => /\A[a-zA-Z0-9]*\z/, :message => "letters and numbers only"
   validates_format_of :facebook, :instagram, :twitter, :with => /\A[a-zA-Z0-9._]*\z/, :message => "letters, numbers, periods, and underscores only"
