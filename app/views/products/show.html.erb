@@ -65,7 +65,7 @@
 					<p><i class="fa fa-phone" aria-hidden="true"></i> <%= sanitize @product.contact_pref %></p>
 				<% end %>
     <% else %>
-      <h5><%= link_to "Log in to see contact details.", new_user_session_path() %></h5>
+      <h5><%= link_to "Sign up to see contact details.", new_user_registration_path() %></h5>
     <% end %>
 		</div>
 	</div>
